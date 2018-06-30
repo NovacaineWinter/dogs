@@ -1,0 +1,98 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import '~sass/variables';
+
+
+$info: $brand-primary;
+$primary:#00d1b2;  //bulma default that got broken
+$warning:$brand-secondary;
+$warning-invert:#eddecb;
+
+ //Bulma Styles
+@import './node_modules/bulma/bulma.sass';
+
+
+h1,h2,h3,h4,h5,p,a{
+	font-family:'Raleway';
+}
+
+body{
+	background-color:#cccccc;
+}
+
+
+
+.is-branded{
+	background-color:$brand-secondary;
+	color:$text-light;
+	
+	h1,h2,h3,h4,p{
+		color:$text-light
+	}
+}
+
+
+.whitecontainer{
+	background-color:$text-light;
+	border-radius:10px;
+	margin:20px auto;
+}
+
+#app{
+	padding-top:69px;
+	position:relative; 
+	min-height:100vh; 
+	padding-bottom:200px;
+	/* background-color:$brand-primary; */
+	.VueCarousel-navigation-next{
+		right:40px;
+		font-size:50px;
+	}
+	.VueCarousel-navigation-prev{		
+		font-size:50px;
+	}
+}
+
+
+
+#logoimg{
+	max-width:15vw;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:3;
+}
+
+#footimg{
+	max-width:15vw;
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	z-index:3;
+}
+
+#footer{
+	height:69px;
+	background-color:$brand-secondary;
+	position:absolute;
+	bottom:0px;
+	width:100%;
+}
+
+
+
+.hoverable{cursor:pointer;}
+.hoverable:hover{background-color:$hover-background-color;}
+
+.nosquash{
+	background-size: cover;
+	background-position: center;
+}
+
+.pointer{
+	cursor:pointer;
+}
+
