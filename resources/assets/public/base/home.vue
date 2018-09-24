@@ -1,12 +1,8 @@
 		
 <template>
 	<div style="margin-top:-69px" id="homeview">
-		<a href="#firstSection" v-smooth-scroll="{ duration: 1000, offset: -85 }">		
-			<span class="icon" id="downarrow">
-				<i class="fas fa-arrow-circle-down has-text-centered"></i>
-			</span>	
-		</a>
-		<section class="hero is-fullheight is-info" id="homebanner">
+		
+		<section class="hero is-large herobanner" id="homebanner">
 
 
 			<div class="hero-body">
@@ -14,23 +10,242 @@
 
 					<div class="tile is-ancestor">
 
+
 						<div class="tile is-parent">
 							<div class="tile is-child has-text-centered misty">
-								<h1>App Name</h1>							
+								<h1 class="title">Toys and Treats delivered every month</h1>
+								<h1>Show your dog how much you love them</h1>							
 							</div>
 						</div>
 
-
-						<div class="tile is-4 is-vertical is-parent">
-
-							<router-link tag="div" class="tile is-child box is-info button" to="/"><p>Link 1</p></router-link>					
-
-							<router-link tag="div" class="tile is-child box button" to="/"><p>Link 2</p></router-link>
-
+						<div class="tile is-4 is-vertical is-parent">						
+							&nbsp;
 						</div>
+
 						
 					</div>								
 					
+				</div>
+			</div>			
+		</section>
+
+		<section class="hero is-primary">
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title has-text-centered">Toys and treats delivered to your dog each month.</h1>
+				</div>
+			</div>
+		</section>
+
+		<section class="section slimsection" id="firstrowcolumns">
+			<div class="container">				
+				<div class="columns">
+					<div class="column"><img src="/img/dog3.jpeg"></div>
+					<div class="column rightcol">
+						<div class="textbox">
+							<div class="textwrapper">
+								<h1 class="subtitle"><span>What is a Toys and Treats Box?</span></h1>
+								<p>It's all in the name! Its box of toys and treats hand (or paw?) picked by our team specially for your dog. Delivered to your door each and every month to make your dog the happiest dog in the world. </p>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section slimsection">
+			<div class="container">				
+				<div class="columns">
+					<div class="column leftcol lastcol">
+						<div class="textbox">
+							<div class="textwrapper">
+								<h1 class="subtitle"><span>Why should I get a Toys and Treats Box?</span></h1>
+								<p>Have you noticed how your dog just somehow knows when you are feeling down and tries their best to cheer you up? or the unconditional love they show you when you come home from a hard day? Your dog does so much for you, can you imagine how happy they would be to get a new toy and a box of treats each and every month? A Toys and Treats box is the simplest way of returning a little bit of that love they show you.</p>								
+							</div>
+						</div>
+					</div>
+					<div class="column"><img src="/img/dog2.jpeg"></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section slimsection">
+			<div class="container">				
+				<div class="columns secondcolumns">
+					<div class="column is-6"><img src="/img/dog4.jpeg"></div>
+					<div class="column is-6 rightcol lastcol">
+						<div class="textbox">
+							<div class="textwrapper">
+								<h1 class="subtitle"><span>So how much does it cost?</span></h1>
+								<span class="boldspan">&pound;9.99 / month</span><br>
+								( You can stop whenever you like! )
+								<!-- 
+								<br>
+								<br>
+								<br>
+								Your personalized Dog Box includes;<br>
+									
+								<ul class="bulletpointsok">									
+									<li>A toy (often more than one!)</li>
+									<li>A bag of super tasty treats</li>
+								</ul> 
+								-->
+								<br>
+								<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">Subscribe Now</router-link>													
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	<section class="sectionbreak">&nbsp;</section>
+	<section class="section unpaddedsection">
+		<div class="container">
+			<div class="columns borderedcontainer">
+				<div class="column">&nbsp;</div>
+				<div class="column is-8">
+					<h1 class="title">How we started...</h1>
+					<p>
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, <br><br>qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur
+						<br><br>
+						Matt Hartley
+					</p>
+					<img src="/img/portrait.jpeg">
+				</div>			
+				<div class="column">&nbsp;</div>
+			</div>
+		</div>
+	</section>
+	<section class="sectionbreak">&nbsp;</section>
+
+
+		<section class="section">
+			<div class="container">
+				<h1 class="title has-text-centered">Meet our product testing team...</h1>
+				<div class="columns">
+
+					<div class="column">
+						<div class="card">
+						    <div class="card-image">
+						        <figure class="image is-4by3">
+						            <img src="/img/monte.jpeg" alt="Placeholder image">
+						        </figure>
+						    </div>
+						    <div class="card-content">
+						        <div class="media">
+						            <div class="media-content">
+						                <p class="title is-4">Monte</p>
+						                <p class="subtitle is-6">Cairn Terrier</p>
+						            </div>
+						        </div>
+
+						        <div class="content">
+						            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						            Phasellus nec iaculis mauris. 
+						        </div>
+						    </div>
+						</div>
+					</div>
+
+					<div class="column">
+						<div class="card">
+						    <div class="card-image">
+						        <figure class="image is-4by3">
+						            <img src="/img/benson.jpeg" alt="Placeholder image">
+						        </figure>
+						    </div>
+						    <div class="card-content">
+						        <div class="media">
+						            <div class="media-content">
+						                <p class="title is-4">Benson</p>
+						                <p class="subtitle is-6">Springer Spaniel</p>
+						            </div>
+						        </div>
+
+						        <div class="content">
+						            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						            Phasellus nec iaculis mauris. 
+						        </div>
+						    </div>
+						</div>
+					</div>
+
+
+
+					<div class="column">
+						<div class="card">
+						    <div class="card-image">
+						        <figure class="image is-4by3">
+						            <img src="/img/harley.jpeg" alt="Placeholder image">
+						        </figure>
+						    </div>
+						    <div class="card-content">
+						        <div class="media">
+						            <div class="media-content">
+						                <p class="title is-4">Harley</p>
+						                <p class="subtitle is-6">Rhodesian Ridgeback</p>
+						            </div>
+						        </div>
+
+						        <div class="content">
+						            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						            Phasellus nec iaculis mauris. 
+						        </div>
+						    </div>
+						</div>
+					</div>
+
+
+
+					<div class="column">
+						<div class="card">
+						    <div class="card-image">
+						        <figure class="image is-4by3">
+						            <img src="/img/huxley.jpeg" alt="Placeholder image">
+						        </figure>
+						    </div>
+						    <div class="card-content">
+						        <div class="media">
+						            <div class="media-content">
+						                <p class="title is-4">Huxley</p>
+						                <p class="subtitle is-6">Patterdale Terrier</p>
+						            </div>
+						        </div>
+
+						        <div class="content">
+						            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						            Phasellus nec iaculis mauris. 
+						        </div>
+						    </div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+
+
+		<section class="hero is-large herobanner" id="ctabanner">
+			<div class="hero-body">
+				<div class="container has-text-centered">
+					<div class="columns">
+						<div class="column is-7"></div>
+						<div class="column is-5">
+							<h1 class="title colourmisty">Does your dog deserve a Toys and Treats box?</h1>				
+							<div class="columns">								
+								<div class="column">&nbsp;</div>
+								<div class="column is-8">							
+									<router-link tag="div" to="/sign-up" class="button is-large is-primary ctabutton">Yes, of course! <span class="emojispan">&#9786;</span></router-link>
+									<div class="button is-large is-danger ctabutton">No, they don't! &#9785;</div>
+								</div>
+								<div class="column">&nbsp;</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>			
 		</section>
@@ -71,53 +286,138 @@
 
 	@import '~sass/variables';
 
-	
-	#downarrow{
-		position: absolute;
-		top: 75vh;
-		left: 48vw;
-		font-size: 10vw;
-		color: $text-light;
+	#firstrowcolumns{
+		margin-bottom:6.5px;
 	}
 
-	.full-height{
+	.boldspan{
+		font-size:22px;
+		font-weight:900;
+	}
+	
+	.slimsection{
+		padding:0px;		
+		.column{
+			padding:0px;
+		}
+		.rightcol{
+			border-right:1px solid $text-dark;
+			box-sizing:border-box;
+		}
+		.leftcol{
+			border-left:1px solid $text-dark;
+			box-sizing:border-box;
+		}
+		.lastcol{
+			margin-bottom:6.5px;			
+		}
+		.columns{
+			margin-top:0px;
+		}
+		.secondcolumns{
+			margin-top: 6.5px;
+			margin-bottom: -6.5px;
+		}
+	}
+	
+	.unpaddedsection{
+		padding-top:12px;
+		padding-bottom:12px;
+	}
+
+	.textcontaner{
+		width:50vw;
+		margin:auto;
+	}
+	.borderedcontainer{
+		border-right:1px solid $text-dark;
+		border-left:1px solid $text-dark;
+	}
+	.sectionbreak{
+		background-color:$brand-primary;
+		//margin:40px 0px;
+		min-height:70px;
+	}
+
+	.textbox{
+		padding:40px;
 		height:100%;
-	}
-	
+		text-align:center;
+		h1{
+			text-align:center;
+			font-size:2vw;
+			span{
+				border-bottom:1px solid $text-dark;
+			}
+		}
+		display: flex;
+  		align-items: center;
+  		justify-content: center;
 
-	.trustlogos{
-		max-height:90px;
-	}
-	
-	#homeview .tile .button{
-		margin-top:20px;
+  		.button{
+  			margin-top:30px;
+  		}
 	}
 
-	#homebanner{
+
+	.bulletpointsok{
+		list-style: disclosure-closed;
+		margin-top:10px;
+	}
+
+	.herobanner{
 		background-size:cover;
 		background-position:center;
 		text-transform:uppercase;
 
+		h1{
+			font-size:3.5vw;
+			color:$text-light;
+			text-shadow: 3px 3px $text-dark;
+/* 			border-top:3px solid $text-dark;
+			border-bottom:3px solid $text-dark; */
+			line-height:1;			
+		}
+		p{
+			padding:1.2vw;
+			font-weight:600;
+		}		
+		
 		.misty{
 			background-color:rgba(255,255,255,0.2);
 			border-radius:$button-border-radius;
 			padding: 1.2vw 0px;
 		}
+	}
+
+	#ctabanner{
+		background-image:url('/img/ctabanner.jpeg');
 		h1{
-			font-size:3.5vw;
-			color:$text-light;
-			text-shadow: 3px 3px $text-dark;
-			border-top:3px solid $text-dark;
-			border-bottom:3px solid $text-dark;
-			line-height:1;
+			font-size:2vw;
+			font-weight:normal;
+		}
+		.colourmisty{
+			background-color:rgba(0,209,178,0.4);
+			/* border-radius:$button-border-radius; */
+			padding: 2vw 0px;			
+			color:$text-dark;
+			text-shadow:none;
 			
 		}
-		p{
-			padding:1.2vw;
-			font-weight:600;
-		}
-		
 
+		.ctabutton{
+			padding:20px;
+			margin-top:40px;
+			width:100%;
+			color:$text-dark;
+		}
+		.emojispan{
+			font-size:35px;
+		}
+	}
+
+	#homebanner{
+		background-image:url('/img/dogbanner2.jpeg');
 	}
 </style>
 

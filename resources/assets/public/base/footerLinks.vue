@@ -1,32 +1,33 @@
 <template>
 	<div id="footer">
-		<section class="hero is-medium is-bold is-branded">
+		<section class="hero is-medium is-bold is-primary">
 			<div class="hero-body">
 				<div class="container">
 
 					<div class="columns">
 						<div class="column">
-							<h2 class="subtitle">App Name</h2>
+							<h2 class="subtitle">Toys and Treats</h2>
 							<ul>
 								<router-link tag="li" to="/" class="navbar-item" exact><span>Home</span></router-link>
-					            <router-link tag="li" to="/" class="navbar-item" exact><span>Other Link</span></router-link>
-					            <router-link tag="li" to="/" class="navbar-item" exact><span>Yet Another link</span></router-link> 
+					            <router-link tag="li" to="/how-it-works" class="navbar-item" exact><span>How It Works</span></router-link>
+					            <router-link tag="li" to="/contact-us" class="navbar-item" exact><span>Contact Us</span></router-link> 
+					            <router-link tag="li" to="/sign-up" class="navbar-item" exact><span>Sign Up</span></router-link> 
 			            	</ul>
 			            </div>
 						<div class="column">
 							<h2 class="subtitle">Other Section</h2>
 							<ul>
-								<router-link tag="li" to="/" class="navbar-item" exact><span>Home</span></router-link>
- 
+					            <router-link tag="li" to="/privacy" class="navbar-item" exact><span>Privacy Policy</span></router-link>
+					            <router-link tag="li" to="/data" class="navbar-item" exact><span>Data Retention Policy</span></router-link> 
+					            <router-link tag="li" to="/terms" class="navbar-item" exact><span>Terms and Conditions</span></router-link> 
 			            	</ul>
 						</div>
 						<div class="column">
 							<h2 class="subtitle">About</h2>
 							<ul>
-								<router-link tag="li" to="/" class="navbar-item" exact><span>Home</span></router-link>
-					            <router-link tag="li" to="/" class="navbar-item" exact><span>Other Link</span></router-link>
-					            <router-link tag="li" to="/" class="navbar-item" exact><span>Yet Another link</span></router-link>           
-
+								<router-link tag="li" to="/about-us" class="navbar-item" exact><span>About Us</span></router-link>
+					            <router-link tag="li" to="/chartiy" class="navbar-item" exact><span>Our Charitable giving</span></router-link>
+					            <router-link tag="li" to="/environment" class="navbar-item" exact><span>Our environmental impact</span></router-link>
 			            	</ul>
 						</div>
 					</div>
@@ -36,8 +37,23 @@
 		</section>
 		<div class="navbar">
 	        <div class="navbar-start container">
-	            <router-link to="/" class="navbar-item" exact><span>&copy; Appname {{ (new Date()).getFullYear() }}</span></router-link>
+	            <router-link to="/" class="navbar-item" exact><span>&copy; Toys and Treats {{ (new Date()).getFullYear() }}</span></router-link>
 	        </div>
 		</div>
 	</div>
 </template>
+
+<style lang="scss">
+    @import '~sass/variables';
+   
+    #footer{
+      .navbar-item{
+      	cursor:pointer;
+      }
+      .navbar-item:hover{
+      	color:$link-active-light;
+      }
+    }  
+
+</style>
+

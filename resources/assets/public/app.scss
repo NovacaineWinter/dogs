@@ -13,6 +13,7 @@ $primary:#00d1b2;  //bulma default that got broken
 $warning:$brand-secondary;
 $warning-invert:#eddecb;
 
+
  //Bulma Styles
 @import './node_modules/bulma/bulma.sass';
 
@@ -22,7 +23,7 @@ h1,h2,h3,h4,h5,p,a{
 }
 
 body{
-	background-color:#cccccc;
+	background-color:#fff;
 }
 
 
@@ -47,7 +48,7 @@ body{
 	padding-top:69px;
 	position:relative; 
 	min-height:100vh; 
-	padding-bottom:200px;
+	padding-bottom:69px;
 	/* background-color:$brand-primary; */
 	.VueCarousel-navigation-next{
 		right:40px;

@@ -2,3 +2,4 @@
 
 
 import  './components/exampleComponent/bootstrap.js';
+import  './components/paidMemberships/bootstrap.js';

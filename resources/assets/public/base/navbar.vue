@@ -3,34 +3,45 @@
 
 	<nav class="navbar is-fixed-top">
 	    
-	    <div class="navbar-burger burger">
+		<div class="container">
+		    <div class="navbar-item">
+		    	<h1 class="title">
+		    		Toys And Treats		    		
+		    	</h1>
+		    </div>
 
-	    	<router-link 
-	    		v-for="(item, index) in items" 
-	    		:key="index" 
-	    		:to="item.uri" 
-	    		tag="span"
-	    		exact>
-	    			{{ item.text }}
-	    	</router-link>	        
-	       
-	    </div>
+		    <div class="navbar-burger burger">
 
-	    <div class="navbar-end">
-	        <div class="navbar-start">
+		    	<router-link 
+		    		v-for="(item, index) in items" 
+		    		:key="index" 
+		    		:to="item.uri" 
+		    		tag="span"
+		    		exact>
+		    			{{ item.text }}
+		    	</router-link>	        
+		       
+		    </div>
 
-	        	<router-link  
-	        		v-for="(item, index) in items"
-	        		:class="item.bold ? 'navbar-item navborder' : 'navbar-item'" 	        		 
-	        		:key="index" 
-	        		v-bind:to="item.uri" 
-	        		tag="span"
-	        		exact>
-	        			<span>{{ item.text }}</span>
-	        	</router-link>	
+		    <div class="navbar-end">
+		        <div class="navbar-start">
 
-	        </div>
-	    </div>  
+		        	<router-link  
+		        		v-for="(item, index) in items"
+		        		:class="item.bold ? 'navbar-item navborder' : 'navbar-item'" 	        		 
+		        		:key="index" 
+		        		v-bind:to="item.uri" 
+		        		tag="span"
+		        		exact>
+		        			<span>{{ item.text }}</span>
+		        	</router-link>	
+
+		        	<a href="/login" class="navbar-item"><span>Login</span></a>
+
+		        </div>
+		    </div>  
+		    
+		</div>
 
 	</nav>
 
@@ -72,29 +83,35 @@
 
 	.navbar{
 		font-family:'lato','sans-serif';
-		background-color:$brand-secondary;
+		background-color:$nav-color;
 		color:$text-light;		
 		height:69px;
+		border-bottom:1px solid $brand-secondary;
 		
 		.navbar-item{
-			color:$text-light;	
+			color:$text-dark;	
 			font-size:12px;		
 			letter-spacing: .1rem;
 			text-transform:uppercase;
 			cursor:pointer;
+			span{				
+				padding: 10px 25px;
+			}
 		}
 	
 		.navbar-item.is-active{
 			color:$link-active-light;
+			border-color:$link-active-light;
 		}
 
 		 .navbar-item:hover{
-			background-color:$text-light;
-			color:$text-dark;
+		 	span{
+				color:$text-light;
+				background-color:$brand-secondary;					 		
+		 	}
 		} 
 		.navborder span{
-			border: 1px solid $brand-primary;
-			padding: 10px 25px;
+			border: 1px solid $text-dark;
 		}
 
 	}

@@ -14,8 +14,10 @@ $panel-inner-border: $laravel-border-color;
 $hover-background-color:#bbbbbb;
 
 // Brands
-$brand-primary: #0077cf;
-$brand-secondary:#122134;
+$brand-primary: #00d1b2;;
+$brand-secondary:#0077cf;  //same as link-active-link
+
+$nav-color:#fff;
 
 $text-light:#fafafa;
 $text-dark: #636b6f;
@@ -23,12 +25,13 @@ $link-active-light: #0077cf;
 
 $button-border-radius:10px;
 
-$primary:#0077cf;
+$primary:#00d1b2;;
 
 $brand-info: #8eb4cb;
 $brand-success: #2ab27b;
 $brand-warning: #cbb956;
 $brand-danger: #bf5329;
+$brand-danger-background:#F2DDD4;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";

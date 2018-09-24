@@ -21,5 +21,13 @@
     "v-animate-css": "0.0.2",
     "vue-carousel": "^0.8.1",
     "popper.js": "^1.12"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/free-brands-svg-icons": "^5.2.0",
+    "@fortawesome/free-solid-svg-icons": "^5.2.0",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
+    "i": "^0.3.6",
+    "npm": "^6.3.0"
   }
 }

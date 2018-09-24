@@ -2,8 +2,21 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueRouter from 'vue-router';
 import vueSmoothScroll from 'vue-smooth-scroll';
-import VueCarousel from 'vue-carousel';
-/*import fontawesome from '@fortawesome/fontawesome';*/
+//import VueCarousel from 'vue-carousel';
+
+
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+
+
+//add FA icons that we use
+import { faPaw } from '@fortawesome/free-solid-svg-icons'
+library.add(faPaw)
+
+
+
 
 import './setupRoutes.js';
 import './navbarItems.js';	
@@ -42,4 +55,6 @@ Vue.use(VueRouter);
 
 Vue.use(vueSmoothScroll);
 
-Vue.use(VueCarousel);
+//Vue.use(VueCarousel);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
