@@ -19,7 +19,15 @@
                     <div class="column field">
                         <label class="label title has-text-centered">My dog's name is</label>
                         <div class="control">
-                            <input type="text" class="input" v-model="dogName"  @keyup="checkIfComplete" placeholder="Spot....Buster....Rex....">
+                            <input 
+                                type="text" 
+                                class="input" 
+                                :class="{'is-danger':errors.dogName}" 
+                                @keydown="errors.dogName=false"
+                                v-model="dogName"  
+                                @keyup="checkIfComplete" 
+                                placeholder="Spot....Buster....Rex....">
+                            <span class="errortext" v-show="errors.dogName">Required</span>
                         </div>
                     </div>                
                     <div class="column">&nbsp;</div>
@@ -97,20 +105,39 @@
                                     <div class="columns">
 
                                         <div class="column">
-                                            <div class="control">                                
-                                                <input type="text" class="input" @keyup="checkIfComplete" v-model="firstName" name="name" placeholder="First Name">
+                                            <div class="control"> 
+
+                                                <input 
+                                                    type="text" 
+                                                    class="input" 
+                                                    :class="{'is-danger':errors.firstName}" 
+                                                    @keydown="errors.firstName=false"  
+                                                    @keyup="checkIfComplete" 
+                                                    v-model="firstName" 
+                                                    name="name" 
+                                                    placeholder="First Name">
                                                 <span class="labeltext" v-show="firstName!=''">
                                                     First Name
                                                 </span>
+                                                <span class="errortext" v-show="errors.firstName">Required</span>
                                             </div>                                    
                                         </div>
 
+
+
                                         <div class="column">                                    
                                             <div class="control">                                
-                                                <input type="text" class="input" @keyup="checkIfComplete" v-model="lastName" name="family-name" placeholder="Last Name">
-                                                <span class="labeltext" v-show="lastName!=''">
-                                                    Last Name
-                                                </span>
+                                                <input 
+                                                    type="text" 
+                                                    class="input" 
+                                                    :class="{'is-danger':errors.lastName}" 
+                                                    @keydown="errors.lastName=false" 
+                                                    @keyup="checkIfComplete" 
+                                                    v-model="lastName" 
+                                                    name="family-name" 
+                                                    placeholder="Last Name">
+                                                <span class="labeltext" v-show="lastName!=''">Last Name</span>
+                                                <span class="errortext" v-show="errors.lastName">Required</span>
                                             </div>
                                         </div>
 
@@ -120,10 +147,17 @@
 
                                 <div class="field">
                                     <div class="control">
-                                        <input type="email" class="input"  @keyup="checkIfComplete" name="email" v-model="email" placeholder="Email">
-                                        <span class="labeltext" v-show="email!=''">
-                                            Email
-                                        </span>
+                                        <input 
+                                            type="email" 
+                                            class="input"  
+                                            :class="{'is-danger':errors.email}" 
+                                            @keydown="errors.email=false" 
+                                            @keyup="checkIfComplete" 
+                                            name="email" 
+                                            v-model="email" 
+                                            placeholder="Email">
+                                        <span class="labeltext" v-show="email!=''">Email</span>
+                                        <span class="errortext" v-show="errors.email">Required</span>
                                     </div>                       
                                 </div> 
 
@@ -135,10 +169,17 @@
 
                                         <div class="column">
                                             <div class="control">                                
-                                                <input type="password" class="input" :class="{'is-danger':passwordError}" @keyup="checkIfPasswordComplete" v-model="password" name="password" placeholder="Password">
-                                                <span class="labeltext" v-show="password!=''">
-                                                    Password
-                                                </span>
+                                                <input 
+                                                    type="password" 
+                                                    class="input" 
+                                                    :class="{'is-danger':errors.email || passwordError}" 
+                                                    @keydown="errors.email=false"                                                     
+                                                    @keyup="checkIfPasswordComplete" 
+                                                    v-model="password" 
+                                                    name="password" 
+                                                    placeholder="Password">
+                                                <span class="labeltext" v-show="password!=''">Password</span>
+                                                <span class="errortext" v-show="errors.password">Required</span>
                                             </div>                                    
                                         </div>
 
@@ -161,10 +202,17 @@
                                     <p class="errormessage" v-show="addressErrorMessage!=''">{{this.addressErrorMessage}}</p>
                                     <div class="field">
                                         <div class="control">
-                                            <input type="text" class="input" @keyup="checkIfComplete" v-model="lineOne" name="address-line1" placeholder="Address Line 1">
-                                            <span class="labeltext" v-show="lineOne!=''">
-                                                Address Line 1
-                                            </span>
+                                            <input
+                                                type="text" 
+                                                class="input"
+                                                :class="{'is-danger':errors.lineOne}" 
+                                                @keydown="errors.lineOne=false" 
+                                                @keyup="checkIfComplete" 
+                                                v-model="lineOne" 
+                                                name="address-line1" 
+                                                placeholder="Address Line 1">
+                                            <span class="labeltext" v-show="lineOne!=''">Address Line 1</span>
+                                            <span class="errortext" v-show="errors.lineOne">Required</span>
                                         </div>                       
                                     </div> 
                                     <div class="field">
@@ -203,10 +251,17 @@
 
                                 <div class="field">
                                     <div class="control">
-                                        <input type="text" class="input" @keyup="checkIfComplete" v-model="postcode" name="postcode" placeholder="Postcode">
-                                        <span class="labeltext" v-show="postcode!=''">
-                                            Postcode
-                                        </span>
+                                        <input 
+                                            type="text" 
+                                            class="input"
+                                            :class="{'is-danger':errors.postcode}" 
+                                            @keydown="errors.postcode=false" 
+                                            @keyup="checkIfComplete" 
+                                            v-model="postcode" 
+                                            name="postcode" 
+                                            placeholder="Postcode">
+                                        <span class="labeltext" v-show="postcode!=''">Postcode</span>
+                                        <span class="errortext" v-show="errors.postcode">Required</span>
                                     </div>                       
                                 </div> 
 
@@ -267,7 +322,7 @@
                 token: function(token) {
                     // You can access the token ID with `token.id`.
                     // Get the token ID to your server-side code for use.
-                    console.log(token);
+                    this.createAccount(token);
                 }
             });
         },
@@ -450,20 +505,58 @@
                 }   
             },
 
+
+            highlightMissingFields(){
+                let scrollToDogName = false;
+                let scrollToCustomer = false;
+                if(this.dogName=='') {this.errors.dogName=true;scrollToDogName=true} else {this.errors.dogName=false;}
+                if(this.firstName=='') {this.errors.firstName=true;scrollToCustomer=true} else {this.errors.firstName=false;}
+                if(this.lastName=='') {this.errors.lastName=true;scrollToCustomer=true} else {this.errors.lastName=false;}
+                if(this.lineOne=='') {this.errors.lineOne=true;scrollToCustomer=true} else {this.errors.lineOne=false;}
+                if(this.postcode=='') {this.errors.postcode=true;scrollToCustomer=true} else {this.errors.postcode=false;}
+                if(this.email=='') {this.errors.email=true;scrollToCustomer=true} else {this.errors.email=false;}
+                if(this.password=='') {this.errors.password=true;scrollToCustomer=true} else {this.errors.password=false;}
+
+                if(scrollToDogName){
+
+                    window.scrollTo(0, 0);
+                    var elemn = document.getElementById("sign-up-view");
+                    elemn.scrollIntoView({  block: "start" });
+
+                }else if(scrollToCustomer){
+
+                    window.scrollTo(0, 0);
+                    var elemn = document.getElementById("customerDetails");
+                    elemn.scrollIntoView({  block: "start" });
+                }
+            },
+
             signMeUp(){
                 if(!this.formNotFinished){
                     this.stripeHandler.open({
                         name: 'Toys and Treats',
-                        description: '2 widgets',
+                        description: 'Monthly Box Delivery',
                         currency: 'gbp',
-                        amount: 2000
+                        amount: 999,
+                        email: this.email,
+                        allowRememberMe:false,
                       });
+                }else{
+                    this.highlightMissingFields();                   
                 }
             },
 
 
             createAccount(stripePayload){
 
+
+
+                axios.post('/api/create-new-user',{field:'value'})      
+                    .then(response => {alert(response.data);})
+        
+                    .catch(error => {alert(error.data);});
+                
+                
             },
 
         },
@@ -504,7 +597,16 @@
                 keytimeout:'',
                 passwordtimeout:'',
                 passwordError:false,
-                stripeHandler:''
+                stripeHandler:'',
+                errors:{
+                    firstName:false,
+                    lastName:false,
+                    email:false,
+                    password:false,
+                    lineOne:false,
+                    email:false,
+                    dogName:false
+                }
 		      }
 	    },
 /*
@@ -542,6 +644,15 @@
                 padding-left: 3px;
                 padding-right: 3px;
                 color:#999999;
+            }
+            .errortext{
+                position: absolute;
+                right: 15px;
+                top: -13px;
+                background-color: #fff;
+                padding-left: 3px;
+                padding-right: 3px;
+                color:$brand-danger;
             }
         }
 
