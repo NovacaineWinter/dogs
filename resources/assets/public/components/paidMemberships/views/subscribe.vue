@@ -39,7 +39,7 @@
                 <div class="columns sizeselectors" @click="checkDogDetailsComplete">
 
                     <div class="column">                        
-                        <div class="card" v-bind:class="{ 'is-selected':size==1 }" @click="size=1">
+                        <div class="card" v-bind:class="{ 'is-selected':dogSize==1 }" @click="dogSize=1">
                             <header class="card-header has-text-centered">
                                 <p class="card-header-title subtitle">
                                     Small Dog
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="column">                        
-                        <div class="card" v-bind:class="{ 'is-selected':size==2 }" @click="size=2">
+                        <div class="card" v-bind:class="{ 'is-selected':dogSize==2 }" @click="dogSize=2">
                             <header class="card-header">
                                 <p class="card-header-title subtitle has-text-centered">
                                     Medium Dog
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="column">                        
-                        <div class="card" v-bind:class="{ 'is-selected':size==3 }" @click="size=3">
+                        <div class="card" v-bind:class="{ 'is-selected':dogSize==3 }" @click="dogSize=3">
                             <header class="card-header">
                                 <p class="card-header-title subtitle has-text-centered">
                                     Large Dog
@@ -92,7 +92,7 @@
                 </div>
 
                 <div id="customerDetails">
-                    <div v-if="this.size!='' && this.dogName!=''">    
+                    <div v-if="this.dogSize!='' && this.dogName!=''">    
 
                         <h2 class="title has-text-centered" >About {{ this.dogName }}'s Human...</h2>                    
                         
@@ -146,18 +146,21 @@
                                 </div>   
 
                                 <div class="field">
+
+                                    <a href="/login" class="errormessage" v-show="errors.emailTaken">This email is already registed, click here log in</a>
+                                
                                     <div class="control">
                                         <input 
                                             type="email" 
                                             class="input"  
                                             :class="{'is-danger':errors.email}" 
                                             @keydown="errors.email=false" 
-                                            @keyup="checkIfComplete" 
+                                            @keyup="checkIfEmailComplete" 
                                             name="email" 
                                             v-model="email" 
                                             placeholder="Email">
                                         <span class="labeltext" v-show="email!=''">Email</span>
-                                        <span class="errortext" v-show="errors.email">Required</span>
+                                        <span class="errortext" v-show="errors.email">Required</span>                                      
                                     </div>                       
                                 </div> 
 
@@ -284,7 +287,7 @@
 
     
 
-                                <div class="button is-outlined is-primary is-right is-large" @click="signMeUp" v-show="fullAddressFields" :disabled="formNotFinished">Subscribe Now</div>
+                                <div class="button is-outlined is-primary is-right is-large" :class="{'is-loading':loadingSubButton}" @click="signMeUp" v-show="fullAddressFields" :disabled="formNotFinished">Subscribe Now</div>
 
 
                             </div>  <!-- End of the central column -->
@@ -292,9 +295,36 @@
                         </div>
 
                     </div>
-
+                    
                 </div>
 
+
+                <div id="loadingscreen" v-show="showLoading">
+                    <div class="container">
+                        <div class="columns">
+                            <div class="column">&nbsp;</div>
+                            <div class="column">                                
+                                <h1 class="title has-text-centered">Loading...</h1>
+                                <div class="button is-loading is-primary is-outlined is-large">&nbsp;</div>
+                            </div>
+                            <div class="column">&nbsp;</div>
+                        </div>
+                    </div>
+                </div> 
+
+                <div id="problemScreen" v-show="showErrorScreen" @click="showErrorScreen=false">
+                    <div class="container">
+                        <div class="columns">
+                            <div class="column">&nbsp;</div>
+                            <div class="column">                                
+                                <h1 class="title has-text-centered">There was a problem...</h1>
+                                <p class="subtitle has-text-centered" v-text="errors.message"></p>
+                                <router-link to="/contact-us" tag="div" class="button is-primary is-outlined is-large">Contact Us</router-link>
+                            </div>
+                            <div class="column">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </section>
@@ -319,17 +349,18 @@
                 key: 'pk_test_7rBfXVfqrPbJLePrSN2jJLwo',
                 image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
                 locale: 'auto',
-                token: function(token) {
+                token: function(context,token) {
                     // You can access the token ID with `token.id`.
                     // Get the token ID to your server-side code for use.
+                    
                     this.createAccount(token);
-                }
+                }.bind(this,'this')
             });
         },
 
         methods:{
             checkDogDetailsComplete(){
-                if(this.size!='' && this.dogName!=''){
+                if(this.dogSize!='' && this.dogName!=''){
                     var elemn = document.getElementById("customerDetails");
                     elemn.scrollIntoView({ behavior: 'smooth', block: "start" });                               
                 }
@@ -459,6 +490,22 @@
             },
 
 
+            checkIfEmailComplete(){
+                this.errors.emailTaken=false;
+                clearTimeout(this.emailtimeout);
+
+                this.emailtimeout = setTimeout(function(){
+                    //check the email isnt already taken
+                    axios.post('/api/checkemail',{email:this.email})      
+                        .then(response => {this.errors.emailTaken=false;})
+            
+                        .catch(error => {this.errors.emailTaken=true;});
+
+                    this.doTheChecks();
+
+                }.bind(this,'this'),500); 
+            },
+
             checkIfPasswordComplete(){
                 
                 clearTimeout(this.passwordtimeout);
@@ -479,7 +526,7 @@
                     }else{
                         this.passwordError = false;
                     }
-                    this.checkIfComplete();   
+                    this.doTheChecks();  
 
                 }.bind(this,'this'),750); 
             },           
@@ -533,32 +580,98 @@
 
             signMeUp(){
                 if(!this.formNotFinished){
+                    this.loadingSubButton=true;
                     this.stripeHandler.open({
                         name: 'Toys and Treats',
-                        description: 'Monthly Box Delivery',
+                        description: 'Toys and Treats Box | Monthly',
                         currency: 'gbp',
                         amount: 999,
                         email: this.email,
                         allowRememberMe:false,
-                      });
+                      });                    
                 }else{
                     this.highlightMissingFields();                   
                 }
             },
 
 
-            createAccount(stripePayload){
-
-
-
-                axios.post('/api/create-new-user',{field:'value'})      
-                    .then(response => {alert(response.data);})
+            createAccount(stripePayload){     
+                this.showLoading = true;
+                axios.post('/api/create-new-user',{
+                    stripeData:stripePayload,
+                    dogName:this.dogName,
+                    dogSize:this.dogSize,
+                    lineOne:this.lineOne,
+                    lineTwo:this.lineTwo,
+                    lineThree:this.lineThree,
+                    city:this.city,
+                    county:this.county,
+                    postcode:this.postcode,
+                    firstName:this.firstName,
+                    lastName:this.lastName,
+                    email:this.email,
+                    password:this.password
+                })      
+                    .then(response => {this.redirectAndLogIn(response.data);})
         
-                    .catch(error => {alert(error.data);});
-                
+                    .catch(error => {this.manageRegistrationError(error);});                
                 
             },
 
+
+            redirectAndLogIn(response){
+
+                if(response.status=='subscribed'){
+                    this.logmein();
+                }else{
+                    this.errors.message='there was a problem creating your account - please get in touch with us on the contact us page';
+                    this.showErrorScreen = true;
+                }
+
+            },
+
+            manageRegistrationError(error){
+                this.showLoading=false;
+                console.log('signup error - ',error);
+                this.errors.message='there was a problem creating your account - please get in touch with us on the contact us page';
+                this.showErrorScreen = true;
+            },
+
+            logmein(){
+
+                var form = document.createElement("form");
+                var element1 = document.createElement("input"); 
+                var element2 = document.createElement("input");  
+                var element3 = document.createElement("input");  
+                var element4 = document.createElement("input");  
+
+                form.method = "POST";
+                form.action =  document.head.querySelector("[property=siteurl]").content +"/login";   
+
+                element1.value=this.email;
+                element1.name="email";
+                element1.type="hidden";
+                form.appendChild(element1);  
+
+                element2.value=this.password;
+                element2.name="password";
+                element2.type="hidden";
+                form.appendChild(element2);                
+
+                element3.value=document.head.querySelector("[name=csrf-token]").content;
+                element3.name="_token";
+                element3.type="hidden";
+                form.appendChild(element3);  
+
+                element4.value=1;
+                element4.name="remember";
+                element4.type="hidden";
+                form.appendChild(element4);
+
+                document.body.appendChild(form);
+
+                form.submit();
+            },
         },
 
         computed:{
@@ -574,7 +687,7 @@
         data: function() {
 		    return{
                 dogName:'',
-		        size:'',
+		        dogSize:'',
                 lineOne:'',
                 lineTwo:'',
                 lineThree:'',
@@ -584,6 +697,8 @@
                 firstName:'',
                 lastName:'',
                 email:'',
+                password:'',
+                passwordConfirm:'',
                 possibleAddresses:'',
                 showAddressOptions:false,
                 addressInputPrefs:true,
@@ -592,12 +707,13 @@
                 addressErrorMessage:'',
                 apiData:'',
                 formNotFinished:true,
-                password:'',
-                passwordConfirm:'',
                 keytimeout:'',
                 passwordtimeout:'',
                 passwordError:false,
                 stripeHandler:'',
+                loadingSubButton:false,
+                showLoading:false,
+                showErrorScreen:false,
                 errors:{
                     firstName:false,
                     lastName:false,
@@ -605,7 +721,10 @@
                     password:false,
                     lineOne:false,
                     email:false,
-                    dogName:false
+                    dogName:false,
+                    emailTaken:false,
+                    message:'',
+
                 }
 		      }
 	    },
@@ -622,6 +741,65 @@
 <style lang="scss">
     @import '~sass/variables';
    
+
+    #loadingscreen{
+        position:fixed;
+        width:100vw;
+        height:100vh;
+        top:0px;
+        left:0px;
+        padding:0px;
+        margin:0px;
+        background-color:rgba(255,255,255,0.7);
+        z-index:100;
+
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;            
+        }
+
+        .columns{
+            margin-top: 20%;
+            padding: 5%;
+            border: 1px solid $text-dark;
+            background-color: #fff;
+        }
+        .button{
+            width:100%;
+        }
+
+    } 
+    #problemScreen{
+        position:fixed;
+        width:100vw;
+        height:100vh;
+        top:0px;
+        left:0px;
+        padding:0px;
+        margin:0px;
+        background-color:rgba(255,255,255,0.7);
+        z-index:100;
+
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;            
+        }
+
+        .columns{
+            margin-top: 20%;
+            padding: 5%;
+            border: 1px solid $text-dark;
+            background-color: #fff;
+        }       
+        .button{
+            width:100%;
+            margin-top:20px;
+        }
+
+    }
+
     #sign-up-view{   
         .button{
             cursor:pointer;
@@ -632,6 +810,8 @@
             padding:5px;
             background-color:$brand-danger-background;
             text-align:center;
+            display:block;
+            margin-bottom:15px;
         }
 
         .control{

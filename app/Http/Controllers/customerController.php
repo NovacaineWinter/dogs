@@ -6,12 +6,95 @@ use Illuminate\Http\Request;
 
 class customerController extends Controller
 {
-   /* public function signup(Request $request){
+
+
+	public function checkEmail(Request $request){
+		if($request->has('email')){
+
+			if(\App\User::where('email','=',$request->get('email'))->count()==0){
+				return 'ok';
+			}else{
+				abort(499);
+			}
+		}else{
+			abort(420); 
+		}
+	}
+
+
+    public function signup(Request $request){
     	$this->validate(request(),[
-    		'fname'		=>	'required',
-    		'lname'		=>	'required',
-    		'email'		=>	'required|email',
-    		'message'	=>	'required'
+    		'dogName'	=>	'required',
+    		'dogSize'	=>	'required',
+    		'firstName'	=>	'required',
+    		'lastName'	=>	'required',
+    		'email'		=>	'required|email',    		
+    		'password'	=>	'required',
+    		'lineOne'	=>	'required',    		
+    		'postcode'	=>	'required',
+    		'stripeData'=>	'required'
     	]);
-    }*/
+		
+		\Stripe\Stripe::setApiKey(env('STRIPE_PRIVATE'));
+
+    	$stripeData = $request->get('stripeData');
+
+    	$customer = \Stripe\Customer::create(array(
+			"email" => $request->get('email'),
+			"source" => $stripeData['id'],
+		));
+
+
+    	$user = new \App\User;
+    	$user->name = $request->get('firstName').' '.$request->get('lastName');
+    	$user->firstName = $request->get('firstName');
+    	$user->lastName = $request->get('lastName');
+    	$user->email 	= $request->get('email');
+    	$user->password = \Hash::make($request->get('password'));
+    	$user->dogName = $request->get('dogName');
+    	$user->dogSize = $request->get('dogSize');
+    	$user->lineOne = $request->get('lineOne');
+    	$user->lineTwo = $request->get('lineTwo');
+    	$user->lineThree = $request->get('lineThree');
+    	$user->city = $request->get('city');
+    	$user->county = $request->get('county');
+    	$user->postcode = $request->get('postcode');
+    	$user->stripe_id = $customer->id;
+    	$user->save();
+
+    	$plan = \App\stripePlan::where('active','=',true)->first();
+
+
+		try
+		{
+			$subscription = \Stripe\Subscription::create(array(
+				"customer" => $user->stripe_id,
+				"items" => array(
+					array(
+					"plan" => $plan->stripe_id,
+					"quantity" => 1,
+					),
+				)
+			));
+
+			$sub = new \App\stripeSubscription;
+			$sub->stripe_id = $subscription->id;
+			$sub->user_id = $user->id;
+			$sub->save();
+
+			$response = array('status'=>'subscribed');
+
+			return json_encode($response);
+		}
+		catch(Exception $e)
+		{
+		  error_log("unable to sign up customer:" . $_POST['stripeEmail'].
+		    ", error:" . $e->getMessage());
+			$response = array('status'=>'error');
+
+			return json_encode($response);
+		}
+
+    }
+
 }

@@ -80,18 +80,7 @@
 							<div class="textwrapper">
 								<h1 class="subtitle"><span>So how much does it cost?</span></h1>
 								<span class="boldspan">&pound;9.99 / month</span><br>
-								( You can stop whenever you like! )
-								<!-- 
-								<br>
-								<br>
-								<br>
-								Your personalized Dog Box includes;<br>
-									
-								<ul class="bulletpointsok">									
-									<li>A toy (often more than one!)</li>
-									<li>A bag of super tasty treats</li>
-								</ul> 
-								-->
+								( You can stop whenever you like! )								
 								<br>
 								<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">Subscribe Now</router-link>													
 							</div>
@@ -320,6 +309,7 @@
 		}
 	}
 	
+	
 	.unpaddedsection{
 		padding-top:12px;
 		padding-bottom:12px;
@@ -335,7 +325,6 @@
 	}
 	.sectionbreak{
 		background-color:$brand-primary;
-		//margin:40px 0px;
 		min-height:70px;
 	}
 

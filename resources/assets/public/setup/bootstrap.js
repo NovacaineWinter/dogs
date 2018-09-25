@@ -32,7 +32,7 @@ import '../loadComponents';
 window.axios = axios;
 
 window.Vue = Vue;
-window._ = require('lodash');
+//window._ = require('lodash');
 
 /* Setup Axios */
 
