@@ -45,7 +45,7 @@ body{
 }
 
 #app{
-	padding-top:69px;
+	padding-top:$big-navbar-height;
 	position:relative; 
 	min-height:100vh; 
 	padding-bottom:69px;
@@ -99,3 +99,8 @@ body{
 	cursor:pointer;
 }
 
+@media only screen and (max-width: $tabletbreak) {
+	#app{
+		padding-top:$small-navbar-height;
+	}
+}

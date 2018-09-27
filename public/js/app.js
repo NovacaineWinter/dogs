@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(8);
+var bind = __webpack_require__(10);
 var isBuffer = __webpack_require__(22);
 
 /*global toString:true*/
@@ -11809,10 +11809,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(9);
+    adapter = __webpack_require__(11);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(9);
+    adapter = __webpack_require__(11);
   }
   return adapter;
 }
@@ -11883,10 +11883,28 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
 /* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var routes = [];
+
+/* harmony default export */ __webpack_exports__["a"] = (routes);
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var navbarItems = [];
+
+/* harmony default export */ __webpack_exports__["a"] = (navbarItems);
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -12076,7 +12094,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12094,7 +12112,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12105,7 +12123,7 @@ var settle = __webpack_require__(25);
 var buildURL = __webpack_require__(27);
 var parseHeaders = __webpack_require__(28);
 var isURLSameOrigin = __webpack_require__(29);
-var createError = __webpack_require__(10);
+var createError = __webpack_require__(12);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(30);
 
 module.exports = function xhrAdapter(config) {
@@ -12281,7 +12299,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12306,7 +12324,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12318,7 +12336,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12344,7 +12362,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14974,24 +14992,6 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 14 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var routes = [];
-
-/* harmony default export */ __webpack_exports__["a"] = (routes);
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var navbarItems = [];
-
-/* harmony default export */ __webpack_exports__["a"] = (navbarItems);
-
-/***/ }),
 /* 16 */,
 /* 17 */,
 /* 18 */
@@ -15254,7 +15254,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(9)))
 
 /***/ }),
 /* 20 */
@@ -15270,7 +15270,7 @@ module.exports = __webpack_require__(21);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(8);
+var bind = __webpack_require__(10);
 var Axios = __webpack_require__(23);
 var defaults = __webpack_require__(6);
 
@@ -15305,9 +15305,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(12);
+axios.Cancel = __webpack_require__(14);
 axios.CancelToken = __webpack_require__(37);
-axios.isCancel = __webpack_require__(11);
+axios.isCancel = __webpack_require__(13);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -15460,7 +15460,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(10);
+var createError = __webpack_require__(12);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -15895,7 +15895,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(34);
-var isCancel = __webpack_require__(11);
+var isCancel = __webpack_require__(13);
 var defaults = __webpack_require__(6);
 var isAbsoluteURL = __webpack_require__(35);
 var combineURLs = __webpack_require__(36);
@@ -16055,7 +16055,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(12);
+var Cancel = __webpack_require__(14);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -37731,8 +37731,8 @@ var autoReplace = function autoReplace() {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(46);
-__webpack_require__(102);
-module.exports = __webpack_require__(103);
+__webpack_require__(112);
+module.exports = __webpack_require__(113);
 
 
 /***/ }),
@@ -37742,7 +37742,7 @@ module.exports = __webpack_require__(103);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router__ = __webpack_require__(111);
 
 
 
@@ -37766,15 +37766,15 @@ var app = new Vue({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_smooth_scroll__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_smooth_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_smooth_scroll__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fortawesome_free_solid_svg_icons__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_svg_core__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fortawesome_vue_fontawesome__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__fortawesome_vue_fontawesome__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__setupRoutes_js__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__navbarItems_js__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__setupRoutes_js__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__navbarItems_js__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__base_baseSetup_js__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__loadComponents__ = __webpack_require__(64);
 
@@ -38356,8 +38356,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('font-awesome-icon', __WEB
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setup_setupRoutes__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setup_navbarItems__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setup_setupRoutes__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setup_navbarItems__ = __webpack_require__(8);
 
 
 
@@ -38369,7 +38369,8 @@ __WEBPACK_IMPORTED_MODULE_2__setup_navbarItems__["a" /* default */].push({
 	uri: '/',
 	text: 'Home',
 	position: 10,
-	bold: false
+	bold: false,
+	hideSmall: true
 });
 
 __WEBPACK_IMPORTED_MODULE_1__setup_setupRoutes__["a" /* default */].push({
@@ -38464,7 +38465,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.navbar {\n  font-family: 'lato','sans-serif';\n  background-color: #fff;\n  color: #fafafa;\n  height: 69px;\n  border-bottom: 1px solid #0077cf;\n}\n.navbar .navbar-item {\n    color: #636b6f;\n    font-size: 12px;\n    letter-spacing: .1rem;\n    text-transform: uppercase;\n    cursor: pointer;\n}\n.navbar .navbar-item span {\n      padding: 10px 25px;\n}\n.navbar .navbar-item.is-active {\n    color: #0077cf;\n    border-color: #0077cf;\n}\n.navbar .navbar-item:hover span {\n    color: #fafafa;\n    background-color: #0077cf;\n}\n.navbar .navborder span {\n    border: 1px solid #636b6f;\n}\n.navbar.is-fixed-top {\n  z-index: 2;\n}\n", ""]);
+exports.push([module.i, "\n.navbar {\n  font-family: 'lato','sans-serif';\n  background-color: #fff;\n  color: #fafafa;\n  height: 69px;\n  border-bottom: 1px solid #0077cf;\n}\n.navbar .navbar-item {\n    color: #636b6f;\n    font-size: 12px;\n    letter-spacing: .1rem;\n    text-transform: uppercase;\n    cursor: pointer;\n}\n.navbar .navbar-item span {\n      padding: 10px 25px;\n}\n.navbar .navbar-item.is-active {\n    color: #0077cf;\n    border-color: #0077cf;\n}\n.navbar .navbar-item:hover span {\n    color: #fafafa;\n    background-color: #0077cf;\n}\n.navbar .navborder span {\n    border: 1px solid #636b6f;\n}\n.navbar.is-fixed-top {\n  z-index: 2;\n}\n@media only screen and (max-width: 450px) {\n.navbar .navbar-item span {\n    padding: 5px;\n    font-size: 3vw;\n}\n}\n@media only screen and (max-width: 1087px) {\n.navbar, .navbar-start, .navbar-end {\n    -webkit-box-pack: start;\n    -ms-flex-pack: start;\n    justify-content: flex-start;\n    margin-right: auto;\n    -webkit-box-align: stretch;\n    -ms-flex-align: stretch;\n    align-items: stretch;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.navbar {\n    height: 50px;\n}\n.navbar .container {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 100vw;\n}\n.navbar .navbar-item {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n}\n.navbar .hideOnSmallNavbar {\n      display: none;\n}\n.navbar .title {\n      font-size: 3vw;\n}\n.navbar .router-link-exact-active {\n      display: none;\n}\n.navbar .router-link-exact-active.alwayshow {\n      display: initial;\n}\n}\n", ""]);
 
 // exports
 
@@ -38475,7 +38476,10 @@ exports.push([module.i, "\n.navbar {\n  font-family: 'lato','sans-serif';\n  bac
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__ = __webpack_require__(8);
+//
+//
+//
 //
 //
 //
@@ -38536,6 +38540,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         sortItems: function sortItems(items) {
             return items.sort(this.sortFunction);
         },
+        cssClass: function cssClass(item) {
+            var theCssClass = "navbar-item";
+            if (item.bold) {
+                theCssClass = theCssClass + ' navborder';
+            }
+            if (item.hideSmall) {
+                theCssClass = theCssClass + ' hideOnSmallNavbar';
+            }
+            return theCssClass;
+        },
         sortFunction: function sortFunction(a, b) {
             if (a['position'] === b['position']) {
                 return 0;
@@ -38562,19 +38576,20 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("nav", { staticClass: "navbar is-fixed-top" }, [
     _c("div", { staticClass: "container" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "navbar-burger burger" },
-        _vm._l(_vm.items, function(item, index) {
-          return _c(
-            "router-link",
-            { key: index, attrs: { to: item.uri, tag: "span", exact: "" } },
-            [_vm._v("\n\t    \t\t\t" + _vm._s(item.text) + "\n\t    \t")]
-          )
-        })
-      ),
+      _c("div", { staticClass: "navbar-start" }, [
+        _c(
+          "div",
+          { staticClass: "navbar-item" },
+          [
+            _c(
+              "router-link",
+              { staticClass: "title alwayshow", attrs: { to: "/", tag: "h1" } },
+              [_vm._v("\n\t\t    \t\tToys And Treats\t\t    \t\t\n\t\t    \t")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "navbar-end" }, [
         _c(
@@ -38586,14 +38601,14 @@ var render = function() {
                 "router-link",
                 {
                   key: index,
-                  class: item.bold ? "navbar-item navborder" : "navbar-item",
+                  class: _vm.cssClass(item),
                   attrs: { to: item.uri, tag: "span", exact: "" }
                 },
                 [_c("span", [_vm._v(_vm._s(item.text))])]
               )
             }),
             _vm._v(" "),
-            _vm._m(1)
+            _vm._m(0)
           ],
           2
         )
@@ -38602,16 +38617,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-item" }, [
-      _c("h1", { staticClass: "title" }, [
-        _vm._v("\n\t    \t\tToys And Treats\t\t    \t\t\n\t    \t")
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38730,6 +38735,68 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "footer" } }, [
+    _c("section", { staticClass: "section" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "title has-text-centered" }, [
+          _vm._v("Follow Us")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns socialicons" }, [
+          _c(
+            "a",
+            {
+              staticClass: "column has-text-centered",
+              attrs: { href: "https://twitter.com/nottsboatco" }
+            },
+            [
+              _c("font-awesome-icon", { attrs: { icon: ["fab", "twitter"] } }),
+              _vm._v(" "),
+              _c("h6", [_vm._v("Twitter")])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "column has-text-centered",
+              attrs: {
+                href: "https://www.instagram.com/nottinghamboatco/",
+                tag: "div"
+              }
+            },
+            [
+              _c("font-awesome-icon", {
+                attrs: { icon: ["fab", "instagram"] }
+              }),
+              _vm._v(" "),
+              _c("h6", [_vm._v("Instagram")])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "column has-text-centered",
+              attrs: {
+                href: "https://www.facebook.com/NottinghamBoatCompany/",
+                tag: "div"
+              }
+            },
+            [
+              _c("font-awesome-icon", {
+                attrs: { icon: ["fab", "facebook-square"] }
+              }),
+              _vm._v(" "),
+              _c("h6", [_vm._v("Facebook")])
+            ],
+            1
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
     _c("section", { staticClass: "hero is-medium is-bold is-primary" }, [
       _c("div", { staticClass: "hero-body" }, [
         _c("div", { staticClass: "container" }, [
@@ -38976,7 +39043,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#firstrowcolumns {\n  margin-bottom: 6.5px;\n}\n.boldspan {\n  font-size: 22px;\n  font-weight: 900;\n}\n.slimsection {\n  padding: 0px;\n}\n.slimsection .column {\n    padding: 0px;\n}\n.slimsection .rightcol {\n    border-right: 1px solid #636b6f;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.slimsection .leftcol {\n    border-left: 1px solid #636b6f;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.slimsection .lastcol {\n    margin-bottom: 6.5px;\n}\n.slimsection .columns {\n    margin-top: 0px;\n}\n.slimsection .secondcolumns {\n    margin-top: 6.5px;\n    margin-bottom: -6.5px;\n}\n.unpaddedsection {\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.textcontaner {\n  width: 50vw;\n  margin: auto;\n}\n.borderedcontainer {\n  border-right: 1px solid #636b6f;\n  border-left: 1px solid #636b6f;\n}\n.sectionbreak {\n  background-color: #00d1b2;\n  min-height: 70px;\n}\n.textbox {\n  padding: 40px;\n  height: 100%;\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.textbox h1 {\n    text-align: center;\n    font-size: 2vw;\n}\n.textbox h1 span {\n      border-bottom: 1px solid #636b6f;\n}\n.textbox .button {\n    margin-top: 30px;\n}\n.bulletpointsok {\n  list-style: disclosure-closed;\n  margin-top: 10px;\n}\n.herobanner {\n  background-size: cover;\n  background-position: center;\n  text-transform: uppercase;\n}\n.herobanner h1 {\n    font-size: 3.5vw;\n    color: #fafafa;\n    text-shadow: 3px 3px #636b6f;\n    /* \t\t\tborder-top:3px solid $text-dark;\n\t\t\tborder-bottom:3px solid $text-dark; */\n    line-height: 1;\n}\n.herobanner p {\n    padding: 1.2vw;\n    font-weight: 600;\n}\n.herobanner .misty {\n    background-color: rgba(255, 255, 255, 0.2);\n    border-radius: 10px;\n    padding: 1.2vw 0px;\n}\n#ctabanner {\n  background-image: url(\"/img/ctabanner.jpeg\");\n}\n#ctabanner h1 {\n    font-size: 2vw;\n    font-weight: normal;\n}\n#ctabanner .colourmisty {\n    background-color: rgba(0, 209, 178, 0.4);\n    /* border-radius:$button-border-radius; */\n    padding: 2vw 0px;\n    color: #636b6f;\n    text-shadow: none;\n}\n#ctabanner .ctabutton {\n    padding: 20px;\n    margin-top: 40px;\n    width: 100%;\n    color: #636b6f;\n}\n#ctabanner .emojispan {\n    font-size: 35px;\n}\n#homebanner {\n  background-image: url(\"/img/dogbanner2.jpeg\");\n}\n", ""]);
+exports.push([module.i, "\n#firstrowcolumns {\n  margin-bottom: 6.5px;\n}\n.boldspan {\n  font-size: 22px;\n  font-weight: 900;\n}\n.slimsection {\n  padding: 0px;\n}\n.slimsection .column {\n    padding: 0px;\n}\n.slimsection .rightcol {\n    border-right: 1px solid #636b6f;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.slimsection .leftcol {\n    border-left: 1px solid #636b6f;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.slimsection .lastcol {\n    margin-bottom: 6.5px;\n}\n.slimsection .columns {\n    margin-top: 0px;\n}\n.slimsection .secondcolumns {\n    margin-top: 6.5px;\n    margin-bottom: -6.5px;\n}\n.unpaddedsection {\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.textcontaner {\n  width: 50vw;\n  margin: auto;\n}\n.borderedcontainer {\n  border-right: 1px solid #636b6f;\n  border-left: 1px solid #636b6f;\n}\n.sectionbreak {\n  background-color: #00d1b2;\n  min-height: 70px;\n}\n.textbox {\n  padding: 40px;\n  height: 100%;\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.textbox h1 {\n    text-align: center;\n}\n.textbox h1 span {\n      border-bottom: 1px solid #636b6f;\n}\n.textbox .button {\n    margin-top: 30px;\n}\n.bulletpointsok {\n  list-style: disclosure-closed;\n  margin-top: 10px;\n}\n.herobanner {\n  background-size: cover;\n  background-position: center;\n  text-transform: uppercase;\n}\n.herobanner h1 {\n    font-size: 3.5vw;\n    color: #fafafa;\n    text-shadow: 0px 0px 8px #000;\n    line-height: 1;\n}\n.herobanner p {\n    padding: 1.2vw;\n    font-weight: 600;\n    font-size: 2vw;\n    color: #fafafa;\n    text-shadow: 0px 0px 6px #000;\n}\n.herobanner .misty {\n    background-color: rgba(255, 255, 255, 0.2);\n    border-radius: 10px;\n    padding: 1.2vw 0px;\n}\n#ctabanner {\n  background-image: url(\"/img/ctabanner.jpeg\");\n}\n#ctabanner h1 {\n    font-size: 2vw;\n    font-weight: normal;\n}\n#ctabanner .colourmisty {\n    background-color: rgba(0, 209, 178, 0.4);\n    /* border-radius:$button-border-radius; */\n    padding: 2vw 0px;\n    color: #636b6f;\n    text-shadow: none;\n}\n#ctabanner .ctabutton {\n    padding: 20px;\n    margin-top: 40px;\n    width: 100%;\n    color: #636b6f;\n}\n#ctabanner .emojispan {\n    font-size: 35px;\n}\n#homebanner {\n  background-image: url(\"/img/dogbanner2.jpeg\");\n  background-position: right;\n}\n#homeview h1 {\n  font-size: 2vw;\n}\n#homeview h1.maintitle {\n  font-size: 3.5vw;\n}\n#homeview .subtitle span {\n  font-weight: bold;\n}\n@media only screen and (max-width: 1087px) {\n#homeview h1 {\n    font-size: 3vw;\n}\n}\n@media only screen and (max-width: 768px) {\n.image-to-hide {\n    display: none;\n}\n}\n@media only screen and (max-width: 450px) {\n#homeview h1 {\n    font-size: 4vw;\n}\n}\n", ""]);
 
 // exports
 
@@ -38987,6 +39054,7 @@ exports.push([module.i, "\n#firstrowcolumns {\n  margin-bottom: 6.5px;\n}\n.bold
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -39251,121 +39319,115 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticStyle: { "margin-top": "-69px" }, attrs: { id: "homeview" } },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
-      _vm._m(3),
-      _vm._v(" "),
-      _c("section", { staticClass: "section slimsection" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "columns secondcolumns" }, [
-            _vm._m(4),
-            _vm._v(" "),
-            _c("div", { staticClass: "column is-6 rightcol lastcol" }, [
-              _c("div", { staticClass: "textbox" }, [
-                _c(
-                  "div",
-                  { staticClass: "textwrapper" },
-                  [
-                    _vm._m(5),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "boldspan" }, [
-                      _vm._v("£9.99 / month")
-                    ]),
-                    _c("br"),
-                    _vm._v(
-                      "\n\t\t\t\t\t\t\t( You can stop whenever you like! )\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t"
-                    ),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "button is-primary is-outlined is-large",
-                        attrs: { to: "/sign-up", tag: "div" }
-                      },
-                      [_vm._v("Subscribe Now")]
-                    )
-                  ],
-                  1
-                )
-              ])
+  return _c("div", { attrs: { id: "homeview" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _vm._m(3),
+    _vm._v(" "),
+    _c("section", { staticClass: "section slimsection" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "columns secondcolumns" }, [
+          _vm._m(4),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-6 rightcol lastcol" }, [
+            _c("div", { staticClass: "textbox" }, [
+              _c(
+                "div",
+                { staticClass: "textwrapper" },
+                [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "boldspan" }, [
+                    _vm._v("£9.99 / month")
+                  ]),
+                  _c("br"),
+                  _vm._v(
+                    "\n\t\t\t\t\t\t\t( You can stop whenever you like! )\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t"
+                  ),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "button is-primary is-outlined is-large",
+                      attrs: { to: "/sign-up", tag: "div" }
+                    },
+                    [_vm._v("Subscribe Now")]
+                  )
+                ],
+                1
+              )
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "sectionbreak" }, [_vm._v(" ")]),
-      _vm._v(" "),
-      _vm._m(6),
-      _vm._v(" "),
-      _c("section", { staticClass: "sectionbreak" }, [_vm._v(" ")]),
-      _vm._v(" "),
-      _vm._m(7),
-      _vm._v(" "),
-      _c(
-        "section",
-        { staticClass: "hero is-large herobanner", attrs: { id: "ctabanner" } },
-        [
-          _c("div", { staticClass: "hero-body" }, [
-            _c("div", { staticClass: "container has-text-centered" }, [
-              _c("div", { staticClass: "columns" }, [
-                _c("div", { staticClass: "column is-7" }),
+      ])
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "sectionbreak" }, [_vm._v(" ")]),
+    _vm._v(" "),
+    _vm._m(6),
+    _vm._v(" "),
+    _c("section", { staticClass: "sectionbreak" }, [_vm._v(" ")]),
+    _vm._v(" "),
+    _vm._m(7),
+    _vm._v(" "),
+    _c(
+      "section",
+      { staticClass: "hero is-medium herobanner", attrs: { id: "ctabanner" } },
+      [
+        _c("div", { staticClass: "hero-body" }, [
+          _c("div", { staticClass: "container has-text-centered" }, [
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column is-7" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "column is-5" }, [
+                _c("h1", { staticClass: "title colourmisty" }, [
+                  _vm._v("Does your dog deserve a Toys and Treats box?")
+                ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "column is-5" }, [
-                  _c("h1", { staticClass: "title colourmisty" }, [
-                    _vm._v("Does your dog deserve a Toys and Treats box?")
-                  ]),
+                _c("div", { staticClass: "columns" }, [
+                  _c("div", { staticClass: "column" }, [_vm._v(" ")]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "columns" }, [
-                    _c("div", { staticClass: "column" }, [_vm._v(" ")]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "column is-8" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "button is-large is-primary ctabutton",
-                            attrs: { tag: "div", to: "/sign-up" }
-                          },
-                          [
-                            _vm._v("Yes, of course! "),
-                            _c("span", { staticClass: "emojispan" }, [
-                              _vm._v("☺")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "button is-large is-danger ctabutton"
-                          },
-                          [_vm._v("No, they don't! ☹")]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "column" }, [_vm._v(" ")])
-                  ])
+                  _c(
+                    "div",
+                    { staticClass: "column is-8" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "button is-large is-primary ctabutton",
+                          attrs: { tag: "div", to: "/sign-up" }
+                        },
+                        [
+                          _vm._v("Yes, of course! "),
+                          _c("span", { staticClass: "emojispan" }, [
+                            _vm._v("☺")
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "button is-large is-danger ctabutton" },
+                        [_vm._v("No, they don't! ☹")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }, [_vm._v(" ")])
                 ])
               ])
             ])
           ])
-        ]
-      )
-    ]
-  )
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -39374,26 +39436,24 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "section",
-      { staticClass: "hero is-large herobanner", attrs: { id: "homebanner" } },
+      { staticClass: "hero is-medium herobanner", attrs: { id: "homebanner" } },
       [
         _c("div", { staticClass: "hero-body" }, [
           _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "tile is-ancestor" }, [
-              _c("div", { staticClass: "tile is-parent" }, [
-                _c(
-                  "div",
-                  { staticClass: "tile is-child has-text-centered misty" },
-                  [
-                    _c("h1", { staticClass: "title" }, [
-                      _vm._v("Toys and Treats delivered every month")
-                    ]),
-                    _vm._v(" "),
-                    _c("h1", [_vm._v("Show your dog how much you love them")])
-                  ]
-                )
+            _c("div", { staticClass: "columns is-mobile" }, [
+              _c("div", { staticClass: "column is-8" }, [
+                _c("div", { staticClass: "has-text-centered misty" }, [
+                  _c("h1", { staticClass: "maintitle" }, [
+                    _vm._v("A Box of Toys and Treats delivered every month")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "mainsubtitle" }, [
+                    _vm._v("Show your dog how much you love them")
+                  ])
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "tile is-4 is-vertical is-parent" }, [
+              _c("div", { staticClass: "column is-4" }, [
                 _vm._v("\t\t\t\t\t\t\n\t\t\t\t\t\t \n\t\t\t\t\t")
               ])
             ])
@@ -39486,7 +39546,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-6" }, [
+    return _c("div", { staticClass: "column is-6 image-to-hide" }, [
       _c("img", { attrs: { src: "/img/dog4.jpeg" } })
     ])
   },
@@ -39508,7 +39568,9 @@ var staticRenderFns = [
           _c("div", { staticClass: "column" }, [_vm._v(" ")]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-8" }, [
-            _c("h1", { staticClass: "title" }, [_vm._v("How we started...")]),
+            _c("h1", { staticClass: "subtitle" }, [
+              _c("span", [_vm._v("How we started...")])
+            ]),
             _vm._v(" "),
             _c("p", [
               _vm._v(
@@ -39542,7 +39604,7 @@ var staticRenderFns = [
           _vm._v("Meet our product testing team...")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "columns is-mobile" }, [
           _c("div", { staticClass: "column" }, [
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-image" }, [
@@ -39601,8 +39663,10 @@ var staticRenderFns = [
                 ])
               ])
             ])
-          ]),
-          _vm._v(" "),
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns is-mobile" }, [
           _c("div", { staticClass: "column" }, [
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-image" }, [
@@ -39683,7 +39747,9 @@ if (false) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_exampleComponent_bootstrap_js__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_paidMemberships_bootstrap_js__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_contactForm_bootstrap_js__ = __webpack_require__(101);
 /* In here we load the bootstrap file from each of the components we have in the app */
+
 
 
 
@@ -39714,7 +39780,7 @@ __webpack_require__(67);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_setupRoutes__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_setupRoutes__ = __webpack_require__(7);
 
 
 /*
@@ -39736,7 +39802,7 @@ routes.push(
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__ = __webpack_require__(8);
 
 
 /*
@@ -40099,7 +40165,7 @@ __webpack_require__(95);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_setupRoutes__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_setupRoutes__ = __webpack_require__(7);
 
 
 __WEBPACK_IMPORTED_MODULE_0__setup_setupRoutes__["a" /* default */].push({
@@ -40519,6 +40585,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40537,7 +40609,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticStyle: { "margin-top": "-69px" },
+      attrs: { id: "how-it-works-view" }
+    },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("section", { staticClass: "section" }, [
+        _c("div", { staticClass: "container" }, [_c("contact-form")], 1)
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -40545,48 +40632,41 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "div",
+      "section",
       {
-        staticStyle: { "margin-top": "-69px" },
-        attrs: { id: "how-it-works-view" }
+        staticClass: "hero is-large herobanner",
+        attrs: { id: "hiThereBanner" }
       },
       [
-        _c(
-          "section",
-          {
-            staticClass: "hero is-large herobanner",
-            attrs: { id: "hiThereBanner" }
-          },
-          [
-            _c("div", { staticClass: "hero-body" }, [
-              _c("div", { staticClass: "container" }, [
-                _c("div", { staticClass: "tile is-ancestor" }, [
-                  _c("div", { staticClass: "tile is-parent is-6" }, [
-                    _c(
-                      "div",
-                      { staticClass: "tile is-child has-text-centered" },
-                      [_c("h2", [_vm._v("Hi There !")])]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "tile is-parent is-6" })
+        _c("div", { staticClass: "hero-body" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "tile is-ancestor" }, [
+              _c("div", { staticClass: "tile is-parent is-6" }, [
+                _c("div", { staticClass: "tile is-child has-text-centered" }, [
+                  _c("h2", [_vm._v("Hi There !")])
                 ])
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("section", { staticClass: "hero is-primary" }, [
-          _c("div", { staticClass: "hero-body" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("h1", { staticClass: "title has-text-centered" }, [
-                _vm._v("We would love to hear from you !")
-              ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "tile is-parent is-6" })
             ])
           ])
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "hero is-primary" }, [
+      _c("div", { staticClass: "hero-body" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("h1", { staticClass: "title has-text-centered" }, [
+            _vm._v("We would love to hear from you !")
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -40684,7 +40764,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#loadingscreen {\n  position: fixed;\n  width: 100vw;\n  height: 100vh;\n  top: 0px;\n  left: 0px;\n  padding: 0px;\n  margin: 0px;\n  background-color: rgba(255, 255, 255, 0.7);\n  z-index: 100;\n}\n#loadingscreen .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n#loadingscreen .columns {\n    margin-top: 20%;\n    padding: 5%;\n    border: 1px solid #636b6f;\n    background-color: #fff;\n}\n#loadingscreen .button {\n    width: 100%;\n}\n#problemScreen {\n  position: fixed;\n  width: 100vw;\n  height: 100vh;\n  top: 0px;\n  left: 0px;\n  padding: 0px;\n  margin: 0px;\n  background-color: rgba(255, 255, 255, 0.7);\n  z-index: 100;\n}\n#problemScreen .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n#problemScreen .columns {\n    margin-top: 20%;\n    padding: 5%;\n    border: 1px solid #636b6f;\n    background-color: #fff;\n}\n#problemScreen .button {\n    width: 100%;\n    margin-top: 20px;\n}\n#sign-up-view .button {\n  cursor: pointer;\n}\n#sign-up-view .errormessage {\n  color: #bf5329;\n  padding: 5px;\n  background-color: #F2DDD4;\n  text-align: center;\n  display: block;\n  margin-bottom: 15px;\n}\n#sign-up-view .control {\n  position: relative;\n}\n#sign-up-view .control .labeltext {\n    position: absolute;\n    left: 15px;\n    top: -13px;\n    background-color: #fff;\n    padding-left: 3px;\n    padding-right: 3px;\n    color: #999999;\n}\n#sign-up-view .control .errortext {\n    position: absolute;\n    right: 15px;\n    top: -13px;\n    background-color: #fff;\n    padding-left: 3px;\n    padding-right: 3px;\n    color: #bf5329;\n}\n#sign-up-view .field {\n  margin-top: 30px;\n}\n#sign-up-view #customerDetails {\n  padding-top: 100px;\n}\n#sign-up-view #customerDetails .is-right {\n    float: right;\n}\n#sign-up-view .card {\n  cursor: pointer;\n}\n#sign-up-view .card:hover {\n  background-color: #ccf5ef;\n}\n#sign-up-view .pawholder {\n  color: #353535;\n}\n#sign-up-view .smallpaw {\n  font-size: 4vw;\n  margin-top: 6vw;\n}\n#sign-up-view .mediumpaw {\n  font-size: 8vw;\n  margin-top: 6vw;\n}\n#sign-up-view .largepaw {\n  font-size: 12vw;\n  margin-top: 6vw;\n}\n#sign-up-view .is-selected {\n  -webkit-box-shadow: 0px 0px 20px #00d1b2;\n          box-shadow: 0px 0px 20px #00d1b2;\n}\n#sign-up-view .is-selected .pawholder {\n    color: #00d1b2;\n}\n#sign-up-view .sizeselectors span.icon {\n  padding-left: 50%;\n}\n#sign-up-view .sizeselectors .card-header-title {\n  display: initial;\n}\n#sign-up-view .pawholder {\n  height: 14vw;\n}\n#sign-up-view ::-webkit-input-placeholder {\n  /* Chrome/Opera/Safari */\n  color: #000;\n}\n#sign-up-view ::-moz-placeholder {\n  /* Firefox 19+ */\n  color: #000;\n}\n#sign-up-view :-ms-input-placeholder {\n  /* IE 10+ */\n  color: #000;\n}\n#sign-up-view :-moz-placeholder {\n  /* Firefox 18- */\n  color: #000;\n}\n", ""]);
+exports.push([module.i, "\n#loadingscreen {\n  position: fixed;\n  width: 100vw;\n  height: 100vh;\n  top: 0px;\n  left: 0px;\n  padding: 0px;\n  margin: 0px;\n  background-color: rgba(255, 255, 255, 0.7);\n  z-index: 100;\n}\n#loadingscreen .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n#loadingscreen .columns {\n    margin-top: 20%;\n    padding: 5%;\n    border: 1px solid #636b6f;\n    background-color: #fff;\n}\n#loadingscreen .button {\n    width: 100%;\n}\n#problemScreen {\n  position: fixed;\n  width: 100vw;\n  height: 100vh;\n  top: 0px;\n  left: 0px;\n  padding: 0px;\n  margin: 0px;\n  background-color: rgba(255, 255, 255, 0.7);\n  z-index: 100;\n}\n#problemScreen .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n#problemScreen .columns {\n    margin-top: 20%;\n    padding: 5%;\n    border: 1px solid #636b6f;\n    background-color: #fff;\n}\n#problemScreen .button {\n    width: 100%;\n    margin-top: 20px;\n}\n#sign-up-view .button {\n  cursor: pointer;\n}\n#sign-up-view .errormessage {\n  color: #bf5329;\n  padding: 5px;\n  background-color: #F2DDD4;\n  text-align: center;\n  display: block;\n  margin-bottom: 15px;\n}\n#sign-up-view .control {\n  position: relative;\n}\n#sign-up-view .control .labeltext {\n    position: absolute;\n    left: 15px;\n    top: -13px;\n    background-color: #fff;\n    padding-left: 3px;\n    padding-right: 3px;\n    color: #999999;\n}\n#sign-up-view .control .errortext {\n    position: absolute;\n    right: 15px;\n    top: -13px;\n    background-color: #fff;\n    padding-left: 3px;\n    padding-right: 3px;\n    color: #bf5329;\n}\n#sign-up-view .field {\n  margin-top: 30px;\n}\n#sign-up-view #customerDetails {\n  padding-top: 100px;\n}\n#sign-up-view #customerDetails .is-right {\n    float: right;\n}\n#sign-up-view .card {\n  cursor: pointer;\n  border-radius: 10px;\n}\n#sign-up-view .card:hover {\n  background-color: #ccf5ef;\n}\n#sign-up-view .pawholder {\n  color: #353535;\n}\n#sign-up-view .smallpaw {\n  font-size: 4vw;\n  margin-top: 6vw;\n}\n#sign-up-view .mediumpaw {\n  font-size: 8vw;\n  margin-top: 6vw;\n}\n#sign-up-view .largepaw {\n  font-size: 12vw;\n  margin-top: 6vw;\n}\n#sign-up-view .is-selected {\n  -webkit-box-shadow: 0px 0px 20px #00d1b2;\n          box-shadow: 0px 0px 20px #00d1b2;\n}\n#sign-up-view .is-selected .pawholder {\n    color: #00d1b2;\n}\n#sign-up-view .sizeselectors span.icon {\n  padding-left: 50%;\n}\n#sign-up-view .sizeselectors .card-header-title {\n  display: initial;\n}\n#sign-up-view .pawholder {\n  height: 14vw;\n}\n#sign-up-view ::-webkit-input-placeholder {\n  /* Chrome/Opera/Safari */\n  color: #000;\n}\n#sign-up-view ::-moz-placeholder {\n  /* Firefox 19+ */\n  color: #000;\n}\n#sign-up-view :-ms-input-placeholder {\n  /* IE 10+ */\n  color: #000;\n}\n#sign-up-view :-moz-placeholder {\n  /* Firefox 18- */\n  color: #000;\n}\n@media only screen and (max-width: 1087px) {\n#sign-up-view .sizeselectors .card-header-title {\n    font-size: 3vw;\n}\n#sign-up-view .pawholder {\n    height: 18vw;\n}\n#sign-up-view .title {\n    font-size: 4vw;\n}\n}\n", ""]);
 
 // exports
 
@@ -40699,6 +40779,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -41520,7 +41601,7 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "columns sizeselectors",
+            staticClass: "columns is-mobile sizeselectors",
             on: { click: _vm.checkDogDetailsComplete }
           },
           [
@@ -41604,7 +41685,10 @@ var render = function() {
                         { staticClass: "icon largepaw" },
                         [_c("font-awesome-icon", { attrs: { icon: "paw" } })],
                         1
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("br"),
+                      _c("br")
                     ])
                   ])
                 ]
@@ -42563,9 +42647,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("header", { staticClass: "card-header has-text-centered" }, [
       _c("p", { staticClass: "card-header-title subtitle" }, [
-        _vm._v(
-          "\n                                Small Dog\n                            "
-        )
+        _vm._v("\n                                Small"),
+        _c("br"),
+        _vm._v("Dog\n                            ")
       ])
     ])
   },
@@ -42575,9 +42659,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("header", { staticClass: "card-header" }, [
       _c("p", { staticClass: "card-header-title subtitle has-text-centered" }, [
-        _vm._v(
-          "\n                                Medium Dog\n                            "
-        )
+        _vm._v("\n                                Medium"),
+        _c("br"),
+        _vm._v("Dog\n                            ")
       ])
     ])
   },
@@ -42587,9 +42671,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("header", { staticClass: "card-header" }, [
       _c("p", { staticClass: "card-header-title subtitle has-text-centered" }, [
-        _vm._v(
-          "\n                                Large Dog\n                            "
-        )
+        _vm._v("\n                                Large"),
+        _c("br"),
+        _vm._v("Dog\n                            ")
       ])
     ])
   },
@@ -42635,24 +42719,27 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__ = __webpack_require__(8);
 
 
 __WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__["a" /* default */].push({
 	uri: '/how-it-works',
 	text: 'How It Works',
 	position: 20,
-	bold: true
+	bold: true,
+	hideSmall: true
 }, {
 	uri: '/contact-us',
 	text: 'Contact Us',
 	position: 30,
-	bold: true
+	bold: true,
+	hideSmall: true
 }, {
 	uri: '/sign-up',
 	text: 'Subscribe',
 	position: 40,
-	bold: true
+	bold: true,
+	hideSmall: false
 });
 
 /***/ }),
@@ -42835,8 +42922,551 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setupRoutes__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+__webpack_require__(102);
+__webpack_require__(103);
+
+/* Components */
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('contact-form', __webpack_require__(104));
+
+/***/ }),
+/* 102 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_setupRoutes__ = __webpack_require__(7);
+
+/*
+
+routes.push(
+	{
+		path:'/contact-us',
+
+		component: require('./views/contact.vue')
+	},	
+	{
+		path:'/contact-us/:subsection',
+
+		component: require('./views/contact.vue')
+	},	
+);
+
+*/
+
+/***/ }),
+/* 103 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__setup_navbarItems__ = __webpack_require__(8);
+
+/*
+navbarItems.push(	
+	{
+		uri:'/contact-us',
+		text:'Contact Us',
+		position:100,
+		bold:false,
+	},
+);*/
+
+/***/ }),
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(105)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(107)
+/* template */
+var __vue_template__ = __webpack_require__(110)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/public/components/contactForm/components/contactForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f5730526", Component.options)
+  } else {
+    hotAPI.reload("data-v-f5730526", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(106);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("3afe24f4", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f5730526\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./contactForm.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f5730526\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./contactForm.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.contactform {\n  width: 50%;\n  margin: auto;\n}\n.contactform input {\n    display: block;\n    width: 100%;\n    margin: 20px auto;\n    font-size: 16px;\n}\n.contactform textarea.textarea {\n    width: 100%;\n    margin-left: 0%;\n    display: block;\n    min-width: 20%;\n}\n.contactform .button.is-pulled-right {\n    margin-right: 10%;\n}\n.contactform span.help {\n    margin-left: 25%;\n    margin-bottom: 20px;\n}\n.contactform .fa-check {\n    color: #2ab27b;\n    font-size: 70px;\n    margin-left: 47%;\n}\n@media only screen and (max-width: 1087px) {\n.contactform {\n    width: 80%;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 107 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__endpoints_js__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setup_externalClasses_js__ = __webpack_require__(109);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+ //relative path - beware
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    methods: {
+        sendMessage: function sendMessage() {
+            var _this = this;
+
+            if (!this.errors.any()) {
+                this.messageSending = true;
+
+                axios.post(__WEBPACK_IMPORTED_MODULE_0__endpoints_js__["a" /* default */].recieveMessage, this.payload).then(function (response) {
+                    _this.messageSending = false;_this.messageSentOk = true;
+                }).catch(function (error) {
+                    _this.messageSending = false;_this.errors.record(error.response.data.errors);
+                });
+            }
+        }
+    },
+
+    computed: {
+        payload: function payload() {
+            return {
+                fname: this.fname,
+                lname: this.lname,
+                email: this.email,
+                message: this.message
+            };
+        }
+    },
+
+    data: function data() {
+        return {
+            fname: null,
+            lname: null,
+            email: null,
+            message: '',
+            messageSentOk: false,
+            messageSending: false,
+            errors: new __WEBPACK_IMPORTED_MODULE_1__setup_externalClasses_js__["a" /* default */](),
+            submitDisabled: false
+        };
+    }
+    /*
+    	    props: [
+    		    'propsPassed'
+    	    ], */
+
+});
+
+/***/ }),
+/* 108 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* setup the API routes for this component */
+
+var endpoints = [];
+
+endpoints.recieveMessage = '/vue/contact/message';
+
+/* harmony default export */ __webpack_exports__["a"] = (endpoints);
+
+/***/ }),
+/* 109 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Errors = function () {
+    function Errors() {
+        _classCallCheck(this, Errors);
+
+        this.errors = {};
+    }
+
+    _createClass(Errors, [{
+        key: 'get',
+        value: function get(field) {
+            if (this.errors[field]) {
+                return 'This field is required'; //this.errors[field][0];
+            }
+        }
+    }, {
+        key: 'record',
+        value: function record(errors) {
+            this.errors = errors;
+        }
+    }, {
+        key: 'clear',
+        value: function clear(field) {
+            delete this.errors[field];
+        }
+    }, {
+        key: 'has',
+        value: function has(field) {
+            if (this.errors[field]) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }, {
+        key: 'any',
+        value: function any() {
+
+            return Object.keys(this.errors).length > 0;
+        }
+    }]);
+
+    return Errors;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Errors);
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "contactform" }, [
+    _vm.messageSentOk
+      ? _c("div", [
+          _c("p", { staticClass: "title has-text-centered" }, [
+            _vm._v("Your Message Has Been Submitted")
+          ]),
+          _vm._v(" "),
+          _c("i", { staticClass: "fas fa-check" })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.messageSentOk
+      ? _c(
+          "div",
+          {
+            on: {
+              keydown: function($event) {
+                _vm.errors.clear($event.target.name)
+              }
+            }
+          },
+          [
+            _c("p", { staticClass: "title has-text-centered" }, [
+              _vm._v("Send a Message")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fname,
+                  expression: "fname"
+                }
+              ],
+              staticClass: "input",
+              class: {
+                "is-danger": _vm.errors.has("fname"),
+                "is-info": !_vm.errors.has("fname")
+              },
+              attrs: { type: "text", name: "fname", placeholder: "First Name" },
+              domProps: { value: _vm.fname },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.fname = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.has("fname")
+              ? _c("span", {
+                  staticClass: "help is-danger",
+                  domProps: { textContent: _vm._s(_vm.errors.get("fname")) }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.lname,
+                  expression: "lname"
+                }
+              ],
+              staticClass: "input",
+              class: {
+                "is-danger": _vm.errors.has("lname"),
+                "is-info": !_vm.errors.has("lname")
+              },
+              attrs: { type: "text", name: "lname", placeholder: "Last Name" },
+              domProps: { value: _vm.lname },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.lname = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.has("lname")
+              ? _c("span", {
+                  staticClass: "help is-danger",
+                  domProps: { textContent: _vm._s(_vm.errors.get("lname")) }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email"
+                }
+              ],
+              staticClass: "input",
+              class: {
+                "is-danger": _vm.errors.has("email"),
+                "is-info": !_vm.errors.has("email")
+              },
+              attrs: { type: "text", name: "email", placeholder: "Email" },
+              domProps: { value: _vm.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.has("email")
+              ? _c("span", {
+                  staticClass: "help is-danger",
+                  domProps: { textContent: _vm._s(_vm.errors.get("email")) }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.message,
+                  expression: "message"
+                }
+              ],
+              staticClass: "textarea",
+              class: {
+                "is-danger": _vm.errors.has("message"),
+                "is-info": !_vm.errors.has("message")
+              },
+              attrs: { name: "message", rows: "10", placeholder: "Message..." },
+              domProps: { value: _vm.message },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.message = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.has("message")
+              ? _c("span", {
+                  staticClass: "help is-danger",
+                  domProps: { textContent: _vm._s(_vm.errors.get("message")) }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "button is-pulled-right is-info is-outlined",
+                class: { "is-loading": _vm.messageSending },
+                attrs: { disabled: _vm.errors.any() },
+                on: { click: _vm.sendMessage }
+              },
+              [_vm._v("\n                Send\n            ")]
+            )
+          ]
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f5730526", module.exports)
+  }
+}
+
+/***/ }),
+/* 111 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setupRoutes__ = __webpack_require__(7);
 
 
 
@@ -42847,13 +43477,13 @@ if (false) {
 }));
 
 /***/ }),
-/* 102 */
+/* 112 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 103 */
+/* 113 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

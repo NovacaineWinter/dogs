@@ -11,6 +11,7 @@ navbarItems.push(
 		text:'Home',
 		position:10,
 		bold:false,
+		hideSmall:true,
 	},
 );
 

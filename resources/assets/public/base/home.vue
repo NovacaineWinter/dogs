@@ -1,24 +1,24 @@
 		
 <template>
-	<div style="margin-top:-69px" id="homeview">
+	<div id="homeview">
 		
-		<section class="hero is-large herobanner" id="homebanner">
+		<section class="hero is-medium herobanner" id="homebanner">
 
 
 			<div class="hero-body">
 				<div class="container">				
 
-					<div class="tile is-ancestor">
+					<div class="columns is-mobile">
 
 
-						<div class="tile is-parent">
-							<div class="tile is-child has-text-centered misty">
-								<h1 class="title">Toys and Treats delivered every month</h1>
-								<h1>Show your dog how much you love them</h1>							
+						<div class="column is-8">
+							<div class="has-text-centered misty">
+								<h1 class="maintitle">A Box of Toys and Treats delivered every month</h1>
+								<p class="mainsubtitle">Show your dog how much you love them</p>							
 							</div>
 						</div>
 
-						<div class="tile is-4 is-vertical is-parent">						
+						<div class="column is-4">						
 							&nbsp;
 						</div>
 
@@ -74,7 +74,7 @@
 		<section class="section slimsection">
 			<div class="container">				
 				<div class="columns secondcolumns">
-					<div class="column is-6"><img src="/img/dog4.jpeg"></div>
+					<div class="column is-6 image-to-hide"><img src="/img/dog4.jpeg"></div>
 					<div class="column is-6 rightcol lastcol">
 						<div class="textbox">
 							<div class="textwrapper">
@@ -96,7 +96,7 @@
 			<div class="columns borderedcontainer">
 				<div class="column">&nbsp;</div>
 				<div class="column is-8">
-					<h1 class="title">How we started...</h1>
+					<h1 class="subtitle"><span>How we started...</span></h1>
 					<p>
 						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, <br><br>qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur
 						<br><br>
@@ -114,7 +114,7 @@
 		<section class="section">
 			<div class="container">
 				<h1 class="title has-text-centered">Meet our product testing team...</h1>
-				<div class="columns">
+				<div class="columns is-mobile">
 
 					<div class="column">
 						<div class="card">
@@ -161,9 +161,10 @@
 						    </div>
 						</div>
 					</div>
+				</div>
 
-
-
+				<div class="columns is-mobile">
+					
 					<div class="column">
 						<div class="card">
 						    <div class="card-image">
@@ -218,7 +219,7 @@
 
 
 
-		<section class="hero is-large herobanner" id="ctabanner">
+		<section class="hero is-medium herobanner" id="ctabanner">
 			<div class="hero-body">
 				<div class="container has-text-centered">
 					<div class="columns">
@@ -334,7 +335,6 @@
 		text-align:center;
 		h1{
 			text-align:center;
-			font-size:2vw;
 			span{
 				border-bottom:1px solid $text-dark;
 			}
@@ -362,14 +362,15 @@
 		h1{
 			font-size:3.5vw;
 			color:$text-light;
-			text-shadow: 3px 3px $text-dark;
-/* 			border-top:3px solid $text-dark;
-			border-bottom:3px solid $text-dark; */
+			text-shadow: 0px 0px 8px $text-black;
 			line-height:1;			
 		}
 		p{
 			padding:1.2vw;
 			font-weight:600;
+			font-size:2vw;
+			color:$text-light;
+			text-shadow: 0px 0px 6px $text-black;
 		}		
 		
 		.misty{
@@ -407,6 +408,48 @@
 
 	#homebanner{
 		background-image:url('/img/dogbanner2.jpeg');
+		background-position:right;
+	}
+
+
+	#homeview{
+		h1{
+			font-size:2vw;		
+		}
+
+		h1.maintitle{
+			font-size:3.5vw;
+		}
+		.subtitle{
+			span{
+				font-weight:bold;
+			}
+		}
+	}
+
+	@media only screen and (max-width: $tabletbreak) {
+	
+		#homeview{
+			h1{
+				font-size:3vw;
+			}
+		}
+
+	}
+
+	@media only screen and (max-width: 768px) {
+		.image-to-hide{
+			display:none;
+		}
+	}
+
+
+	@media only screen and (max-width: $phonebreak) {
+		#homeview{
+			h1{
+				font-size:4vw;	
+			}
+		}
 	}
 </style>
 

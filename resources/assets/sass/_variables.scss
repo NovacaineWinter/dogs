@@ -9,7 +9,10 @@ $navbar-default-border: $laravel-border-color;
 $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
-
+$phonebreak: 450px;
+$tabletbreak:1087px;
+$big-navbar-height:69px;
+$small-navbar-height:50px;
 
 $hover-background-color:#bbbbbb;
 
@@ -21,6 +24,7 @@ $nav-color:#fff;
 
 $text-light:#fafafa;
 $text-dark: #636b6f;
+$text-black:#000;
 $link-active-light: #0077cf;
 
 $button-border-radius:10px;

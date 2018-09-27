@@ -3,3 +3,4 @@
 
 import  './components/exampleComponent/bootstrap.js';
 import  './components/paidMemberships/bootstrap.js';
+import  './components/contactForm/bootstrap.js';

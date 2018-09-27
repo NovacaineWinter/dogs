@@ -36,13 +36,13 @@
                 <h2 class="title has-text-centered">And they are a..</h2>
 
 
-                <div class="columns sizeselectors" @click="checkDogDetailsComplete">
+                <div class="columns is-mobile sizeselectors" @click="checkDogDetailsComplete">
 
                     <div class="column">                        
                         <div class="card" v-bind:class="{ 'is-selected':dogSize==1 }" @click="dogSize=1">
                             <header class="card-header has-text-centered">
                                 <p class="card-header-title subtitle">
-                                    Small Dog
+                                    Small<br>Dog
                                 </p>                                
                             </header>
                             <div class="card-image">
@@ -59,7 +59,7 @@
                         <div class="card" v-bind:class="{ 'is-selected':dogSize==2 }" @click="dogSize=2">
                             <header class="card-header">
                                 <p class="card-header-title subtitle has-text-centered">
-                                    Medium Dog
+                                    Medium<br>Dog
                                 </p>                                
                             </header>
                              <div class="card-image">
@@ -76,14 +76,15 @@
                         <div class="card" v-bind:class="{ 'is-selected':dogSize==3 }" @click="dogSize=3">
                             <header class="card-header">
                                 <p class="card-header-title subtitle has-text-centered">
-                                    Large Dog
+                                    Large<br>Dog
                                 </p>                                
                             </header>
                              <div class="card-image">
-                                <div class="pawholder">
+                                <div class="pawholder">                                    
                                     <span class="icon largepaw">
                                         <font-awesome-icon icon="paw" />
                                     </span> 
+                                    <br><br>
                                 </div>
                             </div>                             
                         </div>
@@ -850,6 +851,7 @@
 
         .card{
             cursor:pointer;
+            border-radius:10px;
         }
 
         .card:hover{
@@ -907,6 +909,30 @@
 
     }
 
+
+
+    @media only screen and (max-width: $tabletbreak) {
+        #sign-up-view{
+            .sizeselectors{
+                .card-header-title {
+                    font-size:3vw;
+                }   
+            } 
+
+            .pawholder{
+                height:18vw;
+            }
+
+            .title{
+                font-size:4vw;
+            }
+        }
+    }
+
+
+    @media only screen and (max-width: $phonebreak) {
+       
+    }
 </style>
 
 		

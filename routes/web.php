@@ -24,3 +24,5 @@ Route::post('/api/create-new-user','customerController@signup');
 Route::get('/api/webhooks','stripeController@webhooks');
 
 Route::post('/api/checkemail','customerController@checkEmail');
+
+Route::post('/vue/contact/message','contactController@receiveMessage');

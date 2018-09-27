@@ -1,5 +1,31 @@
 <template>
 	<div id="footer">
+
+		<section class="section">
+			
+			<div class="container">
+				<h1 class="title has-text-centered">Follow Us</h1>
+				<div class="columns socialicons">
+					
+					<a href="https://twitter.com/nottsboatco" class="column has-text-centered">
+						<font-awesome-icon :icon="['fab', 'twitter']" />
+						<h6>Twitter</h6>
+					</a>
+
+					<a href="https://www.instagram.com/nottinghamboatco/" tag="div" class="column has-text-centered">
+						<font-awesome-icon :icon="['fab', 'instagram']" />
+						<h6>Instagram</h6>
+					</a>
+
+					<a href="https://www.facebook.com/NottinghamBoatCompany/" tag="div" class="column has-text-centered">							
+						<font-awesome-icon :icon="['fab', 'facebook-square']" />
+						<h6>Facebook</h6>
+					</a>
+					
+				</div>
+			</div>
+		</section>
+
 		<section class="hero is-medium is-bold is-primary">
 			<div class="hero-body">
 				<div class="container">
