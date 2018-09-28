@@ -13,89 +13,118 @@
 
         <section class="section">
             <div class="container">
-
-                <div class="columns">                    
-                    <div class="column">&nbsp;</div>
-                    <div class="column field">
-                        <label class="label title has-text-centered">My dog's name is</label>
-                        <div class="control">
-                            <input 
-                                type="text" 
-                                class="input" 
-                                :class="{'is-danger':errors.dogName}" 
-                                @keydown="errors.dogName=false"
-                                v-model="dogName"  
-                                @keyup="checkIfComplete" 
-                                placeholder="Spot....Buster....Rex....">
-                            <span class="errortext" v-show="errors.dogName">Required</span>
-                        </div>
-                    </div>                
-                    <div class="column">&nbsp;</div>
-                </div>
-
-                <h2 class="title has-text-centered">And they are a..</h2>
-
-
-                <div class="columns is-mobile sizeselectors" @click="checkDogDetailsComplete">
-
-                    <div class="column">                        
-                        <div class="card" v-bind:class="{ 'is-selected':dogSize==1 }" @click="dogSize=1">
+                <div class="columns plan-options">
+                    <div class="column" v-for="plan in plans" :key="plan.id" @click="selectedPlan(plan)">
+                        <div class="card" :class="{'is-selected':plan.id == planSelected.id}">
                             <header class="card-header has-text-centered">
-                                <p class="card-header-title subtitle">
-                                    Small<br>Dog
-                                </p>                                
+                                <p class="card-header-title subtitle" v-text="plan.title"></p>
                             </header>
-                            <div class="card-image">
-                                <div class="pawholder">
-                                    <span class="icon smallpaw">
-                                        <font-awesome-icon icon="paw" />
-                                    </span> 
-                                </div>
-                            </div>                           
+                            <div class="card-content is-flex" :class="plan.size">                                
+                                <img :src="plan.img" class="is-horisontal-center" alt="plan image">
+                            </div>
+                            <div class="card-content has-text-centered"> 
+                                <p class="title" v-text="plan.price_string"></p>
+                            </div>
+                            <div class="card-content has-text-centered"> 
+                                <p v-text="plan.description"></p>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="column">                        
-                        <div class="card" v-bind:class="{ 'is-selected':dogSize==2 }" @click="dogSize=2">
-                            <header class="card-header">
-                                <p class="card-header-title subtitle has-text-centered">
-                                    Medium<br>Dog
-                                </p>                                
-                            </header>
-                             <div class="card-image">
-                                <div class="pawholder">
-                                    <span class="icon mediumpaw">
-                                        <font-awesome-icon icon="paw" />
-                                    </span> 
-                                </div>     
-                            </div>                           
-                        </div>
+        <section class="section" id="dogNameAndSize">
+            <div class="container">
+
+                <div v-show="showDogDetails">
+                    
+                    <div class="columns">                    
+                        <div class="column">&nbsp;</div>
+                        <div class="column field">
+                            <label class="label title has-text-centered">My dog's name is</label>
+                            <div class="control">
+                                <input 
+                                    type="text" 
+                                    class="input" 
+                                    :class="{'is-danger':errors.dogName}" 
+                                    @keydown="errors.dogName=false"
+                                    v-model="dogName"  
+                                    @keyup="dogNameInputKeyup" 
+                                    placeholder="Spot....Buster....Rex....">
+                                <span class="errortext" v-show="errors.dogName">Required</span>
+                            </div>
+                        </div>                
+                        <div class="column">&nbsp;</div>
                     </div>
 
-                    <div class="column">                        
-                        <div class="card" v-bind:class="{ 'is-selected':dogSize==3 }" @click="dogSize=3">
-                            <header class="card-header">
-                                <p class="card-header-title subtitle has-text-centered">
-                                    Large<br>Dog
-                                </p>                                
-                            </header>
-                             <div class="card-image">
-                                <div class="pawholder">                                    
-                                    <span class="icon largepaw">
-                                        <font-awesome-icon icon="paw" />
-                                    </span> 
-                                    <br><br>
-                                </div>
-                            </div>                             
-                        </div>
-                    </div> 
 
+                    <div v-show="showSizeSelector">                    
+                        <h2 class="title has-text-centered">And they are a..</h2>
+
+
+                        <div class="columns is-mobile sizeselectors" @click="dogSizeSelected">
+
+                            <div class="column">                        
+                                <div class="card" v-bind:class="{ 'is-selected':dogSize==1 }" @click="dogSize=1">
+                                    <header class="card-header has-text-centered">
+                                        <p class="card-header-title subtitle">
+                                            Small<br>Dog
+                                        </p>                                
+                                    </header>
+                                    <div class="card-image">
+                                        <div class="pawholder">
+                                            <span class="icon smallpaw">
+                                                <font-awesome-icon icon="paw" />
+                                            </span> 
+                                        </div>
+                                    </div>                           
+                                </div>
+                            </div>
+
+                            <div class="column">                        
+                                <div class="card" v-bind:class="{ 'is-selected':dogSize==2 }" @click="dogSize=2">
+                                    <header class="card-header">
+                                        <p class="card-header-title subtitle has-text-centered">
+                                            Medium<br>Dog
+                                        </p>                                
+                                    </header>
+                                     <div class="card-image">
+                                        <div class="pawholder">
+                                            <span class="icon mediumpaw">
+                                                <font-awesome-icon icon="paw" />
+                                            </span> 
+                                        </div>     
+                                    </div>                           
+                                </div>
+                            </div>
+
+                            <div class="column">                        
+                                <div class="card" v-bind:class="{ 'is-selected':dogSize==3 }" @click="dogSize=3">
+                                    <header class="card-header">
+                                        <p class="card-header-title subtitle has-text-centered">
+                                            Large<br>Dog
+                                        </p>                                
+                                    </header>
+                                     <div class="card-image">
+                                        <div class="pawholder">                                    
+                                            <span class="icon largepaw">
+                                                <font-awesome-icon icon="paw" />
+                                            </span> 
+                                            <br><br>
+                                        </div>
+                                    </div>                             
+                                </div>
+                            </div> 
+
+                        </div>
+                    </div>
                 </div>
 
                 <div id="customerDetails">
                     <div v-if="this.dogSize!='' && this.dogName!=''">    
 
-                        <h2 class="title has-text-centered" >About {{ this.dogName }}'s Human...</h2>                    
+                        <h2 class="title has-text-centered textcaptialised" >About {{ this.dogName }}'s Human...</h2>                    
                         
                         <div class="columns">
                             <div class="column">&nbsp;</div>
@@ -346,6 +375,13 @@
         mounted() {                    
             setTimeout( () => { window.scrollTo(0, 0);}, 10);
 
+            axios.get('/api/plans')      
+                .then(response => {this.plans = response.data;})
+    
+                .catch(error => {console.log(error.data)});
+            
+            
+
             this.stripeHandler = StripeCheckout.configure({
                 key: 'pk_test_7rBfXVfqrPbJLePrSN2jJLwo',
                 image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
@@ -360,11 +396,26 @@
         },
 
         methods:{
-            checkDogDetailsComplete(){
-                if(this.dogSize!='' && this.dogName!=''){
-                    var elemn = document.getElementById("customerDetails");
-                    elemn.scrollIntoView({ behavior: 'smooth', block: "start" });                               
-                }
+            selectedPlan(plan){
+                this.planSelected = plan;
+                this.showDogDetails = true;
+                window.scrollTo(0, 0);
+                var elemn = document.getElementById("dogNameAndSize");
+                elemn.scrollIntoView({ behavior: 'smooth', block: "start" });   
+            },
+
+            dogNameInputKeyup(){
+                clearTimeout(this.dogNameTimeout);
+
+                this.dogNameTimeout = setTimeout(function(){
+                    this.showSizeSelector = true;
+                }.bind(this,'this'),750);
+            },
+
+
+            dogSizeSelected(){
+                var elemn = document.getElementById("customerDetails");
+                elemn.scrollIntoView({ behavior: 'smooth', block: "start" });
             },
 
             selectAddress(str){
@@ -583,10 +634,10 @@
                 if(!this.formNotFinished){
                     this.loadingSubButton=true;
                     this.stripeHandler.open({
-                        name: 'Toys and Treats',
-                        description: 'Toys and Treats Box | Monthly',
+                        name: this.planSelected.title,
+                        description: 'Monthly Box Delivery',
                         currency: 'gbp',
-                        amount: 999,
+                        amount: this.planSelected.amount,
                         email: this.email,
                         allowRememberMe:false,
                       });                    
@@ -611,7 +662,8 @@
                     firstName:this.firstName,
                     lastName:this.lastName,
                     email:this.email,
-                    password:this.password
+                    password:this.password,
+                    planId:this.planSelected.id
                 })      
                     .then(response => {this.redirectAndLogIn(response.data);})
         
@@ -701,6 +753,11 @@
                 password:'',
                 passwordConfirm:'',
                 possibleAddresses:'',
+                plans:{},
+                planSelected:{},
+                showSizeSelector:false,
+                dogNameTimeout:{},
+                showDogDetails:false,
                 showAddressOptions:false,
                 addressInputPrefs:true,
                 fullAddressFields:false,
@@ -742,6 +799,10 @@
 <style lang="scss">
     @import '~sass/variables';
    
+
+    .textcaptialised{
+        text-transform:capitalize;
+    }
 
     #loadingscreen{
         position:fixed;
@@ -802,8 +863,40 @@
     }
 
     #sign-up-view{   
+
+            
+        .plan-options{
+            .small{
+                img{
+                    width:30%;            
+                    margin-top:20%;
+                    margin-bottom:20%;
+                    margin-left:35%;
+                }
+            }
+            .medium{
+                img{
+                    width:50%;
+                    margin-top:10%;
+                    margin-bottom:10%;
+                    margin-left:25%;
+                }
+            }
+            .large{
+                img{
+                    width:70%;
+                    margin-left:15%;
+                }
+            }
+        }
+    
+
         .button{
             cursor:pointer;
+        }
+
+        .is-horisontal-center{
+            justify-content: center;
         }
 
         .errormessage{
@@ -840,6 +933,8 @@
         .field{
             margin-top:30px;
         }
+
+
 
 
         #customerDetails{
@@ -881,12 +976,12 @@
                 color:#00d1b2;
             }
         }
+        .card-header-title{
+            display:initial;
+        }
         .sizeselectors{
             span.icon{
                 padding-left:50%;
-            }
-            .card-header-title{
-                display:initial;
             }
         }
         .pawholder{

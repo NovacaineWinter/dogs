@@ -31,7 +31,7 @@ class contactMessage extends Model
 
 		//$adminEmail = 'info@nottinghamboatco.com';
 		$adminEmail = 'matt.v.hartley@gmail.com';
-		$adminSubject = 'New message submitted on NottinghamBoatCo.com';
+		$adminSubject = 'New message submitted on ToysandTreats.com';
 
 		$adminMessage = $this->writeEmail();
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \DrewM\MailChimp\MailChimp;
 
 class customerController extends Controller
 {
@@ -24,15 +25,16 @@ class customerController extends Controller
 
     public function signup(Request $request){
     	$this->validate(request(),[
-    		'dogName'	=>	'required',
-    		'dogSize'	=>	'required',
-    		'firstName'	=>	'required',
-    		'lastName'	=>	'required',
-    		'email'		=>	'required|email',    		
-    		'password'	=>	'required',
-    		'lineOne'	=>	'required',    		
-    		'postcode'	=>	'required',
-    		'stripeData'=>	'required'
+    		'dogName'		=>	'required',
+    		'dogSize'		=>	'required',
+    		'firstName'		=>	'required',
+    		'lastName'		=>	'required',
+    		'email'			=>	'required|email',    		
+    		'password'		=>	'required',
+    		'lineOne'		=>	'required',    		
+    		'postcode'		=>	'required',
+    		'stripeData'	=>	'required',
+    		'planSelected'	=>	'required',
     	]);
 		
 		\Stripe\Stripe::setApiKey(env('STRIPE_PRIVATE'));
@@ -46,20 +48,21 @@ class customerController extends Controller
 
 
     	$user = new \App\User;
-    	$user->name = $request->get('firstName').' '.$request->get('lastName');
-    	$user->firstName = $request->get('firstName');
-    	$user->lastName = $request->get('lastName');
-    	$user->email 	= $request->get('email');
-    	$user->password = \Hash::make($request->get('password'));
-    	$user->dogName = $request->get('dogName');
-    	$user->dogSize = $request->get('dogSize');
-    	$user->lineOne = $request->get('lineOne');
-    	$user->lineTwo = $request->get('lineTwo');
-    	$user->lineThree = $request->get('lineThree');
-    	$user->city = $request->get('city');
-    	$user->county = $request->get('county');
-    	$user->postcode = $request->get('postcode');
-    	$user->stripe_id = $customer->id;
+    	$user->name 		= $request->get('firstName').' '.$request->get('lastName');
+    	$user->firstName 	= $request->get('firstName');
+    	$user->lastName 	= $request->get('lastName');
+    	$user->email 		= $request->get('email');
+    	$user->password 	= \Hash::make($request->get('password'));
+    	$user->dogName	 	= $request->get('dogName');
+    	$user->dogSize 		= $request->get('dogSize');
+    	$user->lineOne 		= $request->get('lineOne');
+    	$user->lineTwo 		= $request->get('lineTwo');
+    	$user->lineThree 	= $request->get('lineThree');
+    	$user->city 		= $request->get('city');
+    	$user->county 		= $request->get('county');
+    	$user->postcode 	= $request->get('postcode');
+    	$user->stripe_id 	= $customer->id;
+    	$user->plan_id  	= $request->get('planSelected');
     	$user->save();
 
     	$plan = \App\stripePlan::where('active','=',true)->first();
@@ -77,12 +80,27 @@ class customerController extends Controller
 				)
 			));
 
-			$sub = new \App\stripeSubscription;
+			$sub 			= new \App\stripeSubscription;
 			$sub->stripe_id = $subscription->id;
-			$sub->user_id = $user->id;
+			$sub->user_id 	= $user->id;
 			$sub->save();
 
+			$mailchimp = new MailChimp(env('MAILCHIMP_API_KEY'));
+
+			$mailchimp_list_id = env('MAILCHIMP_LIST_ID');
+
+			$result = $MailChimp->post("lists/".$mailchimp_list_id."/members", [
+				'email_address' => $user->email,
+				'status'        => 'subscribed',
+			]);
+
 			$response = array('status'=>'subscribed');
+
+			if($mailchimp->success()){
+				$user->subscribed_to_mailchimp=true;
+			}else{
+				$user->subscribed_to_mailchimp=false;
+			}
 
 			return json_encode($response);
 		}

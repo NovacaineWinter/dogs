@@ -25,4 +25,6 @@ Route::get('/api/webhooks','stripeController@webhooks');
 
 Route::post('/api/checkemail','customerController@checkEmail');
 
+Route::get('/api/plans', 'vuePublic@plans');
+
 Route::post('/vue/contact/message','contactController@receiveMessage');

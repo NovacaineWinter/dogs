@@ -30,7 +30,8 @@ class CreateUsersTable extends Migration
             $table->string('postcode');
             $table->string('stripe_id');
             $table->integer('account_status')->default(0);
-
+            $table->boolean('subscribed_to_mailchimp')->default(0);
+            $table->integer('plan_id');
             $table->rememberToken();
             $table->timestamps();
         });

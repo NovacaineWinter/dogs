@@ -18,10 +18,15 @@ class CreateStripePlansTable extends Migration
             $table->string('nickname');
             $table->integer('product_id');
             $table->integer('amount');
+            $table->string('price_string');
             $table->string('currency');
             $table->string('interval');
             $table->string('stripe_id');
             $table->boolean('active');
+            $table->string('title');
+            $table->string('description');
+            $table->string('img');
+            $table->string('size');
             $table->timestamps();
         });
     }

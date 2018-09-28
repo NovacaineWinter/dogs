@@ -15,6 +15,15 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
 library.add(faPaw)
 
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faTwitter)
+
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faFacebookSquare)
+
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faInstagram)
+
 
 
 

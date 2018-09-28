@@ -6,18 +6,18 @@
 			<div class="container">
 				<h1 class="title has-text-centered">Follow Us</h1>
 				<div class="columns socialicons">
-					
-					<a href="https://twitter.com/nottsboatco" class="column has-text-centered">
+
+					<a href="https://twitter.com/ToysTreatsBox" class="column has-text-centered">
 						<font-awesome-icon :icon="['fab', 'twitter']" />
 						<h6>Twitter</h6>
 					</a>
 
-					<a href="https://www.instagram.com/nottinghamboatco/" tag="div" class="column has-text-centered">
+					<a href="https://www.instagram.com/ToysAndTreatsBox/" tag="div" class="column has-text-centered">
 						<font-awesome-icon :icon="['fab', 'instagram']" />
 						<h6>Instagram</h6>
 					</a>
 
-					<a href="https://www.facebook.com/NottinghamBoatCompany/" tag="div" class="column has-text-centered">							
+					<a href="https://www.facebook.com/ToysAndTreatsBox/" tag="div" class="column has-text-centered">							
 						<font-awesome-icon :icon="['fab', 'facebook-square']" />
 						<h6>Facebook</h6>
 					</a>
@@ -37,24 +37,26 @@
 								<router-link tag="li" to="/" class="navbar-item" exact><span>Home</span></router-link>
 					            <router-link tag="li" to="/how-it-works" class="navbar-item" exact><span>How It Works</span></router-link>
 					            <router-link tag="li" to="/contact-us" class="navbar-item" exact><span>Contact Us</span></router-link> 
-					            <router-link tag="li" to="/sign-up" class="navbar-item" exact><span>Sign Up</span></router-link> 
+					            <router-link tag="li" to="/sign-up" class="navbar-item" exact><span>Subscribe</span></router-link> 
 			            	</ul>
 			            </div>
 						<div class="column">
-							<h2 class="subtitle">Other Section</h2>
+							<h2 class="subtitle">Boring Stuff</h2>
 							<ul>
-					            <router-link tag="li" to="/privacy" class="navbar-item" exact><span>Privacy Policy</span></router-link>
-					            <router-link tag="li" to="/data" class="navbar-item" exact><span>Data Retention Policy</span></router-link> 
-					            <router-link tag="li" to="/terms" class="navbar-item" exact><span>Terms and Conditions</span></router-link> 
+					            <router-link tag="li" to="/privacy-policy" class="navbar-item" exact><span>Privacy and Cookie Policy</span></router-link>
+					            <router-link tag="li" to="/data-retention" class="navbar-item" exact><span>Data Retention Policy</span></router-link> 
+					            <router-link tag="li" to="/terms-and-conditions" class="navbar-item" exact><span>Terms and Conditions</span></router-link> 
 			            	</ul>
 						</div>
+
 						<div class="column">
+							<!-- 
 							<h2 class="subtitle">About</h2>
 							<ul>
 								<router-link tag="li" to="/about-us" class="navbar-item" exact><span>About Us</span></router-link>
-					            <router-link tag="li" to="/chartiy" class="navbar-item" exact><span>Our Charitable giving</span></router-link>
-					            <router-link tag="li" to="/environment" class="navbar-item" exact><span>Our environmental impact</span></router-link>
-			            	</ul>
+				            	<router-link tag="li" to="/environment" class="navbar-item" exact><span>Our environmental impact</span></router-link>
+		            		</ul>
+							 -->
 						</div>
 					</div>
 					
@@ -78,6 +80,25 @@
       }
       .navbar-item:hover{
       	color:$link-active-light;
+      }
+
+
+
+		
+    .socialicons{
+		.column:hover{
+			background-color:$brand-primary;
+			color:#fff;
+			border-radius:20px;
+		}
+
+      	.column{      		
+      		color:$brand-primary;
+      	}
+      	font-size:5.5vw;
+      	h6{
+      		font-size:3vw;
+      	}
       }
     }  
 

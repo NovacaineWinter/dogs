@@ -13,38 +13,142 @@ class seedStripe extends Seeder
     {
     	\Stripe\Stripe::setApiKey(env('STRIPE_PRIVATE'));
 
-    	$stripeProduct = new \App\stripeProduct;
-    	$stripeProduct->name = "Toys and Treats Box | Monthly";
-    	$stripeProduct->type = "service";
+
+
+
+
+    	$stripeProductA = new \App\stripeProduct;
+    	$stripeProductA->name = "Toys and Treats | Waggy Tail Box | Monthly";
+    	$stripeProductA->type = "service";
 
 
         $product =\Stripe\Product::create(array(
-			"name" => $stripeProduct->name,
+			"name" => $stripeProductA->name,
 			"type" => "service",
 		));
 
-		$stripeProduct->stripe_id = $product->id;
-		$stripeProduct->active = true;
-		$stripeProduct->save();
+		$stripeProductA->stripe_id = $product->id;
+		$stripeProductA->active = true;
+		$stripeProductA->save();
 
-		$stripePlan = new \App\stripePlan;
+		$stripePlanA = new \App\stripePlan;
 
-		$stripePlan->nickname ="Standard plan - the first one to market";
-		$stripePlan->product_id =$stripeProduct->id;  //local id, not stripe
-		$stripePlan->amount =999;
-		$stripePlan->currency ="gbp";
-		$stripePlan->interval ="month";
-		$stripePlan->active =true;
+		$stripePlanA->nickname ="Waggy Tail Box plan";
+		$stripePlanA->product_id =$stripeProductA->id;  //local id, not stripe
+		$stripePlanA->amount =999;
+		$stripePlanA->currency ="gbp";
+		$stripePlanA->interval ="month";
+		$stripePlanA->active =true;
+		$stripePlanA->price_string ='£9.99 / Month';
+		$stripePlanA->size ="small";
+		$stripePlanA->title ='Waggy Tail Box';
+		$stripePlanA->description ='Perfect for your average dog. Contains one Toy and one Treat every month. Get those tails wagging!';
+		$stripePlanA->img ='/img/box.png';
+
 
 		$plan = \Stripe\Plan::create(array(
-			"nickname" 	=> $stripePlan->nickname,
-			"product" 	=> $stripeProduct->stripe_id,
-			"amount" 	=> $stripePlan->amount,
-			"currency" 	=> $stripePlan->currency,
-			"interval" 	=> $stripePlan->interval,
+			"nickname" 	=> $stripePlanA->nickname,
+			"product" 	=> $stripeProductA->stripe_id,
+			"amount" 	=> $stripePlanA->amount,
+			"currency" 	=> $stripePlanA->currency,
+			"interval" 	=> $stripePlanA->interval,
 		));
 
-		$stripePlan->stripe_id =$plan->id;
-		$stripePlan->save();
+		$stripePlanA->stripe_id =$plan->id;
+		$stripePlanA->save();
+
+
+
+
+
+
+    	$stripeProductB = new \App\stripeProduct;
+    	$stripeProductB->name = "Toys and Treats | Pampered Pooch Box | Monthly";
+    	$stripeProductB->type = "service";
+
+
+        $product =\Stripe\Product::create(array(
+			"name" => $stripeProductB->name,
+			"type" => "service",
+		));
+
+		$stripeProductB->stripe_id = $product->id;
+		$stripeProductB->active = true;
+		$stripeProductB->save();
+
+		$stripePlanB = new \App\stripePlan;
+
+		$stripePlanB->nickname ="Pampered Pooch Box plan";
+		$stripePlanB->product_id =$stripeProductB->id;  //local id, not stripe
+		$stripePlanB->amount =1999;
+		$stripePlanB->currency ="gbp";
+		$stripePlanB->interval ="month";
+		$stripePlanB->size ="medium";
+		$stripePlanB->price_string ='£19.99 / Month';
+		$stripePlanB->active =true;
+		$stripePlanB->title ='Pampered Pooch Box';
+		$stripePlanB->description ='For the dogs that want a small selection of toys and treats, 100% excitement every month.';
+		$stripePlanB->img ='/img/box.png';
+
+
+		$plan = \Stripe\Plan::create(array(
+			"nickname" 	=> $stripePlanB->nickname,
+			"product" 	=> $stripeProductB->stripe_id,
+			"amount" 	=> $stripePlanB->amount,
+			"currency" 	=> $stripePlanB->currency,
+			"interval" 	=> $stripePlanB->interval,
+		));
+
+		$stripePlanB->stripe_id =$plan->id;
+		$stripePlanB->save();
+
+
+
+
+
+    	$stripeProductC = new \App\stripeProduct;
+    	$stripeProductC->name = "Toys and Treats | Ultimate Box | Monthly";
+    	$stripeProductC->type = "service";
+
+
+        $product =\Stripe\Product::create(array(
+			"name" => $stripeProductC->name,
+			"type" => "service",
+		));
+
+		$stripeProductC->stripe_id = $product->id;
+		$stripeProductC->active = true;
+		$stripeProductC->save();
+
+		$stripePlanC = new \App\stripePlan;
+
+		$stripePlanC->nickname ="ultimate box plan";
+		$stripePlanC->product_id =$stripeProductC->id;  //local id, not stripe
+		$stripePlanC->amount =2999;
+		$stripePlanC->currency ="gbp";
+		$stripePlanC->interval ="month";
+		$stripePlanC->price_string ='£29.99 / Month';
+		$stripePlanC->size ="large";
+		$stripePlanC->active =true;
+
+		$stripePlanC->title ='Ultimate Box';
+		$stripePlanC->description ='Your dog will be spoilt for choice. More toys, more treats and nothing but the best.';
+		$stripePlanC->img ='/img/box.png';
+
+
+		$plan = \Stripe\Plan::create(array(
+			"nickname" 	=> $stripePlanC->nickname,
+			"product" 	=> $stripeProductC->stripe_id,
+			"amount" 	=> $stripePlanC->amount,
+			"currency" 	=> $stripePlanC->currency,
+			"interval" 	=> $stripePlanC->interval,
+		));
+
+		$stripePlanC->stripe_id =$plan->id;
+		$stripePlanC->save();
+
+
+
+
     }
 }
