@@ -8,7 +8,7 @@
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
                     <h3 class="title has-text-grey">Reset Password</h3>
-                    <p class="subtitle has-text-grey">Toys And Treats</p>
+                    <p class="subtitle has-text-grey">{{{env('APP_NAME')}}}</p>
                     <div class="box">
                         <form method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Reset Password') }}">
                             @csrf

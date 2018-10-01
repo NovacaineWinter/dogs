@@ -7,7 +7,7 @@
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
                     <h3 class="title has-text-grey">Login</h3>
-                    <p class="subtitle has-text-grey">Toys And Treats</p>
+                    <p class="subtitle has-text-grey">{{{env('APP_NAME')}}}</p>
                     <div class="box">                       
                         <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                             @csrf

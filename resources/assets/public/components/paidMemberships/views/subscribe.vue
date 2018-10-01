@@ -580,7 +580,7 @@
                     }
                     this.doTheChecks();  
 
-                }.bind(this,'this'),750); 
+                }.bind(this,'this'),1000); 
             },           
 
             manualAddressInput(){
@@ -663,7 +663,7 @@
                     lastName:this.lastName,
                     email:this.email,
                     password:this.password,
-                    planId:this.planSelected.id
+                    planSelected:this.planSelected.id
                 })      
                     .then(response => {this.redirectAndLogIn(response.data);})
         
@@ -863,7 +863,8 @@
     }
 
     #sign-up-view{   
-
+    
+        padding-bottom:50vh;
             
         .plan-options{
             .small{

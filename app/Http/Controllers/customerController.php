@@ -68,6 +68,21 @@ class customerController extends Controller
     	$plan = \App\stripePlan::where('active','=',true)->first();
 
 
+    	switch($user->dogSize){
+    		case 1:
+    			$dog_size_name = 'Small Dog';
+    			break;
+    		case 2:
+    			$dog_size_name = 'Medium Dog';
+    			break;
+    		case 3:
+    			$dog_size_name = 'Large Dog';
+    			break;
+    	}
+
+    	$plan_name = \App\stripePlan::find($user->plan_id)->title;
+
+
 		try
 		{
 			$subscription = \Stripe\Subscription::create(array(
@@ -89,9 +104,13 @@ class customerController extends Controller
 
 			$mailchimp_list_id = env('MAILCHIMP_LIST_ID');
 
-			$result = $MailChimp->post("lists/".$mailchimp_list_id."/members", [
-				'email_address' => $user->email,
-				'status'        => 'subscribed',
+			$result = $mailchimp->post("lists/".$mailchimp_list_id."/members", [
+				'email_address' => 	$user->email,
+				'first_name'	=> 	$user->firstName,
+				'last_name'		=>	$user->lastName,
+				'dog_size_name'	=>	$dog_size_name,
+				'plan_name'		=>	$plan_name,
+				'status'        => 	'subscribed',
 			]);
 
 			$response = array('status'=>'subscribed');

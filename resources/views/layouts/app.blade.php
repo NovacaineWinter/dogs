@@ -10,46 +10,14 @@
         <title>Toys and Treats | Log In</title>
 
         <!-- Styles -->
-        <link href="{{{url('/css/app.css')}}}" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" type="text/css">
      
     </head>
     <body>
 
-        <div id="app">
-            
-          <!--   <nav class="navbar is-fixed-top">
-              
-              <div class="container">
-                  <div class="navbar-start">
-                      <div class="navbar-item">
-                          <router-link to="/" tag="h1" class="title alwayshow">
-                              Toys And Treats                 
-                          </router-link>
-                      </div>              
-                  </div>
-              </div>
-          </nav> -->
-            
+        <div id="app">            
             @yield('content')
         </div>
 
     </body>
-
-</html>
-
-
-
-       
-
-
-
-
-        <main class="py-4">
-
-        
-
-        </main>
-    </div>
-</body>
 </html>

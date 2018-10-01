@@ -262,7 +262,7 @@
 									<router-link tag="div" to="/sign-up" class="button is-large is-primary ctabutton">Yes, of course! <span class="emojispan">&#9786;</span></router-link>
 								</div>
 								<div class="column">									
-									<div class="button is-large is-danger ctabutton">No, they don't! &#9785;</div>		
+									<router-link tag="div" to="/oh-ok" class="button is-large is-danger ctabutton">No, they don't! &#9785;</router-link>		
 								</div>
 							</div>						
 					
