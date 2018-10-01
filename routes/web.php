@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/api/create-new-user','customerController@signup');
 
-Route::get('/api/webhooks','stripeController@webhooks');
+Route::post('/api/webhooks','stripeController@webhooks');
 
 Route::post('/api/checkemail','customerController@checkEmail');
 
