@@ -32,4 +32,12 @@ class User extends Authenticatable
         return $this->hasMany('\App\userSubscription','user_id');
     }
 
+    public function stripeEvents(){
+        return $this->hasMany('\App\stripeEvent','user_id');
+    }
+
+    public function stripeRequests(){
+        return $this->hasMany('\App\stripeEvent','user_id');
+    }
+
 }
