@@ -8,7 +8,7 @@ class stripeController extends Controller
 {
 
     public function webhooks(Request $request){
-    	return $request->get('type');
+    	if( $request->get('type')=='account.updated'){return'yes';}else{return'no';};
     }
 
     public $status = 'init';
@@ -42,12 +42,12 @@ class stripeController extends Controller
 				)
 			));
 
-		   $this->status = json_encode(array('status'=>'subscribed'))
+		   $this->status = json_encode(array('status'=>'subscribed'));
     		
     	} catch (Exception $e) {
 
 		   $this->errorMessage = $e->getMessage();
-		   $this->status = json_encode(array('status'=>'error'))
+		   $this->status = json_encode(array('status'=>'error'));
 
 		}
 
