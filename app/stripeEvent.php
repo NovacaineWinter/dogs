@@ -11,9 +11,4 @@ class stripeEvent extends Model
         return $this->belongsTo('\App\User','user_id');
     }
 
-
-    public function request(){
-    	return $this->belongsTo('\App\stripeRequest','request_id');
-    }
-
 }

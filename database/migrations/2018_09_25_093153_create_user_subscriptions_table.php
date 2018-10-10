@@ -16,7 +16,7 @@ class CreateUserSubscriptionsTable extends Migration
         Schema::create('user_subscriptions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('subscription_id');
+            $table->string('stripe_id');
             $table->timestamps();
         });
     }

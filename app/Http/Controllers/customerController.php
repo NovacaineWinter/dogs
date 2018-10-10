@@ -37,14 +37,9 @@ class customerController extends Controller
     		'planSelected'	=>	'required',
     	]);
 		
-		\Stripe\Stripe::setApiKey(env('STRIPE_PRIVATE'));
 
-    	$stripeData = $request->get('stripeData');
-
-    	$customer = \Stripe\Customer::create(array(
-			"email" => $request->get('email'),
-			"source" => $stripeData['id'],
-		));
+		
+    	$plan = \App\stripePlan::find($request->get('planSelected'));
 
 
     	$user = new \App\User;
@@ -61,17 +56,16 @@ class customerController extends Controller
     	$user->city 		= $request->get('city');
     	$user->county 		= $request->get('county');
     	$user->postcode 	= $request->get('postcode');
-    	$user->stripe_id 	= $customer->id;
-    	$user->plan_id  	= $request->get('planSelected');
+    	$user->stripe_id 	= 'tba';
     	$user->save();
 
-    	$plan = \App\stripePlan::find($user->plan_id);
+    	$user->subscripeToMailchimpList($plan);
 
-    	$stripeRequest = new \App\stripeRequest;
+    	$stripe = new \App\Http\Controllers\stripeController;
 
-    	$status = $stripeRequest->createNewSubscription($user,$plan);
+    	$stripe->createNewSubscription($user,$plan,$request->get('stripeData'));    
 
-    	return $status;
+    	return $stripe->status;
     }
 
 }

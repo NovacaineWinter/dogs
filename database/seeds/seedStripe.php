@@ -80,11 +80,11 @@ class seedStripe extends Seeder
 
 		$stripePlanB->nickname ="Pampered Pooch Box plan";
 		$stripePlanB->product_id =$stripeProductB->id;  //local id, not stripe
-		$stripePlanB->amount =1999;
+		$stripePlanB->amount =1499;
 		$stripePlanB->currency ="gbp";
 		$stripePlanB->interval ="month";
 		$stripePlanB->size ="medium";
-		$stripePlanB->price_string ='£19.99 / Month';
+		$stripePlanB->price_string ='£14.99 / Month';
 		$stripePlanB->active =true;
 		$stripePlanB->title ='Pampered Pooch Box';
 		$stripePlanB->description ='For the dogs that want a small selection of toys and treats, 100% excitement every month.';
@@ -124,10 +124,10 @@ class seedStripe extends Seeder
 
 		$stripePlanC->nickname ="ultimate box plan";
 		$stripePlanC->product_id =$stripeProductC->id;  //local id, not stripe
-		$stripePlanC->amount =2999;
+		$stripePlanC->amount =1999;
 		$stripePlanC->currency ="gbp";
 		$stripePlanC->interval ="month";
-		$stripePlanC->price_string ='£29.99 / Month';
+		$stripePlanC->price_string ='£19.99 / Month';
 		$stripePlanC->size ="large";
 		$stripePlanC->active =true;
 

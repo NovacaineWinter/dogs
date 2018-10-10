@@ -36,8 +36,40 @@ class User extends Authenticatable
         return $this->hasMany('\App\stripeEvent','user_id');
     }
 
-    public function stripeRequests(){
-        return $this->hasMany('\App\stripeEvent','user_id');
-    }
 
+    public function subscripeToMailchimpList($plan){
+
+        switch($this->dogSize){
+            case 1:
+                $dog_size_name = 'Small Dog';
+                break;
+            case 2:
+                $dog_size_name = 'Medium Dog';
+                break;
+            case 3:
+                $dog_size_name = 'Large Dog';
+                break;
+        }
+
+        $mailchimp = new MailChimp(env('MAILCHIMP_API_KEY'));
+
+        $mailchimp_list_id = env('MAILCHIMP_LIST_ID');
+
+        $result = $mailchimp->post("lists/".$mailchimp_list_id."/members", [
+            'email_address' =>  $this->email,
+            'first_name'    =>  $this->firstName,
+            'last_name'     =>  $this->lastName,
+            'dog_size_name' =>  $dog_size_name,
+            'plan_name'     =>  $plan->title,
+            'status'        =>  'subscribed',
+        ]);
+
+
+        if($mailchimp->success()){
+            $this->subscribed_to_mailchimp=true;
+        }else{
+            $this->subscribed_to_mailchimp=false;
+        }
+        $this->save();
+    }
 }

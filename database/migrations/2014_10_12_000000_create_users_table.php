@@ -31,7 +31,6 @@ class CreateUsersTable extends Migration
             $table->string('stripe_id');
             $table->integer('account_status')->default(0);
             $table->boolean('subscribed_to_mailchimp')->default(0);
-            $table->integer('plan_id');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -45,5 +44,9 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+            
+            //take care of orphaned tables/ideas
+        Schema::dropIfExists('stripe_requests');
+        Schema::dropIfExists('stripe_subscriptions');
     }
 }
