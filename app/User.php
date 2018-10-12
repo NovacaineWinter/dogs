@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use \DrewM\MailChimp\MailChimp;
 
 class User extends Authenticatable
 {
@@ -133,7 +134,7 @@ class User extends Authenticatable
                 break;
         }
 
-        $mailchimp = new \MailChimp(env('MAILCHIMP_API_KEY'));
+        $mailchimp = new MailChimp(env('MAILCHIMP_API_KEY'));
 
         $mailchimp_list_id = env('MAILCHIMP_LIST_ID');
 

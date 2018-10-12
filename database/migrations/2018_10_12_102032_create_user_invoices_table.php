@@ -15,6 +15,12 @@ class CreateUserInvoicesTable extends Migration
     {
         Schema::create('user_invoices', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('stripe_id');
+            $table->boolean('paid')->default(false);
+            $table->integer('subscription_id');
+            $table->integer('amount_due');
+            $table->string('pdf_link');
+            $table->boolean('box_dispatched')->default(false);
             $table->timestamps();
         });
     }
