@@ -24,8 +24,8 @@ class stripeController extends Controller
 
     		case 'customer.created':
     			//data already returned in the create new subscription method below
-    			echo $request->get('data')->object->email;
-    			$user = \App\User::where('email','=',$request->get('data')->object->email)->first();
+    			return $request->get('data')->object->email;
+    			/*$user = \App\User::where('email','=',$request->get('data')->object->email)->first();
 
     			//log stripe event
     			$user->stripeEvents()->create(['title'=>'User Account Created','typeReference'=>'customer.created']);
@@ -34,7 +34,7 @@ class stripeController extends Controller
     			$user->updatePaymentSources($request->get('data')->object->sources->data);
     			$user->setDefaultCard($request->get('data')->object->default_source);
 
-    			return 'customer created ok';
+    			return 'customer created ok';*/
     			break;
 
 
