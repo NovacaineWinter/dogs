@@ -226,7 +226,7 @@ class stripeController extends Controller
 
 	    	//create the customer in stripe from the token_id
 	    	$customer = \Stripe\Customer::create(array(
-				"email" => $request->get('email'),
+				"email" => $user->email,
 				"source" => $stripeData['id'],
 			));
 	    	$user->stripe_id 	= $customer->id;
