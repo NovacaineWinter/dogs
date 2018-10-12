@@ -69,12 +69,12 @@ class User extends Authenticatable
 
     public function updatePaymentSources($sources){
         foreach($sources as $source){
-            if($this->paymentMethods()->where('stripe_id','=',$source->id)->count()==0){
+            if($this->paymentMethods()->where('stripe_id','=',$source['id'])->count()==0){
                 $this->paymentMethods()->create(array(
-                    'stripe_id' =>$source->id,
-                    'lastFour'  =>$source->last4,
-                    'exp_month' =>$source->exp_month,
-                    'exp_year'  =>$source->exp_year
+                    'stripe_id' =>$source['id'],
+                    'lastFour'  =>$source['last4'],
+                    'exp_month' =>$source['exp_month'],
+                    'exp_year'  =>$source['exp_year']
                 ));
             }
         }
