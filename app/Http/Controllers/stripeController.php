@@ -107,7 +107,7 @@ class stripeController extends Controller
     				'title'=>'Subscribed To Plan',
     				'typeReference'=>'customer.subscription.created',
     			]);
-    			$sub->user()->activate();
+    			$sub->user()->first()->activate();
     			return 'customer subscription created ok';
     			break;
     			
@@ -128,7 +128,7 @@ class stripeController extends Controller
     				'title'=>'Subscription Cancelled',
     				'typeReference'=>'customer.subscription.deleted',
     			]);
-    			$sub->user()->checkForActiveSubscriptions();
+    			$sub->user()->first()->checkForActiveSubscriptions();
 
     			return 'Subscription deleted';
     			break;
