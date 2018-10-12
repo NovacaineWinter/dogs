@@ -133,7 +133,7 @@ class User extends Authenticatable
                 break;
         }
 
-        $mailchimp = new MailChimp(env('MAILCHIMP_API_KEY'));
+        $mailchimp = new \MailChimp(env('MAILCHIMP_API_KEY'));
 
         $mailchimp_list_id = env('MAILCHIMP_LIST_ID');
 
