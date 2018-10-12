@@ -69,6 +69,7 @@ class stripeController extends Controller
     				'title'=>'Warning -  Payment Method Expiring soon',
     				'typeReference'=>'customer.source.expiring',
     			]);
+    			return 'warned user';
     			break;
 
     		case 'customer.source.deleted':    	
@@ -78,6 +79,7 @@ class stripeController extends Controller
     				'title'=>'Deleted Payment Method',
     				'typeReference'=>'customer.source.deleted',
     			]);
+    			return 'source Deleted Ok';
     			break;
 
 
