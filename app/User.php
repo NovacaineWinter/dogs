@@ -69,8 +69,8 @@ class User extends Authenticatable
 
     public function updatePaymentSources($sources){
         foreach($sources as $source){
-            if($this->paymentMethods->where('stripe_id','=',$source->id)->count()==0){
-                $this->paymentMethods->create(array(
+            if($this->paymentMethods()->where('stripe_id','=',$source->id)->count()==0){
+                $this->paymentMethods()->create(array(
                     'stripe_id' =>$source->id,
                     'lastFour'  =>$source->last4,
                     'exp_month' =>$source->exp_month,
@@ -99,7 +99,7 @@ class User extends Authenticatable
 
     public function checkForActiveSubscriptions(){
         $active = false;
-        foreach($this->subscriptions->all() as $sub){
+        foreach($this->subscriptions() as $sub){
             if($sub->is_active){
                 $active = true;
             }
@@ -110,7 +110,7 @@ class User extends Authenticatable
     }
 
     public function setDefaultCard($card_id){
-        foreach($this->paymentMethods->all() as $card){
+        foreach($this->paymentMethods() as $card){
             if($card->stripe_id == $card_id){
                 $card->default = true;                
             }else{
