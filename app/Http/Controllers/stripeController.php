@@ -75,7 +75,7 @@ class stripeController extends Controller
     		case 'customer.source.deleted':    	
     			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id']);
     			$source->delete();
-    			$source->user()->stripeEvents()->create([
+    			$source->user()->first()->stripeEvents()->create([
     				'title'=>'Deleted Payment Method',
     				'typeReference'=>'customer.source.deleted',
     			]);
