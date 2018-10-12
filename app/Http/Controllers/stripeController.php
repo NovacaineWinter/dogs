@@ -104,6 +104,7 @@ class stripeController extends Controller
     		case 'customer.subscription.created':
     			//data already returned in the create new subscription method below
     			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')->object->id)->first();	
+    			$sub->is_active = true;
     			$sub->user->stripeEvents->create([
     				'title'=>'Subscribed To Plan',
     				'typeReference'=>'customer.subscription.created',
