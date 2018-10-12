@@ -17,6 +17,7 @@ class CreateUserSubscriptionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('stripe_id');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }
