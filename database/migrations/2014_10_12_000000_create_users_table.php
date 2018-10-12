@@ -44,9 +44,5 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-            
-            //take care of orphaned tables/ideas
-        Schema::dropIfExists('stripe_requests');
-        Schema::dropIfExists('stripe_subscriptions');
     }
 }
