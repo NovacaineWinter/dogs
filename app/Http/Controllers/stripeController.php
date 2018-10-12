@@ -107,7 +107,7 @@ class stripeController extends Controller
     				'title'=>'Subscribed To Plan',
     				'typeReference'=>'customer.subscription.created',
     			]);
-    			$sub->user->activate();
+    			$sub->user()->activate();
     			return 'customer subscription created ok';
     			break;
     			
