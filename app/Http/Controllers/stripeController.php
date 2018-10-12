@@ -154,7 +154,7 @@ class stripeController extends Controller
     		case 'invoice.created':
     			//stripe runs this webhook approx 1hr before attempting to pay the invoice - can create invoice before paying it
     				//very important we respond in the affirmative to this webhook or stripe will not process the payment
-    			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data'['object']['subscription'])->first();
+    			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')['object']['subscription'])->first();
     			$sub->invoices()->create(array(
     				'stripe_id'=>$$request->get('data')['object']['id'],
     				'paid'=>false,
