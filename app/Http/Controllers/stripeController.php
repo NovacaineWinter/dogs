@@ -24,6 +24,7 @@ class stripeController extends Controller
 
     		case 'customer.created':
     			//data already returned in the create new subscription method below
+    			echo $request->get('data')->object->email;
     			$user = \App\User::where('email','=',$request->get('data')->object->email)->first();
 
     			//log stripe event
