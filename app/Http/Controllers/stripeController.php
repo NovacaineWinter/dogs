@@ -63,7 +63,7 @@ class stripeController extends Controller
 
 
     		case 'customer.source.expiring':    	
-    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id']);
+    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id'])->first();
     			$source->user()->notifyExpiringPaymentMethod();
     			$source->user()->stripeEvents()->create([
     				'title'=>'Warning -  Payment Method Expiring soon',
@@ -73,7 +73,7 @@ class stripeController extends Controller
     			break;
 
     		case 'customer.source.deleted':    	
-    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id']);
+    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id'])->first();
     			$source->delete();
     			$source->user()->first()->stripeEvents()->create([
     				'title'=>'Deleted Payment Method',
