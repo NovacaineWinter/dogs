@@ -44,7 +44,7 @@ class stripeController extends Controller
     				'title'=>'Account Details Updated',
     				'typeReference'=>'customer.updated',
     			]);
-    			$user->updatePaymentSources($request->get('data')->['object']->['sources']->['data']);
+    			$user->updatePaymentSources($request->get('data')['object']['sources']['data']);
     			$user->setDefaultCard($request->get('data')['object']['default_source']);
     			if ($request->get('data')['object']['delinquent']){
     				$user->isDelinquent();
@@ -63,7 +63,7 @@ class stripeController extends Controller
 
 
     		case 'customer.source.expiring':    	
-    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')->object->id);
+    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id']);
     			$source->user()->notifyExpiringPaymentMethod();
     			$source->user()->stripeEvents()->create([
     				'title'=>'Warning -  Payment Method Expiring soon',
@@ -72,7 +72,7 @@ class stripeController extends Controller
     			break;
 
     		case 'customer.source.deleted':    	
-    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')->object->object->id);
+    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id']);
     			$source->delete();
     			$source->user()->stripeEvents()->create([
     				'title'=>'Deleted Payment Method',
@@ -84,7 +84,7 @@ class stripeController extends Controller
     		case 'customer.source.created':    	
     			/* So far this webhook doesnt seem to want to give me info regarding who owns the source.....irritating */
 
-/*    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')->object->object->id);
+/*    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id']);
     			$source->delete();
     			$source->user->stripeEvents()->create([
     				'title'=>'Deleted Payment Method',
@@ -101,7 +101,7 @@ class stripeController extends Controller
 
     		case 'customer.subscription.created':
     			//data already returned in the create new subscription method below
-    			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')->object->id)->first();	
+    			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')['object']['id'])->first();	
     			$sub->is_active = true;
     			$sub->user()->stripeEvents()->create([
     				'title'=>'Subscribed To Plan',
@@ -112,16 +112,16 @@ class stripeController extends Controller
     			break;
     			
     		case 'customer.subscription.updated':
-				$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')->object->id)->first();	
+				$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')['object']['id'])->first();	
     			$sub->user()->stripeEvents()->create([
-    				'title'=>'Subscription Updated -'.$request->get('data')->object->object->plan->nickname,
+    				'title'=>'Subscription Updated -'.$request->get('data')['object']['plan']['nickname'],
     				'typeReference'=>'customer.subscription.updated',
     			]);
     			return 'Subscription Updated';
     			break;
 
     		case 'customer.subscription.deleted':
-    			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')->object->id)->first();	
+    			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')['object']['id'])->first();	
     			$sub->is_active = false;
     			$sub->save();
     			$sub->user()->stripeEvents()->create([
@@ -141,7 +141,7 @@ class stripeController extends Controller
 
 
     		case 'invoice.upcoming':
-    			$user = \App\User::where('stripe_id','=',$request->get('data')->object->object->customer)->first();
+    			$user = \App\User::where('stripe_id','=',$request->get('data')['object']['customer'])->first();
     			$user->alertUpcomingPayment(); 
     			$user->stripeEvents()->create([
     				'title'=>'Notification of upcoming payment',
@@ -154,12 +154,12 @@ class stripeController extends Controller
     		case 'invoice.created':
     			//stripe runs this webhook approx 1hr before attempting to pay the invoice - can create invoice before paying it
     				//very important we respond in the affirmative to this webhook or stripe will not process the payment
-    			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')->object->object->subscription)->first();
+    			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data'['object']['subscription'])->first();
     			$sub->invoices()->create(array(
-    				'stripe_id'=>$$request->get('data')->object->id,
+    				'stripe_id'=>$$request->get('data')['object']['id'],
     				'paid'=>false,
-    				'amount_due'=>$request->get('data')->object->object->amount_due,
-    				'pdf_link'=>$request->get('data')->object->object->invoice_pdf
+    				'amount_due'=>$request->get('data')['object']['amount_due'],
+    				'pdf_link'=>$request->get('data')['object']['invoice_pdf']
     			));
 
     			$sub->user()->stripeEvents()->create([
@@ -172,10 +172,10 @@ class stripeController extends Controller
 
 
     		case 'invoice.payment_succeeded':
-    			$invoice = \App\userInvoices::where('stripe_id','=',$request->get('data')->object->id)->first();
-    			$invoice->paid = $request->get('data')->object->object->paid;
-    			$invoice->amount_due = $request->get('data')->object->object->amount_due;
-    			$invoice->pdf_link = $request->get('data')->object->object->invoice_pdf;
+    			$invoice = \App\userInvoices::where('stripe_id','=',$request->get('data')['object']['id'])->first();
+    			$invoice->paid = $request->get('data')['object']['paid'];
+    			$invoice->amount_due = $request->get('data')['object']['amount_due'];
+    			$invoice->pdf_link = $request->get('data')['object']['invoice_pdf'];
     			$invoice->save();
 
     			$invoice->subscription()->user()->stripeEvents()->create([
@@ -187,10 +187,10 @@ class stripeController extends Controller
 
 
     		case 'invoice.payment_failed':
-    			$invoice = \App\userInvoices::where('stripe_id','=',$request->get('data')->object->id)->first();
-    			$invoice->paid = $request->get('data')->object->object->paid;
-    			$invoice->amount_due = $request->get('data')->object->object->amount_due;
-    			$invoice->pdf_link = $request->get('data')->object->object->invoice_pdf;
+    			$invoice = \App\userInvoices::where('stripe_id','=',$request->get('data')['object']['id'])->first();
+    			$invoice->paid = $request->get('data')['object']['paid'];
+    			$invoice->amount_due = $request->get('data')['object']['amount_due'];
+    			$invoice->pdf_link = $request->get('data')['object']['invoice_pdf'];
     			$invoice->save();
 
     			$invoice->subscription()->user()->stripeEvents()->create([
