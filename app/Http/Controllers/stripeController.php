@@ -24,29 +24,29 @@ class stripeController extends Controller
 
     		case 'customer.created':
     			//data already returned in the create new subscription method below
-    			return $request->get('data')['object']['email'];
-    			/*$user = \App\User::where('email','=',$request->get('data')->object->email)->first();
+
+    			$user = \App\User::where('email','=',$request->get('data')['object']['email'])->first();
 
     			//log stripe event
     			$user->stripeEvents()->create(['title'=>'User Account Created','typeReference'=>'customer.created']);
 
     			//update user info from data
-    			$user->updatePaymentSources($request->get('data')->object->sources->data);
-    			$user->setDefaultCard($request->get('data')->object->default_source);
+    			$user->updatePaymentSources($request->get('data')['object']['sources']['data']);
+    			$user->setDefaultCard($request->get('data')['object']['default_source']);
 
-    			return 'customer created ok';*/
+    			return 'customer created ok';
     			break;
 
 
     		case 'customer.updated':
-    			$user = \App\User::where('email','=',$request->get('data')->object->email)->first();
+    			$user = \App\User::where('email','=',$request->get('data')['object']['email'])->first();
     			$user->stripeEvents()->create([
     				'title'=>'Account Details Updated',
     				'typeReference'=>'customer.updated',
     			]);
-    			$user->updatePaymentSources($request->get('data')->object->sources->data);
-    			$user->setDefaultCard($request->get('data')->object->default_source);
-    			if ($request->get('data')->object->delinquent){
+    			$user->updatePaymentSources($request->get('data')->['object']->['sources']->['data']);
+    			$user->setDefaultCard($request->get('data')['object']['default_source']);
+    			if ($request->get('data')['object']['delinquent']){
     				$user->isDelinquent();
     			}else{
     				$user->activate();
