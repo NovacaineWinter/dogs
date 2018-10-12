@@ -110,7 +110,7 @@ class User extends Authenticatable
     }
 
     public function setDefaultCard($card_id){
-        foreach($this->paymentMethods() as $card){
+        foreach($this->paymentMethods()->get() as $card){
             if($card->stripe_id == $card_id){
                 $card->default = true;                
             }else{
