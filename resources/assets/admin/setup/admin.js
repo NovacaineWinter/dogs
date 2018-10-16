@@ -9,9 +9,21 @@ import router from './router';
 */ 
 const app = new Vue({
     el: '#app',
-    data: {    	
+    data: {  
+    	user:{
+            active_subscriptions:{},
+            active_notifications:{},
+            pending_subscriptions:{}
+        }  	
     },
     router: router,
+    mounted: function()
+    {
+		axios.get('/api/get-logged-in-user')      
+			.then(response => {this.user = response.data;})
+
+			.catch(error => {});
+    }
 
 });
 

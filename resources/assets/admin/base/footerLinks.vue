@@ -1,4 +1,4 @@
 <template>
-	<p>Footer</p>
+	<p>&nbsp;</p>
 
 </template>

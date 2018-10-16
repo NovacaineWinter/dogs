@@ -16,4 +16,8 @@ class userSubscription extends Model
     public function invoices(){
     	return $this->hasMany('\App\userInvoice','subscription_id');
     }
+
+    public function plan(){
+    	return $this->belongsTo('\App\stripePlan','plan_id');
+    }
 }

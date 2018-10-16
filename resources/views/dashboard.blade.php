@@ -12,7 +12,7 @@
 
         <link href="{{{url('/css/admin.css')}}}" rel="stylesheet" type="text/css">
         
-        <title>Dashboard | Basic Framwork</title>     
+        <title>Toys and Treats | Dashboard </title>     
 
     </head>
 

@@ -11606,3 +11606,9 @@ body {
   cursor: pointer;
 }
 
+.modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+

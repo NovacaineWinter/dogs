@@ -20,8 +20,6 @@ class stripeController extends Controller
     	switch($request->get('type')){
     		
 
-
-
     		case 'customer.created':
     			//data already returned in the create new subscription method below
 
@@ -58,17 +56,13 @@ class stripeController extends Controller
 
 
 
-
-
-
-
     		case 'customer.source.expiring':    	
     			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id'])->first();
-    			$source->user()->notifyExpiringPaymentMethod();
-    			$source->user()->stripeEvents()->create([
-    				'title'=>'Warning -  Payment Method Expiring soon',
-    				'typeReference'=>'customer.source.expiring',
-    			]);
+                $stripeEvent = $source->user()->first()->stripeEvents()->create([
+                    'title'=>'Warning -  Payment Method Expiring soon',
+                    'typeReference'=>'customer.source.expiring',
+                ]);
+    			$source->user()->first()->notifyExpiringPaymentMethod($stripeEvent);
     			return 'warned user';
     			break;
 
@@ -104,7 +98,8 @@ class stripeController extends Controller
     		case 'customer.subscription.created':
     			//data already returned in the create new subscription method below
     			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')['object']['id'])->first();	
-    			$sub->is_active = true;
+                $sub->is_active = true;
+    			$sub->has_been_activated = true;
     			$sub->user()->first()->stripeEvents()->create([
     				'title'=>'Subscribed To Plan',
     				'typeReference'=>'customer.subscription.created',
@@ -180,7 +175,7 @@ class stripeController extends Controller
     			$invoice->pdf_link = $request->get('data')['object']['invoice_pdf'];
     			$invoice->save();
 
-    			$invoice->subscription()->user()->stripeEvents()->create([
+    			$invoice->subscription()->first()->user()->first()->stripeEvents()->create([
     				'title'=>'Invoice paid Successfully',
     				'typeReference'=>'invoice.payment_succeeded',
     			]);
@@ -195,12 +190,12 @@ class stripeController extends Controller
     			$invoice->pdf_link = $request->get('data')['object']['invoice_pdf'];
     			$invoice->save();
 
-    			$invoice->subscription()->first()->user()->first()->stripeEvents()->create([
+    			$stripeEvent = $invoice->subscription()->first()->user()->first()->stripeEvents()->create([
     				'title'=>'Subscription Payment Failed',
     				'typeReference'=>'invoice.payment_failed',
     			]);
 
-    			$invoice->subscription()->first()->user()->first()->alertPaymentFailed();
+    			$invoice->subscription()->first()->user()->first()->alertPaymentFailed($stripeEvent);
     			break;
           
 
@@ -219,7 +214,7 @@ class stripeController extends Controller
 
 
 
-    public function createNewSubscription($user,$plan,$stripeData){
+    public function createNewSubscription($user,$plan,$dog,$stripeData){
 
     	\Stripe\Stripe::setApiKey(env('STRIPE_PRIVATE'));
 
@@ -258,6 +253,9 @@ class stripeController extends Controller
 		$sub 			= new \App\userSubscription;
 		$sub->stripe_id = $subscription->id;
 		$sub->user_id 	= $user->id;
+		$sub->plan_id	= $plan->id;
+        $sub->dog_name  = $dog['name'];
+        $sub->dog_size  = $dog['size'];
 		$sub->save();
 
     }

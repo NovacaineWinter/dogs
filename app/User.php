@@ -29,6 +29,14 @@ class User extends Authenticatable
     ];
 
 
+    public function pendingSubscriptions(){
+        return $this->subscriptions()->where('has_been_activated','=',0);
+    }
+
+    public function notifications(){
+        return $this->hasMany('\App\userNotification','user_id');
+    }
+
     public function subscriptions(){
         return $this->hasMany('\App\userSubscription','user_id');
     }
@@ -41,7 +49,17 @@ class User extends Authenticatable
         return $this->hasMany('\App\userPaymentSource','user_id');
     }
 
+    public function activeSubscriptions(){
+        return $this->subscriptions()->where('is_active','=',1);
+    }
 
+    public function activeNotifications(){
+        return $this->notifications()->where('is_unread','=',1);
+    }
+
+    public function cancellationReasons(){
+        return $this->hasMany('\App\cancellationReason','user_id');
+    }
 
 /*  
     Account Status stuff ==============================================================
@@ -81,19 +99,26 @@ class User extends Authenticatable
     }
 
 
+    public function notifyExpiringPaymentMethod($stripeEvent){
+        $this->notifications()->create(array(
+            'stripe_id'=>$stripeEvent->id,
+            'title' =>'Payment Method Expiring Soon'
+        ));
 
-
-    public function notifyExpiringPaymentMethod(){
-
+        //send email
     }
-
 
     public function alertUpcomingPayment(){
 
     }
     
-    public function alertPaymentFailed(){
+    public function alertPaymentFailed($stripeEvent){
+        $this->notifications()->create(array(
+            'stripe_id'=>$stripeEvent->id,
+            'title' =>'Payment Failed'
+        ));
 
+        //send email
     }
 
 
@@ -120,9 +145,9 @@ class User extends Authenticatable
         }
     }
 
-    public function subscripeToMailchimpList($plan){
+    public function subscripeToMailchimpList($plan,$dog){
 
-        switch($this->dogSize){
+        switch($dog['size']){
             case 1:
                 $dog_size_name = 'Small Dog';
                 break;

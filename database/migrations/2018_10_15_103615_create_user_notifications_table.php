@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserSubscriptionsTable extends Migration
+class CreateUserNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateUserSubscriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_subscriptions', function (Blueprint $table) {
+        Schema::create('user_notifications', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('plan_id');
-            $table->string('stripe_id');
-            $table->boolean('has_been_activated')->default(false);
-            $table->boolean('is_active')->default(false);
-            $table->string('dog_name');
-            $table->integer('dog_size');
+            $table->integer('stripe_id')->nullable();
+            $table->string('title');
+            $table->boolean('is_unread')->default(true);
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateUserSubscriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_subscriptions');
+        Schema::dropIfExists('user_notifications');
     }
 }

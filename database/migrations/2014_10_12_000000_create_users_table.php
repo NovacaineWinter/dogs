@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('firstName');
             $table->string('lastName');
-            $table->string('dogName');
-            $table->integer('dogSize');
             $table->string('lineOne');
             $table->string('lineTwo')->nullable();
             $table->string('lineThree')->nullable();
