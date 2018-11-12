@@ -14,7 +14,7 @@
 
                         <div class="tile is-parent is-6">
                             <div class="tile is-child has-text-centered">
-                                <h2>Hi There !</h2>                            
+                                <h2>Say Hello</h2>                            
                             </div>
                         </div>   
                         <div class="tile is-parent is-6"></div>                   

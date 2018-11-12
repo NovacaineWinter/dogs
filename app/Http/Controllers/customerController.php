@@ -21,10 +21,37 @@ class customerController extends Controller
     }
 
 
-    public function loggedInDetails(){
+    public function logout(){
         if(\Auth::check()){
-            $u = \App\User::find(\Auth::user()->id);
-            return $u::with(['pendingSubscriptions','activeSubscriptions.plan','activeNotifications'])->first();
+            \Auth::logout();
+            return 'ok';
+        }else{
+            return 'already logged out';
+        }
+    }
+
+    public function loggedInDetails(Request $request){
+        if(\Auth::check()){
+
+            $u = \App\User::find($request->user()->id);
+
+            return $u::with([
+                'pendingSubscriptions',
+                'activeSubscriptions.planPublic',
+                'activeNotifications',
+                'myPaymentMethods',
+                'myInvoices',
+                'myEvents',
+                'myPrimaryPaymentMethod'
+
+            ])->exclude([
+                'subscribed_to_mailchimp',
+                'account_status',
+                'stripe_id',
+                'created_at',
+                'updated_at'
+
+            ])->where('id','=',$request->user()->id)->first();
         }
     }
 
@@ -37,6 +64,49 @@ class customerController extends Controller
 */
 
 
+
+    public function makeCardPrimary(Request $request){
+
+        $this->validate(request(),[
+            'userId'    =>  'required',
+            'cardId'    =>  'required'  
+        ]);
+
+        if (\Auth::check()){
+            // The user is logged in...
+            if(\Auth::user()->id == $request->get('userId')){
+                foreach(\App\User::find(1)->paymentMethods()->get() as $card){
+
+                    if($card->id == $request->get('cardId')){                    
+                        $card->default=true;
+                        $card->save();
+                    }else{
+                        $card->default=false;
+                        $card->save();
+                    }
+                }
+                return 'ok';
+            }else{
+                abort(500);
+                //something nefarious going on
+            }
+        }
+    }
+
+    public function deleteCard(Request $request){
+         $this->validate(request(),[
+            'userId'    =>  'required',
+            'cardId'    =>  'required'  
+        ]);
+        if (\Auth::check()){
+            // The user is logged in...
+            if(\Auth::user()->id == $request->get('userId')){
+                $card = \App\userPaymentSource::find($request->get('cardId'));
+                $card->delete();
+                return 'ok';
+            }
+        }
+    }
 
     public function updateDogDetails(Request $request){
 
@@ -59,9 +129,47 @@ class customerController extends Controller
             'planId'    =>  'required'            
         ]);
 
-        if (Auth::check()){
+        if (\Auth::check()){
             // The user is logged in...
             if(\Auth::user()->id == $request->get('userId')){
+
+                $user = \App\User::find($request->get('userId'));
+
+                $plan = \App\stripePlan::find($request->get('planId'));
+
+                \Stripe\Stripe::setApiKey(env('STRIPE_PRIVATE'));
+
+                try {
+
+                  
+                    //add the newly created customer to a plan to create a subscription
+                    $subscription = \Stripe\Subscription::create(array(
+                        "customer" => $user->stripe_id,
+                        "items" => array(
+                            array(
+                            "plan" => $plan->stripe_id,
+                            "quantity" => 1,
+                            ),
+                        )
+                    ));
+
+                   $this->status = json_encode(array('status'=>'subscribed'));
+                    
+                } catch (Exception $e) {
+
+                   $this->errorMessage = $e->getMessage();
+                   $this->status = json_encode(array('status'=>'error'));
+
+                }
+
+                //create the subscription within our app
+                $sub            = new \App\userSubscription;
+                $sub->stripe_id = $subscription->id;
+                $sub->user_id   = $user->id;
+                $sub->plan_id   = $plan->id;
+                $sub->dog_name  = $request->get('dogName');
+                $sub->dog_size  = $request->get('dogSize');
+                $sub->save();
 
 
             }else{
@@ -100,6 +208,35 @@ class customerController extends Controller
     }
 
     
+
+    public function updateUser(Request $request){
+        $this->validate(request(),[
+            'userId'=>  'required',  
+            'firstName' =>  'required',           
+            'lastName' =>  'required',           
+            'lineOne' =>  'required',           
+            'lineTwo' =>  'required',           
+            'lineThree' =>  'required',           
+            'city' =>  'required',           
+            'county' =>  'required',           
+            'postcode' =>  'required',           
+        ]);         
+
+        $user = \App\User::find($request->get('userId'));
+        $user->firstName = $request->get('firstName');
+        $user->lastName = $request->get('lastName');
+        $user->lineOne = $request->get('lineOne');
+        $user->lineTwo = $request->get('lineTwo');
+        $user->lineThree = $request->get('lineThree');
+        $user->city = $request->get('city');
+        $user->county = $request->get('county');
+        $user->postcode = $request->get('postcode');
+        $user->name = $request->get('firstName').' '.$request->get('lastName');
+        $user->save();
+        
+    }
+
+
 
 /*
     ===============================================================================

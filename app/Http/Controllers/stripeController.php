@@ -14,6 +14,9 @@ class stripeController extends Controller
     public $errorMessage = '';
 
 
+    public function publicKeyAPI(){
+        return env('STRIPE_PUBLIC');
+    }
 
 
     public function webhooks(Request $request){
@@ -79,13 +82,25 @@ class stripeController extends Controller
 
     		case 'customer.source.created':    	
     			/* So far this webhook doesnt seem to want to give me info regarding who owns the source.....irritating */
+                /*Had a guess at coding this - i think the example shows the webhook for when a user has a 
+                bank account set, not a card, so the example data is slightly different. hoping this just works off the bat.*/
 
-/*    			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id']);
-    			$source->delete();
-    			$source->user->stripeEvents()->create([
-    				'title'=>'Deleted Payment Method',
-    				'typeReference'=>'customer.source.deleted',
-    			]);*/
+    			$source = new \App\userPaymentSource;
+
+                $user = \App\User::where('stripe_id','=',$request->get('data')['object']['customer'])->first();
+
+                $source->user_id = $user->id;
+                $source->stripe_id = $request->get('data')['object']['id'];
+                $source->brand = $request->get('data')['object']['brand'];
+                $source->lastFour = $request->get('data')['object']['last4'];
+                $source->exp_month = $request->get('data')['object']['exp_month'];
+                $source->exp_year = $request->get('data')['object']['exp_year'];
+    			$source->save();
+
+    			$source->user()->stripeEvents()->create([
+    				'title'=>'Added New Payment Card',
+    				'typeReference'=>'customer.source.created',
+    			]);
     			break;
 
 
@@ -226,6 +241,11 @@ class stripeController extends Controller
 				"source" => $stripeData['id'],
 			));
 	    	$user->stripe_id 	= $customer->id;
+
+                //experimental
+            $user->updatePaymentSources($customer->sources->data);
+            $user->setDefaultCard($customer->default_source);
+                //end experimental
 	    	$user->save();
 
 

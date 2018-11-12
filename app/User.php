@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use \DrewM\MailChimp\MailChimp;
+use App\Traits\Excludable;
 
 class User extends Authenticatable
 {
+    use Excludable;
     use Notifiable;
 
     /**
@@ -28,10 +30,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
-    public function pendingSubscriptions(){
-        return $this->subscriptions()->where('has_been_activated','=',0);
-    }
+    //basic relations - used programatically 
 
     public function notifications(){
         return $this->hasMany('\App\userNotification','user_id');
@@ -49,16 +48,44 @@ class User extends Authenticatable
         return $this->hasMany('\App\userPaymentSource','user_id');
     }
 
+
+/* for front end users */
+
+    public function pendingSubscriptions(){
+        return $this->subscriptions()->where('has_been_activated','=',0)->exclude(['stripe_id','has_been_activated','is_active','created_at','updated_at']);
+    }
+
+    public function myEvents(){
+        return $this->stripeEvents()->exclude('typeReference');
+    }
+
+    public function myPaymentMethods(){
+        return $this->paymentMethods()->exclude(['stripe_id']);
+    }
+
+    public function myPrimaryPaymentMethod(){
+        return $this->hasMany('\App\userPaymentSource','user_id')->where('default','=',1)->exclude(['stripe_id']);
+    }
+
     public function activeSubscriptions(){
-        return $this->subscriptions()->where('is_active','=',1);
+        return $this->subscriptions()->where('is_active','=',1)->exclude(['stripe_id','has_been_activated','is_active','created_at','updated_at']);
     }
 
     public function activeNotifications(){
-        return $this->notifications()->where('is_unread','=',1);
+        return $this->notifications()->where('is_unread','=',1)->exclude(['stripe_id','created_at','updated_at']);
     }
 
     public function cancellationReasons(){
         return $this->hasMany('\App\cancellationReason','user_id');
+    }
+
+    public function invoices(){
+        return $this->hasManyThrough('\App\userInvoice','\App\userSubscription','user_id','subscription_id');
+    }
+
+    public function myInvoices(){
+        return $this->invoices();
+        //return $this->invoices()->exclude(['stripe_id']);
     }
 
 /*  
@@ -92,7 +119,8 @@ class User extends Authenticatable
                     'stripe_id' =>$source['id'],
                     'lastFour'  =>$source['last4'],
                     'exp_month' =>$source['exp_month'],
-                    'exp_year'  =>$source['exp_year']
+                    'exp_year'  =>$source['exp_year'],
+                    'brand'     =>$source['brand']
                 ));
             }
         }

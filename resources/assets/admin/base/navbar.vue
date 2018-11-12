@@ -40,7 +40,7 @@
 		        			<span>{{ item.text }}</span>
 		        	</router-link>	
 
-		        	<a href="/login" class="navbar-item"><span>Login</span></a>
+		        	<span @click="logMeOut" class="navbar-item">Log Out</span>
 
 		        </div>
 		    </div>  
@@ -80,7 +80,21 @@
 			    else {
 			        return (a['position'] < b['position']) ? -1 : 1;
 			    }
-            }
+            },
+
+            logMeOut(){
+            	axios.post('/api/logout',{userId:this.$root.user.id})      
+            		.then(response => {
+            			window.location =document.head.querySelector("[property~=siteurl][content]").content;
+            		})            	
+            		.catch(error => {window.location.reload()});   
+            	
+            },
+        },
+        computed:{
+        	homeUrl(){
+        		return ;
+        	}
         },
 
         data: function() {

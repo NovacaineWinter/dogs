@@ -17,6 +17,7 @@ class CreateUserPaymentSourcesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('stripe_id');
+            $table->string('brand');
             $table->string('lastFour');
             $table->string('exp_month');
             $table->string('exp_year');

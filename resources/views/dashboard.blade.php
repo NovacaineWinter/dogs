@@ -32,6 +32,7 @@
 
     </body>
 
+    <script src="https://checkout.stripe.com/checkout.js"></script>
     <script src="{{{ url('js/admin.js') }}}"></script>
 
 </html>

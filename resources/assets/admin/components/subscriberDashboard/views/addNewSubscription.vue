@@ -13,7 +13,7 @@
 <!-- plans -->
 		<div class="columns plan-options">
 
-            <div class="column" v-for="plan in plans" :key="plan.id" @click="selectedPlan(plan)">
+            <div class="column plancol" v-for="plan in plans" :key="plan.id" @click="selectedPlan(plan)">
                
                 <div class="card" :class="{'is-selected':plan.id == planSelected.id}">
                     
@@ -25,6 +25,7 @@
                         <img :src="plan.img" class="is-horisontal-center" alt="plan image">
                     </div>
                     
+                    <div class="button is-outlined is-primary is-centered">Select</div>
                     <div class="card-content has-text-centered"> 
                         <p class="title" v-text="plan.price_string"></p>
                     </div>
@@ -143,6 +144,21 @@
 		</div>
 
 
+
+		<div class="modal" v-if="showErrorMessage">
+			<div class="modal-background" @click="showErrorMessage=false"></div>
+			<div class="modal-content box" v-if="showErrorMessage">
+				<h1 class="title">New Subscription Created</h1>
+				<p class="subtitle">We will bill the following card </p>
+
+				<p class="subtitle">If this is not correct, update your payment card preferences</p>
+				<router-link to="/payment-methods" tag="div" class="button is-primary is-outlined">Update Card</router-link>
+				<router-link to="/" class="button is-primary is-outlined is-right">Done</router-link>			
+			</div>
+			<button class="modal-close is-large" aria-label="close" @click="showErrorMessage=false"></button>
+		</div>
+
+
 	<div id="bigpadding">&nbsp;</div>
 
 	</div>
@@ -201,20 +217,27 @@
             dogSizeSelected(size){
             	this.dogSize = size;
             	if(this.dogSize != '' && this.dogName != '' && this.planSelected != ''){
-            		console.log('going');
-            		axios.get('/api/add-new-subscription',
+
+            		axios.post('/api/add-new-subscription',
 	            		{
 	            			userId:this.$root.user.id,
 	            			planId:this.planSelected,
 	            			dogName:this.dogName,
 	            			dogSize:this.dogSize
 	            		})      
-            			.then(response => {this.$router.push('/')})
+            			.then(response => {this.subscriptionAddedSuccessfully()})
             		
             			.catch(error => {this.showErrorMessage = true;});
-            		
-            		
             	}
+            },
+
+            subscriptionAddedSuccessfully(userData){
+            	//refresh user data
+            	this.$root.reloadUserData();  //beware, async
+
+            	this.showConfirmCardModal = true;
+
+            	
             }
         },
 
@@ -245,6 +268,19 @@
 <style lang="scss">
     @import '~sass/variables';
 	.addnewsubscription{
+
+		.plan-options{
+			.plancol{
+				max-width:400px;
+				margin:auto;
+
+				.button.is-centered{
+					margin-left:42%;
+				}
+			}
+		}
+
+
 		.isloadingscroll{
 			.button{
 				width:100%;

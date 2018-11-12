@@ -18,7 +18,7 @@ class seedStripe extends Seeder
 
 
     	$stripeProductA = new \App\stripeProduct;
-    	$stripeProductA->name = "Toys and Treats | Waggy Tail Box | Monthly";
+    	$stripeProductA->name = "Toys and Treats | Waggy Tail Box ";
     	$stripeProductA->type = "service";
 
 
@@ -35,14 +35,14 @@ class seedStripe extends Seeder
 
 		$stripePlanA->nickname ="Waggy Tail Box plan";
 		$stripePlanA->product_id =$stripeProductA->id;  //local id, not stripe
-		$stripePlanA->amount =999;
+		$stripePlanA->amount =1497;
 		$stripePlanA->currency ="gbp";
-		$stripePlanA->interval ="month";
+		$stripePlanA->interval ="week";
 		$stripePlanA->active =true;
-		$stripePlanA->price_string ='£9.99 / Month';
-		$stripePlanA->size ="small";
+		$stripePlanA->price_string ='£14.97 / box';
+		$stripePlanA->size ="medium";
 		$stripePlanA->title ='Waggy Tail Box';
-		$stripePlanA->description ='Perfect for your average dog. Contains one Toy and one Treat every month. Get those tails wagging!';
+		$stripePlanA->description ='A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every four weeks. Get those tails wagging!';
 		$stripePlanA->img ='/img/box.png';
 
 
@@ -52,6 +52,7 @@ class seedStripe extends Seeder
 			"amount" 	=> $stripePlanA->amount,
 			"currency" 	=> $stripePlanA->currency,
 			"interval" 	=> $stripePlanA->interval,
+			"interval_count"=>4
 		));
 
 		$stripePlanA->stripe_id =$plan->id;
@@ -59,7 +60,7 @@ class seedStripe extends Seeder
 
 
 
-
+/*
 
 
     	$stripeProductB = new \App\stripeProduct;
@@ -147,7 +148,7 @@ class seedStripe extends Seeder
 		$stripePlanC->stripe_id =$plan->id;
 		$stripePlanC->save();
 
-
+*/
 
 
     }

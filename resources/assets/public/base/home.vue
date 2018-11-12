@@ -202,19 +202,19 @@
 							<div class="card">
 							    <div class="card-image">
 							        <figure class="image is-4by3">
-							            <img src="/img/huxley.jpeg" alt="Placeholder image">
+							            <img src="/img/jimmy.png" alt="Placeholder image">
 							        </figure>
 							    </div>
 							    <div class="card-content">
 							        <div class="media">
 							            <div class="media-content">
-							                <p class="title is-4">Huxley</p>
-							                <p class="subtitle is-6">Patterdale Terrier</p>
+							                <p class="title is-4">Jimmy</p>
+							                <p class="subtitle is-6">Daschund / Poodle cross</p>
 							            </div>
 							        </div>
 
 							        <div class="content">
-							        	While occasionally grumpy, Huxley is an endearing gentleman. He'll happily chew for hours at a time. 
+							        	Fully of energy, Jimmy is an endearing gentleman. He'll happily chew for hours at a time. 
 							        </div>
 							    </div>
 							</div>

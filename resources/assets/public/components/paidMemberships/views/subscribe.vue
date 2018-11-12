@@ -22,6 +22,7 @@
                             <div class="card-content is-flex" :class="plan.size">                                
                                 <img :src="plan.img" class="is-horisontal-center" alt="plan image">
                             </div>
+                            <div class="button is-outlined is-primary is-centered">Select</div>
                             <div class="card-content has-text-centered"> 
                                 <p class="title" v-text="plan.price_string"></p>
                             </div>
@@ -50,6 +51,7 @@
                                     :class="{'is-danger':errors.dogName}" 
                                     @keydown="errors.dogName=false"
                                     v-model="dogName"  
+                                    @keyup.tab="dogNameTabbed"
                                     @keyup="dogNameInputKeyup" 
                                     placeholder="Spot....Buster....Rex....">
                                 <span class="errortext" v-show="errors.dogName">Required</span>
@@ -381,18 +383,29 @@
                 .catch(error => {console.log(error.data)});
             
             
+            axios.get('/api/get-stripe-public-key')      
+                .then(response => {
 
-            this.stripeHandler = StripeCheckout.configure({
-                key: 'pk_test_7rBfXVfqrPbJLePrSN2jJLwo',
-                image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-                locale: 'auto',
-                token: function(context,token) {
-                    // You can access the token ID with `token.id`.
-                    // Get the token ID to your server-side code for use.
+                    this.stripeHandler = StripeCheckout.configure({
+                        key: response.data,
+                        image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+                        locale: 'auto',
+                        token: function(context,token) {
+                            // You can access the token ID with `token.id`.
+                            // Get the token ID to your server-side code for use.
+                            
+                            this.createAccount(token);
+                        }.bind(this,'this')
+                    });
                     
-                    this.createAccount(token);
-                }.bind(this,'this')
-            });
+
+                })
+                
+            
+                .catch(error => {
+                    this.showErrorScreen = true;
+                });
+        
         },
 
         methods:{
@@ -404,7 +417,7 @@
                 elemn.scrollIntoView({ behavior: 'smooth', block: "start" });   
             },
 
-            dogNameInputKeyup(){
+            dogNameInputKeyup(event){
                 clearTimeout(this.dogNameTimeout);
 
                 this.dogNameTimeout = setTimeout(function(){
@@ -412,6 +425,9 @@
                 }.bind(this,'this'),750);
             },
 
+            dogNameTabbed(){
+                console.log('tabed');
+            },
 
             dogSizeSelected(){
                 var elemn = document.getElementById("customerDetails");
@@ -864,6 +880,12 @@
 
     #sign-up-view{   
     
+
+        .button.is-centered{
+            margin-left:42%;
+        }
+
+
         padding-bottom:50vh;
             
         .plan-options{
@@ -888,6 +910,11 @@
                     width:70%;
                     margin-left:15%;
                 }
+            }
+
+            .column{
+                max-width:32%;
+                margin-left:33%;
             }
         }
     

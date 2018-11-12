@@ -1,13 +1,19 @@
 		
 <template>
-    <article class="message is-primary" v-if="sub.is_active">
+    <article class="message is-primary">
         <div class="message-header">
-            <p>{{sub.plan.nickname}} &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; Delivered To {{dogName}}</p>            
+            <p>
+                {{sub.plan_public.nickname}} 
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                &pound;{{price}} 
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                Delivered To {{dogName}} 
+            </p>            
         </div>
         <div class="message-body">
             <div class="columns">
                 <div class="column">
-                    <p v-text="sub.plan.description"></p>
+                    <p v-text="sub.plan_public.description"></p>
                 </div>
                 <div class="column">
                     Next delivery will be dispatched on: 31st October
@@ -60,13 +66,13 @@
                 this.showDogDetailModal=false;
             },
         },
-/*
+
         computed:{
-        	someNumber(){
-        		return 2+3;
+        	price(){
+        		return this.sub.plan_public.amount/100;
         	},        	
         },
-*/
+
         data: function() {
 		    return{
                 showDogDetailModal:false,   

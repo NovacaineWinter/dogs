@@ -3,6 +3,20 @@
     <div>
         <dash-tabs></dash-tabs> 
         <h1 class="title">View Invoices</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <invoice-row v-for="inv in $root.user.my_invoices" :inv="inv" key="inv.id"></invoice-row>
+            </tbody>
+        </table>
+
     </div>
         
    
@@ -36,8 +50,8 @@
         },
 
         computed:{
-        	someNumber(){
-        		return 2+3;
+        	amountString(){
+        		return this.$root.inv.amount_due;
         	},        	
         },
 

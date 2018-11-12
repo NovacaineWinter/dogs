@@ -19,10 +19,15 @@ const app = new Vue({
     router: router,
     mounted: function()
     {
-		axios.get('/api/get-logged-in-user')      
-			.then(response => {this.user = response.data;})
+		this.reloadUserData();
+    },
+    methods:{
+        reloadUserData(){
+            axios.get('/api/get-logged-in-user')      
+                .then(response => {this.user = response.data;})
 
-			.catch(error => {});
+                .catch(error => {});
+        }
     }
 
 });

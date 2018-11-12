@@ -8,7 +8,7 @@ Vue.component('footer-component', require('./footerLinks.vue'));
 
 navbarItems.push(	
 	{
-		uri:'/:subsection',
+		uri:'/',
 		text:'Home',
 		position:10,
 		bold:false,

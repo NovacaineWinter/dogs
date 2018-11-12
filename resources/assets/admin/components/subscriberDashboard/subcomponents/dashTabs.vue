@@ -5,7 +5,7 @@
                 <router-link to="/" tag="li" exact><a>My Subscriptions</a></router-link>
                 <router-link to="/details" tag="li" exact><a>My Details</a></router-link>
                 <router-link to="/payment-methods" tag="li" exact><a>My Payment Methods</a></router-link>
-                <router-link to="/history" tag="li" exact><a>History</a></router-link>
+                <!-- <router-link to="/history" tag="li" exact><a>History</a></router-link> -->
                 <router-link to="/invoices" tag="li" exact><a>Invoices</a></router-link>
                 <router-link to="/add-subscription" tag="li" exact><a>Add a new Subscription</a></router-link>
             </ul>

@@ -12,3 +12,5 @@ require('./navbarItems.js');
 	Vue.component('subscription-info', require('./subcomponents/subscriptionBreakdown.vue'));
 	Vue.component('dog-detail-modal', require('./subcomponents/dogDetailsModal.vue'));
 	Vue.component('cancel-subscription-modal', require('./subcomponents/cancelSubscriptionModal.vue'));
+	Vue.component('payment-card-row', require('./subcomponents/paymentCardRow.vue'));
+	Vue.component('invoice-row', require('./subcomponents/invoiceItemRow.vue'));
