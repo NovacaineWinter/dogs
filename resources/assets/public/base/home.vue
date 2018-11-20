@@ -8,13 +8,17 @@
 			<div class="hero-body">
 				<div class="container">				
 
-					<div class="columns is-mobile">
+					<div class="columns is-mobile main-slogan">
 
 
 						<div class="column is-8">
 							<div class="has-text-centered misty">
-								<h1 class="maintitle">A Box of Toys and Treats delivered every month</h1>
-								<p class="mainsubtitle">Show your dog how much you love them</p>							
+								<h1 class="maintitle">Every dog deserves <br>toys and treats</h1>
+								<p class="mainsubtitle">A suprise gift box subscription for your dog</p>	
+								<div class="columns is-mobile">
+									<div class="column is-6"><div class="button widebutton clearbutton">Find Out More</div></div>
+									<div class="column is-6"><div class="button is-info widebutton">Subscribe</div></div>
+								</div>						
 							</div>
 						</div>
 
@@ -32,7 +36,7 @@
 		<section class="hero is-primary">
 			<div class="hero-body">
 				<div class="container">
-					<h1 class="title has-text-centered">Toys and treats delivered to your dog each month.</h1>
+					<h1 class="title has-text-centered quotetext">“Money can buy you a fine dog, but only love can make him wag his tail.”  -Kinky Friedman</h1>
 				</div>
 			</div>
 		</section>
@@ -45,7 +49,7 @@
 						<div class="textbox">
 							<div class="textwrapper">
 								<h1 class="subtitle"><span>What is a Toys and Treats Box?</span></h1>
-								<p>It's all in the name! Its box of toys and treats hand (or paw?) picked by our team specially for your dog. Delivered to your door each and every month to make your dog the happiest dog in the world. </p>
+								<p class="textblock">Simply pure doggie happiness. It is a surprise gift box subscription to show your dog how much you love them. Our team of expert pooches choose from an amazing range of toys,treats and other goodies to create a surprise that your dog is sure to look forward to. Boxes are dispatched every 4 weeks. Non-stop joy for your dog. </p>
 							</div>
 
 						</div>
@@ -62,7 +66,7 @@
 						<div class="textbox">
 							<div class="textwrapper">
 								<h1 class="subtitle"><span>Why should I get a Toys and Treats Box?</span></h1>
-								<p>Have you noticed how your dog just somehow knows when you are feeling down and tries their best to cheer you up? or the unconditional love they show you when you come home from a hard day? Your dog does so much for you, can you imagine how happy they would be to get a new toy and a box of treats each and every month? A Toys and Treats box is the simplest way of returning a little bit of that love they show you.</p>								
+								<p class="textblock">We belive every dog should be made to feel special. Our dogs do so much for us, the unconditional love, the playful games, or trying to cheer you up when you feel down. Dogs give us so much of their love, wouldn't it be nice to return just a little of that love? Can you imagine how happy they would be to get an exciting gift box every 4 weeks? A Toys and Treats box is the simplest way of returning a little bit of that love they show you.</p>								
 							</div>
 						</div>
 					</div>
@@ -79,7 +83,7 @@
 						<div class="textbox">
 							<div class="textwrapper">
 								<h1 class="subtitle"><span>So how much does it cost?</span></h1>
-								<span class="boldspan">Plans start from &pound;9.99 / month</span><br>
+								<span class="boldspan">A box costs &pound;14.97 and they are delivered every 4 weeks</span><br>
 								( You can stop whenever you like! )								
 								<br>
 								<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">Subscribe Now</router-link>													
@@ -89,6 +93,98 @@
 				</div>
 			</div>
 		</section>
+
+	<section class="sectionbreak">&nbsp;</section>
+
+        <section id="how-it-works-view" class="hero is-large herobanner howItWorksBanner">
+
+
+            <div class="hero-body">
+                <div class="container">             
+
+                     <div class="tile is-ancestor">
+
+
+                        <div class="tile is-parent is-6"></div>                   
+                        <div class="tile is-parent is-6">
+                            <div class="tile is-child has-text-centered">
+                                <h2>How It Works...</h2>                            
+                            </div>
+                        </div>   
+
+                        
+                    </div>                                            
+                    
+                </div>
+            </div>          
+        </section>
+
+ <!--        <section class="hero is-primary">
+     <div class="hero-body">
+         <div class="container">
+             <h1 class="title has-text-centered">How you can make your dog happy month after month.</h1>
+         </div>
+     </div>
+ </section> -->
+
+        <section class="section howitworkstextsection">
+            <div class="container">
+                <div class="columns">
+
+                    <div class="column">                       
+                        <div class="card fullheight">                            
+                            <div class="card-content has-text-centered">
+                                <h1 class="subtitle">
+                                    1) Sign Up For An Account                                    
+                                </h1> 
+                                <p>
+                                    Choose your plan, tell us about your dog and let us know where you want it delivered. 
+                                </p><br>
+                                                           
+                            </div>                           
+                        </div>
+                    </div>
+
+
+                    <div class="column">
+                        <div class="card fullheight">             
+                            <div class="card-content has-text-centered">
+                                <h1 class="subtitle">
+                                    2) We hand pick a box of goodies for you dog                                  
+                                </h1> 
+                                <p>
+                                    Our team will choose which toys and treats to send to your dog based on the size of your dog.
+                                </p>                         
+                            </div>                           
+                        </div>                        
+                    </div>
+
+
+                    <div class="column">
+                        <div class="card fullheight">
+                            
+                            <div class="card-content has-text-centered">
+                                <h1 class="subtitle">
+                                   3) Recieve your box of doggie happiness                               
+                                </h1> 
+                                <p>
+                                    The big day! your dog receives their box in the post. Make sure to take photos and tag us in them!  
+                                </p>                         
+                            </div>                           
+                        </div>
+                    </div>
+
+
+                </div>
+
+            	<div class="button is-large is-primary is-centered-button">Subscribe Now</div> 					
+
+            </div>
+        </section>
+
+
+<!-- 
+        
 
 	<section class="sectionbreak">&nbsp;</section>
 	<section class="section unpaddedsection">
@@ -119,6 +215,10 @@
 			</div>
 		</div>
 	</section>
+ -->
+
+
+
 	<section class="sectionbreak">&nbsp;</section>
 
 
@@ -239,7 +339,7 @@
 							<h1 class="title misty">Does your dog deserve a Toys and Treats box?</h1>									
 							<div class="columns">
 								<div class="column">									
-									<router-link tag="div" to="/oh-ok"  class="button is-large is-danger ctabutton">No, they don't! &#9785;</router-link>		
+									<router-link tag="div" to="/oh-ok"  class="button is-large clearbutton ctabutton">No, they don't! &#9785;</router-link>		
 								</div>
 								<div class="column">									
 									<router-link tag="div" to="/sign-up" class="button is-large is-primary ctabutton">Yes, of course! <span class="emojispan">&#9786;</span></router-link>
@@ -262,7 +362,7 @@
 									<router-link tag="div" to="/sign-up" class="button is-large is-primary ctabutton">Yes, of course! <span class="emojispan">&#9786;</span></router-link>
 								</div>
 								<div class="column">									
-									<router-link tag="div" to="/oh-ok" class="button is-large is-danger ctabutton">No, they don't! &#9785;</router-link>		
+									<router-link tag="div" to="/oh-ok" class="button is-large clearbutton ctabutton">No, they don't! &#9785;</router-link>		
 								</div>
 							</div>						
 					
@@ -406,6 +506,24 @@
 				padding: 11vw 0px;
 			}
 		}
+		.widebutton{
+			width: 100%;
+			padding: 20px;
+			font-size: 30px;
+			font-weight: 300;
+		}
+
+		.textblock{
+			font-size:1.2vw;
+		}
+	}
+	.clearbutton{
+		background:rgba(255,255,255,0.3);
+		border:1px solid $text-dark;
+		color:$text-dark;
+	}
+	.clearbutton:hover{
+		background:rgba(255,255,255,0.9);			
 	}
 
 	.herobanner{
@@ -421,8 +539,8 @@
 		}
 		p{
 			padding:1.2vw;
-			font-weight:600;
-			font-size:2vw;
+			font-weight:500;
+			font-size:1.8vw;
 			color:$text-light;
 			text-shadow: 0px 0px 6px $text-black;
 		}		
@@ -453,7 +571,7 @@
 			padding:0.5vw;
 			margin-top:2vw;
 			width:100%;
-			color:$text-light;
+			/*color:$text-light;*/
 			font-size:1.5vw;
 		}
 		.emojispan{
@@ -482,7 +600,54 @@
 				font-weight:bold;
 			}
 		}
+
+		.quotetext{
+			font-weight:300;
+			font-size:1.5vw;
+		}
+		.main-slogan{
+			padding-top:6rem;
+		}
+		.howitworkstextsection{
+			h1.subtitle{
+				font-size:1.2vw;
+			}
+		}
+		.is-centered-button{
+			display: block;
+			margin: auto;
+			width: auto;
+			max-width: 200px;
+			font-size: 1.3vw;
+			text-align: center;
+		}
 	}
+
+
+ 	#how-it-works-view{
+        
+        .fullheight{
+            height:100%;
+        }        
+
+    }
+
+    .howItWorksBanner{
+        background-size:cover;
+        background-position:center;
+        background-image:url('/img/howItWorks.jpeg');
+        h2{
+            font-size:3.5vw;
+            text-align:right;
+            color:$text-dark;
+            line-height:1;                
+            text-transform:uppercase;       
+        }
+
+    }
+      
+
+
 
 	@media only screen and (max-width: $tabletbreak) {
 	

@@ -128,6 +128,7 @@
 		} 
 		.navborder span{
 			border: 1px solid $text-dark;
+			border-radius: 5px;
 		}
 
 	}

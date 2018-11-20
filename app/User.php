@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use \DrewM\MailChimp\MailChimp;
+use \swiftmailer\swiftmailer;
+//include_once "swift_required.php";
 use App\Traits\Excludable;
 
 class User extends Authenticatable
@@ -207,5 +209,98 @@ class User extends Authenticatable
             $this->subscribed_to_mailchimp=false;
         }
         $this->save();
+    }
+
+
+
+   /* public function email_smtp($subject,$text){
+
+     
+        //*   Needs swiftmail package from composer
+       
+
+        $from = array('hello@toysandtreats.com' =>'The Team | Toys and Treats');
+        
+     
+        
+        $to = $this->email;
+        $html = "<em>Mandrill speaks <strong>HTML</strong></em>";
+
+        $transport = new \Swift_SmtpTransport('smtp.mandrillapp.com', 587);
+        $transport->setUsername(env('MANDRILL_USERNAME'));
+        $transport->setPassword(env('MANDRILL_PASSWORD'));
+        $swift = new \Swift_Mailer($transport);
+
+        $message = new \Swift_Message($subject);
+        $message->setFrom($from);
+        $message->setBody($html, 'text/html');
+        $message->setTo($to);
+        $message->addPart($text, 'text/plain');
+
+        if ($recipients = $swift->send($message, $failures))
+        {
+            echo 'Message successfully sent!';
+        } else {
+            echo "There was an error:\n";
+            print_r($failures);
+        }
+    }
+
+*/
+
+
+    public function email($subject,$text){
+        try {
+
+            $mandrill = new \Mandrill(env('MANDRILL_API_KEY'));
+
+            $message = array(
+                'html' => '<p>Example HTML content</p>',
+                'text' => $text,
+                'subject' => $subject,
+                'from_email' => 'hello@toysandtreats.com',
+                'from_name' => 'The Team | Toys and Treats',
+                'to' => array(
+                    array(
+                        'email' => $this->email,
+                        'name' =>   $this->firstName.' '.$this->lastName,
+                        'type' => 'to'
+                    )
+                ),
+                'headers' => array('Reply-To' => 'hello@toysandtreats.com'),
+                'important' => false,
+                'tracking_domain' => null,
+                'signing_domain' => null,
+                'return_path_domain' => null,
+                'merge' => true,
+                'merge_language' => 'mailchimp',             
+            
+            );
+
+/*            $async = false;
+            $ip_pool = 'Main Pool';
+            $send_at = 'example send_at';*/
+            //$result = $mandrill->messages->send($message, $async, $ip_pool, $send_at);
+            $result = $mandrill->messages->send($message);
+            print_r($result);
+            /*
+            Array
+            (
+                [0] => Array
+                    (
+                        [email] => recipient.email@example.com
+                        [status] => sent
+                        [reject_reason] => hard-bounce
+                        [_id] => abc123abc123abc123abc123abc123
+                    )
+            
+            )
+            */
+        } catch(Mandrill_Error $e) {
+            // Mandrill errors are thrown as exceptions
+            echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+            // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+            throw $e;
+        }
     }
 }

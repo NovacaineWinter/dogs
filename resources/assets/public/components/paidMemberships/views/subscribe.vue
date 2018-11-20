@@ -11,32 +11,54 @@
             </div>
         </section>
 
-        <section class="section">
-            <div class="container">
-                <div class="columns plan-options">
-                    <div class="column" v-for="plan in plans" :key="plan.id" @click="selectedPlan(plan)">
-                        <div class="card" :class="{'is-selected':plan.id == planSelected.id}">
-                            <header class="card-header has-text-centered">
-                                <p class="card-header-title subtitle" v-text="plan.title"></p>
-                            </header>
-                            <div class="card-content is-flex" :class="plan.size">                                
-                                <img :src="plan.img" class="is-horisontal-center" alt="plan image">
-                            </div>
-                            <div class="button is-outlined is-primary is-centered">Select</div>
-                            <div class="card-content has-text-centered"> 
-                                <p class="title" v-text="plan.price_string"></p>
-                            </div>
-                            <div class="card-content has-text-centered"> 
-                                <p v-text="plan.description"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+
+       <!--  <section class="section">
+           <div class="container">
+               <div class="columns plan-options">
+                   <div class="column" v-for="plan in plans" :key="plan.id" @click="selectedPlan(plan)">
+                       <div class="card" :class="{'is-selected':plan.id == planSelected.id}">
+                           <header class="card-header has-text-centered">
+                               <p class="card-header-title subtitle" v-text="plan.title"></p>
+                           </header>
+                           <div class="card-content is-flex" :class="plan.size">                                
+                               <img :src="plan.img" class="is-horisontal-center" alt="plan image">
+                           </div>
+                           <div class="button is-outlined is-primary is-centered">Select</div>
+                           <div class="card-content has-text-centered"> 
+                               <p class="title" v-text="plan.price_string"></p>
+                           </div>
+                           <div class="card-content has-text-centered"> 
+                               <p v-text="plan.description"></p>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </section> -->
 
         <section class="section" id="dogNameAndSize">
             <div class="container">
+    
+
+            <div class="columns">
+                <div class="column"></div>
+                <div class="column is-8">
+                    <div class="columns has-border is-selected">
+                        <div class="column is-2"><img :src="plans[0].img" class="is-horisontal-center" alt="plan image"></div>
+                        <div class="column is-8">
+                            <h1 class="subtitle">
+                                Toys and Treats Box                                
+                            </h1>
+                            <p>
+                                A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every four weeks. Get those tails wagging!                                
+                            </p>   
+                        </div>
+                        <div class="column is-2 has-text-centered">£14.97 / Box <br> Delivered every 4 weeks</div>
+                    </div>                    
+                </div>
+                <div class="column"></div>
+            </div>
 
                 <div v-show="showDogDetails">
                     
@@ -378,7 +400,10 @@
             setTimeout( () => { window.scrollTo(0, 0);}, 10);
 
             axios.get('/api/plans')      
-                .then(response => {this.plans = response.data;})
+                .then(response => {
+                    this.plans = response.data;
+                    this.selectedPlan(this.plans[0]);
+                })
     
                 .catch(error => {console.log(error.data)});
             
@@ -412,9 +437,9 @@
             selectedPlan(plan){
                 this.planSelected = plan;
                 this.showDogDetails = true;
-                window.scrollTo(0, 0);
+                /*window.scrollTo(0, 0);
                 var elemn = document.getElementById("dogNameAndSize");
-                elemn.scrollIntoView({ behavior: 'smooth', block: "start" });   
+                elemn.scrollIntoView({ behavior: 'smooth', block: "start" });   */
             },
 
             dogNameInputKeyup(event){
@@ -815,6 +840,11 @@
 <style lang="scss">
     @import '~sass/variables';
    
+    .has-border{
+        border:1px solid $text-dark;
+        border-radius:5px;
+    }
+    
 
     .textcaptialised{
         text-transform:capitalize;
