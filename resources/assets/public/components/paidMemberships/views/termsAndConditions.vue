@@ -9,7 +9,7 @@
                     We try our very best to make you and your dog very happy. We source toys and treats for you to give to your dog every month.
 				</p>
                 <h1 class="title">Subscription</h1>
-                <p>The rolling monthly subscription is no-commitment. You are free to cancel your plan at any time, if you have paid for a box to be delivered, you will still get your delivery but your plan won't renew.</p>
+                <p>The rolling 4-weekly subscription is no-commitment. You are free to cancel your plan at any time, if you have paid for a box to be delivered, you will still get your delivery but your plan won't renew.</p>
                 <p>We deliver all the boxes at the same time, this means that there might be a little bit of a wait when you first sign up for a box to receive your first delivery, but you will know that the boxes will be coming around the same time each month. You can check when you are due a delivery in the dashboard (log in to see) and we will send you a reminder email when we dipatch your box</p>
 
                 <h1 class="title">

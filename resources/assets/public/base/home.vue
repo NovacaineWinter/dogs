@@ -6,44 +6,46 @@
 
 
 			<div class="hero-body">
-				<div class="container">				
 
-					<div class="columns is-mobile main-slogan">
+				<div class="container herocontainer">				
 
+					<div class="columns is-desktop main-slogan">
 
-						<div class="column is-8">
+						<div class="column is-three-quarters-desktop">
 							<div class="has-text-centered misty">
-								<h1 class="maintitle">Every dog deserves <br>toys and treats</h1>
+								<h1 class="maintitle landingtext">Every dog deserves <br>toys and treats</h1>
 								<p class="mainsubtitle">A suprise gift box subscription for your dog</p>	
 								<div class="columns is-mobile">
-									<div class="column is-6"><div class="button widebutton clearbutton">Find Out More</div></div>
-									<div class="column is-6"><div class="button is-info widebutton">Subscribe</div></div>
+									<div class="column is-6"><div class="button widebutton landingtext clearbutton" @click="scrollintoview">Find Out More</div></div>
+									<div class="column is-6">
+										<router-link to="sign-up" tag="div" class="button landingtext is-info widebutton">Subscribe</router-link>
+									</div>
 								</div>						
 							</div>
 						</div>
 
-						<div class="column is-4">						
+						<div class="column is-one-quarter-desktop">						
 							&nbsp;
 						</div>
-
 						
 					</div>								
 					
 				</div>
-			</div>			
+			</div>
+
 		</section>
 
 		<section class="hero is-primary">
 			<div class="hero-body">
-				<div class="container">
-					<h1 class="title has-text-centered quotetext">“Money can buy you a fine dog, but only love can make him wag his tail.”  -Kinky Friedman</h1>
-				</div>
+				<h1 class="title has-text-centered quotetext">
+					“Money can buy you a fine dog, but only love can make him wag his tail.”  -Kinky Friedman
+				</h1>
 			</div>
 		</section>
 
 		<section class="section slimsection" id="firstrowcolumns">
 			<div class="container">				
-				<div class="columns">
+				<div class="columns is-desktop">
 					<div class="column"><img src="/img/dog3.jpeg"></div>
 					<div class="column rightcol">
 						<div class="textbox">
@@ -61,7 +63,7 @@
 
 		<section class="section slimsection">
 			<div class="container">				
-				<div class="columns">
+				<div class="columns is-desktop">
 					<div class="column leftcol lastcol">
 						<div class="textbox">
 							<div class="textwrapper">
@@ -76,7 +78,7 @@
 		</section>
 
 		<section class="section slimsection">
-			<div class="container">				
+			<div class="container is-desktop">				
 				<div class="columns secondcolumns">
 					<div class="column is-6 image-to-hide"><img src="/img/dog4.jpeg"></div>
 					<div class="column is-6 rightcol lastcol">
@@ -335,8 +337,8 @@
 				<div class="container has-text-centered">
 					<div class="columns">
 						<div class="column is-7"></div>
-						<div class="column is-5">
-							<h1 class="title misty">Does your dog deserve a Toys and Treats box?</h1>									
+						<div class="column is-5 misty">
+							<h1 class="title">Does your dog deserve a Toys and Treats box?</h1>									
 							<div class="columns">
 								<div class="column">									
 									<router-link tag="div" to="/oh-ok"  class="button is-large clearbutton ctabutton">No, they don't! &#9785;</router-link>		
@@ -387,13 +389,15 @@
 		        window.scrollTo(0, 0);
 		    }, 100);
         },
-        /*
+        
         methods:{
-            beenClicked(){
-                console.log('click');
+            scrollintoview(){
+                window.scrollTo(0, 0);
+                var elemn = document.getElementById("firstrowcolumns");
+                elemn.scrollIntoView({ behavior: 'smooth', block: "start" });
             },
         },
-
+/*
         data: function() {
 		    return{
 		        url:'http://nbc.wip/img/partners/logos/bmf.jpg',
@@ -508,8 +512,8 @@
 		}
 		.widebutton{
 			width: 100%;
-			padding: 20px;
-			font-size: 30px;
+			padding: 1.2vw;
+			font-size: 1.6vw;
 			font-weight: 300;
 		}
 
@@ -603,7 +607,7 @@
 
 		.quotetext{
 			font-weight:300;
-			font-size:1.5vw;
+			font-size:27px;
 		}
 		.main-slogan{
 			padding-top:6rem;
@@ -689,7 +693,51 @@
 		}
 
 	}
+	@media only screen and (max-width: 857px) {
+		#homeview{
+			h1.maintitle.landingtext{
+				font-size:30px;
+			}
+			.landingtext{
+				font-size:30px;
+			}		
+			p.mainsubtitle{
+				font-size:20px;
+			}				
+		}
+	}
+	@media only screen and (max-width: 558px) {
+		#homeview{
+			.widebutton{
+				font-size:5vw;
+			}
+		}
+	}
+	
 
+	@media only screen and (max-width: 1068px) {
+		p.mainsubtitle{
+			font-size:2.7vw;
+		}				
+	}
+
+
+
+	@media only screen and (max-width: 756px) {
+		#homeview{
+			#homebanner{
+				min-height:70vh;
+				background-position: 90% 0%;
+			}
+
+			.herocontainer{
+				display: flex;
+				height: 100%;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
 
 	@media only screen and (max-width: $phonebreak) {
 		#homeview{
