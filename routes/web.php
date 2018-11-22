@@ -18,3 +18,33 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/api/create-new-user','customerController@signup');
+
+Route::post('/api/webhooks','stripeController@webhooks');
+
+Route::post('/api/checkemail','customerController@checkEmail');
+
+Route::get('/api/cancellationReasons','customerController@allCancellationReasons')->middleware('auth');
+
+Route::get('/api/get-stripe-public-key','stripeController@publicKeyAPI');
+
+Route::post('/api/update-user','customerController@updateUser')->middleware('auth');
+
+Route::post('/api/add-new-subscription','customerController@addSubscriptionToAccount')->middleware('auth');
+
+Route::post('/api/cancelSubscription','customerController@cancelSubscription')->middleware('auth');
+
+Route::post('/api/delete-payment-card','customerController@deleteCard')->middleware('auth');
+
+Route::post('/api/make-payment-card-primary','customerController@makeCardPrimary')->middleware('auth');
+
+Route::post('/api/update/dog-details','customerController@updateDogDetails')->middleware('auth');
+
+Route::get('/api/plans', 'vuePublic@plans');
+
+Route::post('/api/logout', 'customerController@logout');
+
+Route::post('/vue/contact/message','contactController@receiveMessage');
+
+Route::get('/api/get-logged-in-user', 'customerController@loggedInDetails')->middleware('auth');
