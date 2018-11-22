@@ -719,7 +719,7 @@
         background-size:cover;
         background-position:center;
         background-image:url('/img/howItWorks.jpeg');
-        padding:50px 0px;
+        padding:5vw 0px;
         h2{
             font-size:3.5vw;
             text-align:right;
