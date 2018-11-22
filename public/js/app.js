@@ -40184,7 +40184,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.small-view {\n  display: none;\n}\n#firstrowcolumns {\n  margin-bottom: 6.5px;\n}\n.boldspan {\n  font-size: 22px;\n  font-weight: 900;\n}\n.slimsection {\n  padding: 0px;\n}\n.slimsection .column {\n    padding: 0px;\n}\n.slimsection .rightcol {\n    border-right: 1px solid #636b6f;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.slimsection .leftcol {\n    border-left: 1px solid #636b6f;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.slimsection .lastcol {\n    margin-bottom: 6.5px;\n}\n.slimsection .columns {\n    margin-top: 0px;\n}\n.slimsection .secondcolumns {\n    margin-top: 6.5px;\n    margin-bottom: -6.5px;\n}\n.unpaddedsection {\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.textcontaner {\n  width: 50vw;\n  margin: auto;\n}\n.borderedcontainer {\n  border-right: 1px solid #636b6f;\n  border-left: 1px solid #636b6f;\n}\n.sectionbreak {\n  background-color: #00d1b2;\n  min-height: 70px;\n}\n.producttesters .card {\n  height: 100%;\n}\n.producttesters .parentcols {\n  height: 100%;\n}\n.textbox {\n  padding: 40px;\n  height: 100%;\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.textbox h1 {\n    text-align: center;\n}\n.textbox h1 span {\n      border-bottom: 1px solid #636b6f;\n}\n.textbox .button {\n    margin-top: 30px;\n}\n.bulletpointsok {\n  list-style: disclosure-closed;\n  margin-top: 10px;\n}\n#homeview #ctabanner .hero-body {\n  padding: 11vw 0px;\n}\n#homeview .widebutton {\n  width: 100%;\n  padding: 1.2vw;\n  font-size: 1.6vw;\n  font-weight: 300;\n}\n#homeview .textblock {\n  font-size: 1.2vw;\n}\n.clearbutton {\n  background: rgba(255, 255, 255, 0.3);\n  border: 1px solid #636b6f;\n  color: #636b6f;\n}\n.clearbutton:hover {\n  background: rgba(255, 255, 255, 0.9);\n}\n.herobanner {\n  background-size: cover;\n  background-position: center;\n  text-transform: uppercase;\n}\n.herobanner h1 {\n    font-size: 3.5vw;\n    color: #fafafa;\n    text-shadow: 0px 0px 8px #000;\n    line-height: 1;\n}\n.herobanner p {\n    padding: 1.2vw;\n    font-weight: 500;\n    font-size: 1.8vw;\n    color: #fafafa;\n    text-shadow: 0px 0px 6px #000;\n}\n.herobanner .misty {\n    background-color: rgba(255, 255, 255, 0.2);\n    border-radius: 10px;\n    padding: 1.2vw 0px;\n}\n#ctabanner {\n  background-image: url(\"/img/ctabanner.jpeg\");\n}\n#ctabanner h1 {\n    font-size: 2vw;\n    font-weight: normal;\n}\n#ctabanner .colourmisty {\n    background-color: rgba(0, 209, 178, 0.4);\n    /* border-radius:$button-border-radius; */\n    padding: 2vw 0px;\n    color: #636b6f;\n    text-shadow: none;\n}\n#ctabanner .ctabutton {\n    padding: 0.5vw;\n    margin-top: 2vw;\n    width: 100%;\n    /*color:$text-light;*/\n    font-size: 1.5vw;\n}\n#ctabanner .emojispan {\n    font-size: 1.8vw;\n    padding-bottom: 0.2vw;\n}\n#homebanner {\n  background-image: url(\"/img/dogbanner2.jpeg\");\n  background-position: right;\n}\n#homeview h1 {\n  font-size: 2vw;\n}\n#homeview h1.maintitle {\n  font-size: 3.5vw;\n}\n#homeview .subtitle span {\n  font-weight: bold;\n}\n#homeview .quotetext {\n  font-weight: 300;\n  font-size: 27px;\n}\n#homeview .main-slogan {\n  padding-top: 6rem;\n}\n#homeview .howitworkstextsection h1.subtitle {\n  font-size: 1.2vw;\n}\n#homeview .is-centered-button {\n  display: block;\n  margin: auto;\n  width: auto;\n  max-width: 200px;\n  font-size: 1.3vw;\n  text-align: center;\n}\n#how-it-works-view .fullheight {\n  height: 100%;\n}\n.howItWorksBanner {\n  background-size: cover;\n  background-position: center;\n  background-image: url(\"/img/howItWorks.jpeg\");\n}\n.howItWorksBanner h2 {\n    font-size: 3.5vw;\n    text-align: right;\n    color: #636b6f;\n    line-height: 1;\n    text-transform: uppercase;\n}\n@media only screen and (max-width: 1087px) {\n#homeview h1 {\n    font-size: 3vw;\n}\n}\n@media only screen and (max-width: 768px) {\n.image-to-hide {\n    display: none;\n}\n.small-view {\n    display: initial;\n}\n.large-view {\n    display: none;\n}\n.title.misty {\n    position: relative;\n    top: -9vw;\n}\n#ctabanner .ctabuttonholder {\n    position: relative;\n    top: -4vw;\n}\n#ctabanner .ctabuttonholder .ctabutton {\n      margin-top: 5px;\n      font-size: 3vw;\n}\n}\n@media only screen and (max-width: 857px) {\n#homeview h1.maintitle.landingtext {\n    font-size: 30px;\n}\n#homeview .landingtext {\n    font-size: 30px;\n}\n#homeview p.mainsubtitle {\n    font-size: 20px;\n}\n}\n@media only screen and (max-width: 558px) {\n#homeview .widebutton {\n    font-size: 5vw;\n}\n}\n@media only screen and (max-width: 1068px) {\np.mainsubtitle {\n    font-size: 2.7vw;\n}\n}\n@media only screen and (max-width: 756px) {\n#homeview #homebanner {\n    min-height: 70vh;\n    background-position: 90% 0%;\n}\n#homeview .herocontainer {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n}\n@media only screen and (max-width: 450px) {\n#homeview h1 {\n    font-size: 4vw;\n}\n}\n", ""]);
+exports.push([module.i, "\n#homeview .container\n.tile.pill-columns {\n  border: 1px solid #636b6f;\n  border-radius: 30px;\n  margin-bottom: 5vw;\n}\n#homeview .container\n.tile.pill-columns .is-4 {\n    overflow: hidden;\n}\n#homeview .container\n.tile.pill-columns .pillimage {\n    padding: 0px;\n    margin-bottom: -6px;\n}\n#homeview .container\n.tile.pill-columns img {\n    border-top-left-radius: 30px;\n    border-bottom-left-radius: 30px;\n    display: block;\n    width: auto;\n    height: auto;\n    max-width: 100vw;\n    position: relative;\n}\n.small-view {\n  display: none;\n}\n#firstrowcolumns {\n  margin-bottom: 6.5px;\n}\n.boldspan {\n  font-size: 22px;\n  font-weight: 900;\n}\n.slimsection {\n  padding: 0px;\n}\n.slimsection .column {\n    padding: 0px;\n}\n.slimsection .rightcol {\n    border-right: 1px solid #636b6f;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.slimsection .leftcol {\n    border-left: 1px solid #636b6f;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.slimsection .lastcol {\n    margin-bottom: 6.5px;\n}\n.slimsection .columns {\n    margin-top: 0px;\n}\n.slimsection .secondcolumns {\n    margin-top: 6.5px;\n    margin-bottom: -6.5px;\n}\n.unpaddedsection {\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.textcontaner {\n  width: 50vw;\n  margin: auto;\n}\n.borderedcontainer {\n  border-right: 1px solid #636b6f;\n  border-left: 1px solid #636b6f;\n}\n.sectionbreak {\n  background-color: #00d1b2;\n  min-height: 70px;\n}\n.producttesters .card {\n  height: 100%;\n}\n.producttesters .parentcols {\n  height: 100%;\n}\n.textbox {\n  padding: 40px;\n  height: 100%;\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.textbox h1 {\n    text-align: center;\n}\n.textbox h1 span {\n      border-bottom: 1px solid #636b6f;\n}\n.textbox .button {\n    margin-top: 30px;\n}\n.bulletpointsok {\n  list-style: disclosure-closed;\n  margin-top: 10px;\n}\n#homeview #ctabanner .hero-body {\n  padding: 11vw 0px;\n}\n#homeview .widebutton {\n  width: 100%;\n  padding: 1.2vw;\n  font-size: 1.6vw;\n  font-weight: 300;\n}\n#homeview .textblock {\n  font-size: 22px;\n  text-align: justify;\n}\n.clearbutton {\n  background: rgba(255, 255, 255, 0.3);\n  border: 1px solid #636b6f;\n  color: #636b6f;\n}\n.clearbutton:hover {\n  background: rgba(255, 255, 255, 0.9);\n}\n.herobanner {\n  background-size: cover;\n  background-position: center;\n  text-transform: uppercase;\n}\n.herobanner h1 {\n    font-size: 3.5vw;\n    color: #fafafa;\n    text-shadow: 0px 0px 8px #000;\n    line-height: 1;\n}\n.herobanner p {\n    padding: 1.2vw;\n    font-weight: 500;\n    font-size: 1.8vw;\n    color: #fafafa;\n    text-shadow: 0px 0px 6px #000;\n}\n.herobanner .misty {\n    background-color: rgba(255, 255, 255, 0.2);\n    border-radius: 10px;\n    padding: 1.2vw 0px;\n}\n#ctabanner {\n  background-image: url(\"/img/ctabanner.jpeg\");\n}\n#ctabanner h1 {\n    font-size: 2vw;\n    font-weight: normal;\n}\n#ctabanner .colourmisty {\n    background-color: rgba(0, 209, 178, 0.4);\n    /* border-radius:$button-border-radius; */\n    padding: 2vw 0px;\n    color: #636b6f;\n    text-shadow: none;\n}\n#ctabanner .ctabutton {\n    padding: 0.5vw;\n    margin-top: 2vw;\n    width: 100%;\n    /*color:$text-light;*/\n    font-size: 1.5vw;\n}\n#ctabanner .emojispan {\n    font-size: 1.8vw;\n    padding-bottom: 0.2vw;\n}\n#homebanner {\n  background-image: url(\"/img/dogbanner2.jpeg\");\n  background-position: right;\n}\n#homeview h1 {\n  font-size: 2vw;\n}\n#homeview h1.maintitle {\n  font-size: 3.5vw;\n}\n#homeview .subtitle span {\n  font-weight: bold;\n}\n#homeview .quotetext {\n  font-weight: 300;\n  font-size: 27px;\n}\n#homeview .main-slogan {\n  padding-top: 6rem;\n}\n#homeview .howitworkstextsection h1.subtitle {\n  font-size: 18px;\n  text-transform: uppercase;\n  font-weight: 700;\n}\n#homeview .howitworkstextsection p {\n  text-align: justify;\n}\n#homeview .is-centered-button {\n  display: block;\n  margin: auto;\n  width: auto;\n  max-width: 200px;\n  font-size: 20px;\n  text-align: center;\n}\n#how-it-works-view .fullheight {\n  height: 100%;\n}\n.howItWorksBanner {\n  background-size: cover;\n  background-position: center;\n  background-image: url(\"/img/howItWorks.jpeg\");\n  padding: 50px 0px;\n}\n.howItWorksBanner h2 {\n    font-size: 3.5vw;\n    text-align: right;\n    color: #636b6f;\n    line-height: 1;\n    text-transform: uppercase;\n}\n@media only screen and (max-width: 1087px) {\n#homeview h1 {\n    font-size: 3vw;\n}\n}\n@media only screen and (max-width: 768px) {\n.image-to-hide {\n    display: none;\n}\n.small-view {\n    display: initial;\n}\n.large-view {\n    display: none;\n}\n.title.misty {\n    position: relative;\n    top: -9vw;\n}\n#ctabanner .ctabuttonholder {\n    position: relative;\n    top: -4vw;\n}\n#ctabanner .ctabuttonholder .ctabutton {\n      margin-top: 5px;\n      font-size: 3vw;\n}\n}\n@media only screen and (max-width: 1451px) {\n#homeview .textblock {\n    font-size: 16px;\n}\n}\n@media only screen and (max-width: 1075px) {\n#homeview .textblock {\n    font-size: 1.8vw;\n}\n}\n@media only screen and (max-width: 857px) {\n#homeview h1.maintitle.landingtext {\n    font-size: 30px;\n}\n#homeview .landingtext {\n    font-size: 30px;\n}\n#homeview p.mainsubtitle {\n    font-size: 20px;\n}\n}\n@media only screen and (max-width: 558px) {\n#homeview .widebutton {\n    font-size: 5vw;\n}\n}\n@media only screen and (max-width: 1068px) {\np.mainsubtitle {\n    font-size: 2.7vw;\n}\n}\n@media only screen and (max-width: 756px) {\n#homeview #homebanner {\n    min-height: 70vh;\n    background-position: 90% 0%;\n}\n#homeview .herocontainer {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n#homeview .textblock {\n    font-size: 18px;\n}\n}\n@media only screen and (max-width: 450px) {\n#homeview h1 {\n    font-size: 4vw;\n}\n}\n", ""]);
 
 // exports
 
@@ -40195,6 +40195,53 @@ exports.push([module.i, "\n.small-view {\n  display: none;\n}\n#firstrowcolumns 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -40673,46 +40720,44 @@ var render = function() {
     _vm._v(" "),
     _vm._m(1),
     _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _vm._m(3),
-    _vm._v(" "),
-    _c("section", { staticClass: "section slimsection" }, [
-      _c("div", { staticClass: "container is-desktop" }, [
-        _c("div", { staticClass: "columns secondcolumns" }, [
+    _c("section", { staticClass: "section" }, [
+      _c("div", { staticClass: "container" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _vm._m(3),
+        _vm._v(" "),
+        _c("div", { staticClass: "tile is-ancestor pill-columns" }, [
           _vm._m(4),
           _vm._v(" "),
-          _c("div", { staticClass: "column is-6 rightcol lastcol" }, [
-            _c("div", { staticClass: "textbox" }, [
-              _c(
-                "div",
-                { staticClass: "textwrapper" },
-                [
-                  _vm._m(5),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "boldspan" }, [
-                    _vm._v(
-                      "A box costs £14.97 and they are delivered every 4 weeks"
-                    )
-                  ]),
-                  _c("br"),
+          _c("div", { staticClass: "tile textbox" }, [
+            _c(
+              "div",
+              { staticClass: "textwrapper" },
+              [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("span", { staticClass: "boldspan" }, [
                   _vm._v(
-                    "\n\t\t\t\t\t\t\t\t( You can stop whenever you like! )\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t"
-                  ),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "button is-primary is-outlined is-large",
-                      attrs: { to: "/sign-up", tag: "div" }
-                    },
-                    [_vm._v("Subscribe Now")]
+                    "A box costs £14.97 and they are delivered every 4 weeks"
                   )
-                ],
-                1
-              )
-            ])
+                ]),
+                _c("br"),
+                _vm._v(
+                  "\n\t\t\t\t\t\t( You can stop whenever you like! )\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t"
+                ),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "button is-primary is-outlined is-large",
+                    attrs: { to: "/sign-up", tag: "div" }
+                  },
+                  [_vm._v("Subscribe Now")]
+                )
+              ],
+              1
+            )
           ])
         ])
       ])
@@ -40870,63 +40915,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "section",
-      { staticClass: "section slimsection", attrs: { id: "firstrowcolumns" } },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "columns is-desktop" }, [
-            _c("div", { staticClass: "column" }, [
-              _c("img", { attrs: { src: "/img/dog3.jpeg" } })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "column rightcol" }, [
-              _c("div", { staticClass: "textbox" }, [
-                _c("div", { staticClass: "textwrapper" }, [
-                  _c("h1", { staticClass: "subtitle" }, [
-                    _c("span", [_vm._v("What is a Toys and Treats Box?")])
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "textblock" }, [
-                    _vm._v(
-                      "Simply pure doggie happiness. It is a surprise gift box subscription to show your dog how much you love them. Our team of expert pooches choose from an amazing range of toys,treats and other goodies to create a surprise that your dog is sure to look forward to. Boxes are dispatched every 4 weeks. Non-stop joy for your dog. "
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "section slimsection" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "columns is-desktop" }, [
-          _c("div", { staticClass: "column leftcol lastcol" }, [
-            _c("div", { staticClass: "textbox" }, [
-              _c("div", { staticClass: "textwrapper" }, [
-                _c("h1", { staticClass: "subtitle" }, [
-                  _c("span", [
-                    _vm._v("Why should I get a Toys and Treats Box?")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "textblock" }, [
-                  _vm._v(
-                    "We belive every dog should be made to feel special. Our dogs do so much for us, the unconditional love, the playful games, or trying to cheer you up when you feel down. Dogs give us so much of their love, wouldn't it be nice to return just a little of that love? Can you imagine how happy they would be to get an exciting gift box every 4 weeks? A Toys and Treats box is the simplest way of returning a little bit of that love they show you."
-                  )
-                ])
-              ])
-            ])
+    return _c("div", { staticClass: "tile is-ancestor pill-columns" }, [
+      _c("div", { staticClass: "tile is-4" }, [
+        _c("img", { attrs: { src: "/img/dog3.jpeg" } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tile textbox" }, [
+        _c("div", { staticClass: "textwrapper" }, [
+          _c("h1", { staticClass: "subtitle" }, [
+            _c("span", [_vm._v("What is a Toys and Treats Box?")])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "column" }, [
-            _c("img", { attrs: { src: "/img/dog2.jpeg" } })
+          _c("p", { staticClass: "textblock" }, [
+            _vm._v(
+              "Simply pure doggie happiness. It is a surprise gift box subscription to show your dog how much you love them. Our dedicated team of product testing pooches choose from an amazing range of toys,treats and other goodies to create a surprise that your dog is sure to look forward to. Boxes are dispatched every 4 weeks. Non-stop joy for your dog. "
+            )
           ])
         ])
       ])
@@ -40936,7 +40939,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-6 image-to-hide" }, [
+    return _c("div", { staticClass: "tile is-ancestor pill-columns" }, [
+      _c("div", { staticClass: "tile is-4" }, [
+        _c("img", { attrs: { src: "/img/dog2.jpeg" } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tile textbox" }, [
+        _c("div", { staticClass: "textwrapper" }, [
+          _c("h1", { staticClass: "subtitle" }, [
+            _c("span", [_vm._v("Why should I get a Toys and Treats Box?")])
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "textblock" }, [
+            _vm._v(
+              "We belive every dog should be made to feel special. Our dogs do so much for us, the unconditional love, the playful games, or trying to cheer you up when you feel down. Dogs give us so much of their love, wouldn't it be nice to return just a little of that love? Can you imagine how happy they would be to get an exciting gift box every 4 weeks? A Toys and Treats box is the simplest way of returning a little bit of that love they show you."
+            )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tile is-4" }, [
       _c("img", { attrs: { src: "/img/dog4.jpeg" } })
     ])
   },
@@ -40955,7 +40982,7 @@ var staticRenderFns = [
     return _c(
       "section",
       {
-        staticClass: "hero is-large herobanner howItWorksBanner",
+        staticClass: "hero is-medium herobanner howItWorksBanner",
         attrs: { id: "how-it-works-view" }
       },
       [
@@ -41012,7 +41039,7 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("p", [
                   _vm._v(
-                    "\n                                    Our team will choose which toys and treats to send to your dog based on the size of your dog.\n                                "
+                    "\n                                    Our team will choose a wonderful range of goodies for your dog based on their size.\n                                "
                   )
                 ])
               ])

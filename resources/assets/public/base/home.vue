@@ -43,45 +43,64 @@
 			</div>
 		</section>
 
-		<section class="section slimsection" id="firstrowcolumns">
+	<section class="section">
+		<div class="container">
+
+
+
+
+			<div class="tile is-ancestor pill-columns">
+				<div class="tile is-4">
+					<img src="/img/dog3.jpeg">
+				</div>
+				<div class="tile textbox">
+					<div class="textwrapper">
+						<h1 class="subtitle"><span>What is a Toys and Treats Box?</span></h1>
+						<p class="textblock">Simply pure doggie happiness. It is a surprise gift box subscription to show your dog how much you love them. Our dedicated team of product testing pooches choose from an amazing range of toys,treats and other goodies to create a surprise that your dog is sure to look forward to. Boxes are dispatched every 4 weeks. Non-stop joy for your dog. </p>
+					</div>
+				</div>
+			</div>	
+
+
+			<div class="tile is-ancestor pill-columns">
+				<div class="tile is-4">
+					<img src="/img/dog2.jpeg">
+				</div>
+				<div class="tile textbox">
+					<div class="textwrapper">
+						<h1 class="subtitle"><span>Why should I get a Toys and Treats Box?</span></h1>
+						<p class="textblock">We belive every dog should be made to feel special. Our dogs do so much for us, the unconditional love, the playful games, or trying to cheer you up when you feel down. Dogs give us so much of their love, wouldn't it be nice to return just a little of that love? Can you imagine how happy they would be to get an exciting gift box every 4 weeks? A Toys and Treats box is the simplest way of returning a little bit of that love they show you.</p>								
+					</div>
+				</div>
+			</div>	
+
+
+			<div class="tile is-ancestor pill-columns">
+				<div class="tile is-4">
+					<img src="/img/dog4.jpeg">
+				</div>
+				<div class="tile textbox">
+					<div class="textwrapper">
+						<h1 class="subtitle"><span>So how much does it cost?</span></h1>
+						<span class="boldspan">A box costs &pound;14.97 and they are delivered every 4 weeks</span><br>
+						( You can stop whenever you like! )								
+						<br>
+						<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">Subscribe Now</router-link>													
+					</div>
+				</div>
+			</div>	
+
+
+
+		</div>
+	</section>
+
+
+		<!-- <section class="section slimsection" id="firstrowcolumns">
 			<div class="container">				
 				<div class="columns is-desktop">
-					<div class="column"><img src="/img/dog3.jpeg"></div>
+					<div class="column"><img src="/img/dog.jpeg"></div>
 					<div class="column rightcol">
-						<div class="textbox">
-							<div class="textwrapper">
-								<h1 class="subtitle"><span>What is a Toys and Treats Box?</span></h1>
-								<p class="textblock">Simply pure doggie happiness. It is a surprise gift box subscription to show your dog how much you love them. Our team of expert pooches choose from an amazing range of toys,treats and other goodies to create a surprise that your dog is sure to look forward to. Boxes are dispatched every 4 weeks. Non-stop joy for your dog. </p>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section slimsection">
-			<div class="container">				
-				<div class="columns is-desktop">
-					<div class="column leftcol lastcol">
-						<div class="textbox">
-							<div class="textwrapper">
-								<h1 class="subtitle"><span>Why should I get a Toys and Treats Box?</span></h1>
-								<p class="textblock">We belive every dog should be made to feel special. Our dogs do so much for us, the unconditional love, the playful games, or trying to cheer you up when you feel down. Dogs give us so much of their love, wouldn't it be nice to return just a little of that love? Can you imagine how happy they would be to get an exciting gift box every 4 weeks? A Toys and Treats box is the simplest way of returning a little bit of that love they show you.</p>								
-							</div>
-						</div>
-					</div>
-					<div class="column"><img src="/img/dog2.jpeg"></div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section slimsection">
-			<div class="container is-desktop">				
-				<div class="columns secondcolumns">
-					<div class="column is-6 image-to-hide"><img src="/img/dog4.jpeg"></div>
-					<div class="column is-6 rightcol lastcol">
 						<div class="textbox">
 							<div class="textwrapper">
 								<h1 class="subtitle"><span>So how much does it cost?</span></h1>
@@ -90,15 +109,44 @@
 								<br>
 								<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">Subscribe Now</router-link>													
 							</div>
+		
 						</div>
+		
 					</div>
 				</div>
 			</div>
 		</section>
+		
+		<section class="section slimsection">
+			<div class="container">				
+				<div class="columns is-desktop">
+					<div class="column leftcol lastcol">
+						<div class="textbox">
+							
+						</div>
+					</div>
+					<div class="column"><img src="/img/dog2.jpeg"></div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="section slimsection">
+			<div class="container is-desktop">				
+				<div class="columns secondcolumns">
+					<div class="column is-6 image-to-hide"><img src="/img/dog4.jpeg"></div>
+					<div class="column is-6 rightcol lastcol">
+						<div class="textbox">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> -->
 
 	<section class="sectionbreak">&nbsp;</section>
 
-        <section id="how-it-works-view" class="hero is-large herobanner howItWorksBanner">
+
+        <section id="how-it-works-view" class="hero is-medium herobanner howItWorksBanner">
 
 
             <div class="hero-body">
@@ -155,7 +203,7 @@
                                     2) We hand pick a box of goodies for you dog                                  
                                 </h1> 
                                 <p>
-                                    Our team will choose which toys and treats to send to your dog based on the size of your dog.
+                                    Our team will choose a wonderful range of goodies for your dog based on their size.
                                 </p>                         
                             </div>                           
                         </div>                        
@@ -218,7 +266,6 @@
 		</div>
 	</section>
  -->
-
 
 
 	<section class="sectionbreak">&nbsp;</section>
@@ -414,6 +461,32 @@
 
 	@import '~sass/variables';
 
+	#homeview{
+		.container
+		.tile.pill-columns{
+			border:1px solid $text-dark;
+			border-radius:30px;
+			margin-bottom:5vw;
+			.is-4{
+				overflow:hidden;
+			}
+			.pillimage{
+				padding:0px;
+				margin-bottom:-6px;					
+			} 
+			img{
+				border-top-left-radius:30px;
+				border-bottom-left-radius:30px;				
+				display:block;
+				width:auto;
+				height:auto;
+				max-width:100vw;
+				position:relative;
+			}
+		}		
+	}
+
+
 	.small-view{
 		display:none;
 	}
@@ -518,7 +591,8 @@
 		}
 
 		.textblock{
-			font-size:1.2vw;
+			font-size:22px;
+			text-align:justify;
 		}
 	}
 	.clearbutton{
@@ -614,7 +688,12 @@
 		}
 		.howitworkstextsection{
 			h1.subtitle{
-				font-size:1.2vw;
+				font-size:18px;
+	        	text-transform:uppercase;
+	        	font-weight:700;       
+			}
+			p{
+				text-align:justify;
 			}
 		}
 		.is-centered-button{
@@ -622,7 +701,7 @@
 			margin: auto;
 			width: auto;
 			max-width: 200px;
-			font-size: 1.3vw;
+			font-size: 20px;
 			text-align: center;
 		}
 	}
@@ -640,6 +719,7 @@
         background-size:cover;
         background-position:center;
         background-image:url('/img/howItWorks.jpeg');
+        padding:50px 0px;
         h2{
             font-size:3.5vw;
             text-align:right;
@@ -647,7 +727,6 @@
             line-height:1;                
             text-transform:uppercase;       
         }
-
     }
       
 
@@ -691,8 +770,24 @@
 				}
 			}
 		}
-
 	}
+
+	@media only screen and (max-width: 1451px) {
+		#homeview{
+			.textblock{
+				font-size:16px;
+			}
+		}
+	}
+	@media only screen and (max-width: 1075px) {
+		#homeview{
+			.textblock{
+				font-size:1.8vw;
+			}
+		}
+	}
+
+
 	@media only screen and (max-width: 857px) {
 		#homeview{
 			h1.maintitle.landingtext{
@@ -704,7 +799,7 @@
 			p.mainsubtitle{
 				font-size:20px;
 			}				
-		}
+		}		
 	}
 	@media only screen and (max-width: 558px) {
 		#homeview{
@@ -735,6 +830,10 @@
 				height: 100%;
 				align-items: center;
 				justify-content: center;
+			}
+
+			.textblock{
+				font-size:18px;
 			}
 		}
 	}
