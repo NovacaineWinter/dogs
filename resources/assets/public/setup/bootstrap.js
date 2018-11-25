@@ -2,8 +2,30 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueRouter from 'vue-router';
 import vueSmoothScroll from 'vue-smooth-scroll';
-import VueCarousel from 'vue-carousel';
-/*import fontawesome from '@fortawesome/fontawesome';*/
+//import VueCarousel from 'vue-carousel';
+
+
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+
+
+//add FA icons that we use
+import { faPaw } from '@fortawesome/free-solid-svg-icons'
+library.add(faPaw)
+
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faTwitter)
+
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faFacebookSquare)
+
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faInstagram)
+
+
+
 
 import './setupRoutes.js';
 import './navbarItems.js';	
@@ -19,7 +41,7 @@ import '../loadComponents';
 window.axios = axios;
 
 window.Vue = Vue;
-window._ = require('lodash');
+//window._ = require('lodash');
 
 /* Setup Axios */
 
@@ -42,4 +64,6 @@ Vue.use(VueRouter);
 
 Vue.use(vueSmoothScroll);
 
-Vue.use(VueCarousel);
+//Vue.use(VueCarousel);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)

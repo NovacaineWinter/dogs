@@ -4,14 +4,15 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta property="siteurl" content="{{{url('/')}}}" />
+        <meta property="siteurl" content="{{{env('SECURE_URL')}}}" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Site Title</title>
+        <title>Toys and Treats | Happiness for Dogs</title>
 
         <!-- Styles -->
         <link href="{{{url('/css/app.css')}}}" rel="stylesheet" type="text/css">
 
+     
     </head>
     <body>
 
@@ -28,6 +29,7 @@
     </body>
 
     <!-- JS -->
+    <script src="https://checkout.stripe.com/checkout.js"></script>
     <script src="{{{ url('js/app.js') }}}"></script>
 
 </html>

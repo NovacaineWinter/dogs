@@ -18,6 +18,17 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('firstName');
+            $table->string('lastName');
+            $table->string('lineOne');
+            $table->string('lineTwo')->nullable();
+            $table->string('lineThree')->nullable();
+            $table->string('city')->nullable();
+            $table->string('county')->nullable();
+            $table->string('postcode');
+            $table->string('stripe_id');
+            $table->integer('account_status')->default(0);
+            $table->boolean('subscribed_to_mailchimp')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
