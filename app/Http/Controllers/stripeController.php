@@ -134,12 +134,13 @@ class stripeController extends Controller
 
     		case 'customer.subscription.deleted':
     			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')['object']['id'])->first();	
-    			$sub->is_active = false;
-    			$sub->save();
+    			
     			$sub->user()->first()->stripeEvents()->create([
     				'title'=>'Subscription Cancelled',
     				'typeReference'=>'customer.subscription.deleted',
     			]);
+
+                $sub->cancelSubscription();
     			$sub->user()->first()->checkForActiveSubscriptions();
 
     			return 'Subscription deleted';
@@ -276,7 +277,9 @@ class stripeController extends Controller
 		$sub->plan_id	= $plan->id;
         $sub->dog_name  = $dog['name'];
         $sub->dog_size  = $dog['size'];
+        $sub->delivery_slot = $sub->calculateDeliverySlot();
 		$sub->save();
+        $user->sendWelcomeEmail($sub);
 
     }
 }

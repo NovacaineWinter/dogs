@@ -128,18 +128,29 @@ class User extends Authenticatable
         }
     }
 
+/*
+==========================================================================================
+==========================================================================================
+==========================================================================================
+==========================================================================================
+                                    ******     Emails ******
+
+*/
 
     public function notifyExpiringPaymentMethod($stripeEvent){
         $this->notifications()->create(array(
             'stripe_id'=>$stripeEvent->id,
             'title' =>'Payment Method Expiring Soon'
         ));
-
-        //send email
+        $subject = 'Payment Method Expiring Soon | Toys and Treats';
+        $message = 'Hi '.$this->firstName.", \r\n\r\n Hope your dog is enjoying Toys and Treats, we have noticed that the card details you have saved for your Toys and Treats subscription is about to expire. Could you spare a moment to log in and update your payment method so that your subscription is uninterrupted. \r\n\r\n You can do this by logging in to your account on  \r\n\r\n https://toysandtreats.co.uk/login \r\n\r\n Thanks for your time, \r\n\r\n The team at Toys and Treats";
+        $this->email($subject,$message);
     }
 
     public function alertUpcomingPayment(){
-
+        $subject = 'Upcoming Payment | Toys and Treats';
+        $message = 'Hi '.$this->firstName.", \r\n\r\n Hope your dog is enjoying Toys and Treats, we just thought we would drop you an email to tell you that payment for your next box is about to come out of your account, this means your dog is soon to get their gift box delivery. Exciting times!. You don't need to do anything, everything will be taken care of for you.\r\n\r\n You can view the details we have on file for you by logging in to your account on  \r\n\r\n https://toysandtreats.co.uk/login \r\n\r\n Hope your dog loves their next delivery, \r\n\r\n The team at Toys and Treats";
+        $this->email($subject,$message);
     }
     
     public function alertPaymentFailed($stripeEvent){
@@ -148,8 +159,32 @@ class User extends Authenticatable
             'title' =>'Payment Failed'
         ));
 
-        //send email
+        $subject = 'Card Payment Failed | Toys and Treats';
+        $message = 'Hi '.$this->firstName.", \r\n\r\n Hope your dog is enjoying Toys and Treats, Unfortunatley we have not been able to process payment for your upcoming gift box, can you spare a moment to check the card details we have on file for you? We won't be able to dispatch your next delivery until the payment has succeeded.  \r\n\r\n You can do this by logging in to your account on  \r\n\r\n https://toysandtreats.co.uk/login \r\n\r\n Really hope this doesn't cause too much inconvenience, \r\n\r\n The team at Toys and Treats";
+        $this->email($subject,$message);
     }
+
+    public function sendWelcomeEmail($subscription){
+        $subject = 'Welcome to Toys and Treats';
+        $message = 'Hi '.$this->firstName.", \r\n\r\n We are very happy to welcome you to Toys and Treats. We're sure that ".$subscription->dog_name." must be very excited to recieve their first gift box. \r\n\r\n You can log in to your account at any time by visiting toysandtreats.co.uk and clicking login at the top of the page or by visiting the following link \r\n\r\n https://toysandtreats.co.uk/login \r\n\r\n Your first box is scheduled for dispatch on ".$subscription->nextDispatchString().".  \r\n\r\n If you have any questions, queries or just want to talk dogs, message us at hello@toysandtreats.co.uk or message us on social media. \r\n\r\n Wishing your dog the very happiest of times,  \r\n\r\n The team at Toys and Treats";
+        $this->email($subject,$message);
+    }
+
+
+    public function subscriptionCancelEmail($subscription){
+        $subject = 'Subscription Cancelled | Toys and Treats';
+        $message = 'Hi '.$this->firstName.", \r\n\r\n this is a quick email to confirm that your subscription for ".$subscription->dog_name." has been cancelled. We do hope that you have enjoyed receiving Toys and Treats boxes and hope to see you again in the future.  \r\n\r\n Best Wishes, \r\n\r\n The team at Toys and Treats.";
+        $this->email($subject,$message);
+    }
+
+
+
+/*
+==========================================================================================
+==========================================================================================
+==========================================================================================
+==========================================================================================
+*/
 
 
     public function checkForActiveSubscriptions(){

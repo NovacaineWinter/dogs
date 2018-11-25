@@ -43,14 +43,14 @@
 			</div>
 		</section>
 
-	<section class="section">
+	<section class="section" id="infoabouttoysandtreats">
 		<div class="container">
 
 
 
 
 			<div class="tile is-ancestor pill-columns">
-				<div class="tile is-4">
+				<div class="tile is-4 imagetile">
 					<img src="/img/dog3.jpeg">
 				</div>
 				<div class="tile textbox">
@@ -63,7 +63,7 @@
 
 
 			<div class="tile is-ancestor pill-columns">
-				<div class="tile is-4">
+				<div class="tile is-4 imagetile">
 					<img src="/img/dog2.jpeg">
 				</div>
 				<div class="tile textbox">
@@ -76,7 +76,7 @@
 
 
 			<div class="tile is-ancestor pill-columns">
-				<div class="tile is-4">
+				<div class="tile is-4 imagetile">
 					<img src="/img/dog4.jpeg">
 				</div>
 				<div class="tile textbox">
@@ -440,7 +440,7 @@
         methods:{
             scrollintoview(){
                 window.scrollTo(0, 0);
-                var elemn = document.getElementById("firstrowcolumns");
+                var elemn = document.getElementById("infoabouttoysandtreats");
                 elemn.scrollIntoView({ behavior: 'smooth', block: "start" });
             },
         },
@@ -719,7 +719,7 @@
         background-size:cover;
         background-position:center;
         background-image:url('/img/howItWorks.jpeg');
-        padding:50px 0px;
+        padding:5vw 0px;
         h2{
             font-size:3.5vw;
             text-align:right;
@@ -772,6 +772,7 @@
 		}
 	}
 
+
 	@media only screen and (max-width: 1451px) {
 		#homeview{
 			.textblock{
@@ -810,15 +811,20 @@
 	}
 	
 
+
+
 	@media only screen and (max-width: 1068px) {
 		p.mainsubtitle{
 			font-size:2.7vw;
-		}				
+		}			
+		.imagetile{
+			min-width: 50%;
+		}	
 	}
 
 
 
-	@media only screen and (max-width: 756px) {
+	@media only screen and (max-width: 768px) {
 		#homeview{
 			#homebanner{
 				min-height:70vh;
@@ -835,6 +841,17 @@
 			.textblock{
 				font-size:18px;
 			}
+
+			.container{
+				.tile.pill-columns{
+					img{
+						border-top-right-radius:30px;
+						border-bottom-left-radius:0px;
+						max-width:100%;;
+					}
+				} 
+
+			} 
 		}
 	}
 

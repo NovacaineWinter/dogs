@@ -22,6 +22,7 @@ class CreateUserSubscriptionsTable extends Migration
             $table->boolean('is_active')->default(false);
             $table->string('dog_name');
             $table->integer('dog_size');
+            $table->integer('delivery_slot');
             $table->timestamps();
         });
     }

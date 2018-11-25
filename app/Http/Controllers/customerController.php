@@ -194,16 +194,14 @@ class customerController extends Controller
             'reason_id'=>$request->get('reason_id'),
             'plan_id'  =>$sub->plan_id
         ));  
-        $sub->is_active=0;
-        $sub->save();
 
-        return 'ok';
         //sort out stripe
-        /*\Stripe\Stripe::setApiKey(env('STRIPE_PRIVATE'));
+        \Stripe\Stripe::setApiKey(env('STRIPE_PRIVATE'));
         $subscription = \Stripe\Subscription::retrieve($sub->stripe_id);
         $subscription->cancel();
-*/
+
         //the webhook should take care of the rest
+        return 'ok';
 
     }
 

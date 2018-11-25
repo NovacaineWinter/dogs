@@ -41,29 +41,32 @@
             <div class="container">
     
 
-            <div class="columns">
-                <div class="column"></div>
-                <div class="column is-8">
-                    <div class="columns has-border is-selected">
-                        <div class="column is-2"><img :src="plans[0].img" class="is-horisontal-center" alt="plan image"></div>
-                        <div class="column is-8">
-                            <h1 class="subtitle">
-                                Toys and Treats Box                                
-                            </h1>
-                            <p>
-                                A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every four weeks. Get those tails wagging!                                
-                            </p>   
-                        </div>
-                        <div class="column is-2 has-text-centered">£14.97 / Box <br> Delivered every 4 weeks</div>
-                    </div>                    
+                <div class="columns">
+                    <div class="column"></div>
+                    <div class="column is-8">
+                        <div class="columns has-border is-selected is-mobile">
+                            <div class="column is-2"><img :src="planimage" class="is-horisontal-center" alt="plan image"></div>
+                            <div class="column columns">                            
+                                <div class="column is-9">
+                                    <h1 class="subtitle">
+                                        Toys and Treats Box                                
+                                    </h1>
+                                    <p>
+                                        A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every four weeks. Get those tails wagging!                                
+                                    </p>   
+                                </div>
+                                <div class="column is-3 has-text-centered">£14.97 / Box Delivered every 4 weeks</div>
+                            </div>
+                        </div>                    
+                    </div>
+                    <div class="column"></div>
                 </div>
-                <div class="column"></div>
-            </div>
+
 
                 <div v-show="showDogDetails">
-                    
+                    <h1 class="title has-text-centered">Sign Up</h1>
                     <div class="columns">                    
-                        <div class="column">&nbsp;</div>
+                        <div class="column blankcolumn">&nbsp;</div>
                         <div class="column field">
                             <label class="label title has-text-centered">My dog's name is</label>
                             <div class="control">
@@ -79,7 +82,7 @@
                                 <span class="errortext" v-show="errors.dogName">Required</span>
                             </div>
                         </div>                
-                        <div class="column">&nbsp;</div>
+                        <div class="column blankcolumn">&nbsp;</div>
                     </div>
 
 
@@ -151,7 +154,7 @@
                         <h2 class="title has-text-centered textcaptialised" >About {{ this.dogName }}'s Human...</h2>                    
                         
                         <div class="columns">
-                            <div class="column">&nbsp;</div>
+                            <div class="column blankcolumn">&nbsp;</div>
                             <div class="column">                               
 
                                 <div class="field">
@@ -345,7 +348,7 @@
 
 
                             </div>  <!-- End of the central column -->
-                            <div class="column">&nbsp;</div>
+                            <div class="column blankcolumn">&nbsp;</div>
                         </div>
 
                     </div>
@@ -356,12 +359,12 @@
                 <div id="loadingscreen" v-show="showLoading">
                     <div class="container">
                         <div class="columns">
-                            <div class="column">&nbsp;</div>
+                            <div class="column blankcolumn">&nbsp;</div>
                             <div class="column">                                
                                 <h1 class="title has-text-centered">Loading...</h1>
                                 <div class="button is-loading is-primary is-outlined is-large">&nbsp;</div>
                             </div>
-                            <div class="column">&nbsp;</div>
+                            <div class="column blankcolumn">&nbsp;</div>
                         </div>
                     </div>
                 </div> 
@@ -369,13 +372,13 @@
                 <div id="problemScreen" v-show="showErrorScreen" @click="showErrorScreen=false">
                     <div class="container">
                         <div class="columns">
-                            <div class="column">&nbsp;</div>
+                            <div class="column blankcolumn">&nbsp;</div>
                             <div class="column">                                
                                 <h1 class="title has-text-centered">There was a problem...</h1>
                                 <p class="subtitle has-text-centered" v-text="errors.message"></p>
                                 <router-link to="/contact-us" tag="div" class="button is-primary is-outlined is-large">Contact Us</router-link>
                             </div>
-                            <div class="column">&nbsp;</div>
+                            <div class="column blankcolumn">&nbsp;</div>
                         </div>
                     </div>
                 </div>
@@ -402,7 +405,8 @@
             axios.get('/api/plans')      
                 .then(response => {
                     this.plans = response.data;
-                    this.selectedPlan(this.plans[0]);
+                    this.selectedPlan(response.data[0]);
+                    this.planimage=this.planSelected.img;
                 })
     
                 .catch(error => {console.log(error.data)});
@@ -813,6 +817,7 @@
                 loadingSubButton:false,
                 showLoading:false,
                 showErrorScreen:false,
+                planimage:'/img/box.png',
                 errors:{
                     firstName:false,
                     lastName:false,
@@ -1063,6 +1068,17 @@
     }
 
 
+    @media only screen and (max-width: 768px) {
+
+        #dogNameAndSize{
+            padding-top:0px;
+        }  
+
+        .blankcolumn{
+            display:none;
+        }     
+
+    }
 
     @media only screen and (max-width: $tabletbreak) {
         #sign-up-view{

@@ -1,7 +1,7 @@
 		
 <template>
 
-    <div style="margin-top:-69px" id="how-it-works-view">
+    <div id="how-it-works-view">
         
         <section class="hero is-large herobanner" id="howItWorksBanner">
 
@@ -99,56 +99,6 @@
                 </div>
             </div>
         </section>
-
-
-
-
-
-<!-- 
-
-                    <div class="column is-2">&nbsp;</div>
-                    <div class="column">
-                        
-
-                        <div class="columns">
-                            <div class="column bignumber">Step<br>1</div>
-                            <div class="column">
-                                <span>Sign Up For An Account</span>
-                                <p>
-                                    Its super quick and easy - choose your plan, tell us about your dog and let us know where you want it delivered. 
-                                </p>
-                                <div class="button is-large is-primary">Subscribe Now</div>
-                            </div>
-                        </div>
-
-
-                        <div class="columns">
-                            <div class="column bignumber">Step<br>2</div>
-                            <div class="column">
-                                <span>We hand pick a box of goodies for you dog</span>
-                                <p>
-                                    Our team will choose which toys and treats to send to your dog based on the size of your dog and which plan you choose. We post boxes out once a month, you can see when your next delivery is due by logging in on our website. 
-                                </p>
-                            </div>
-                        </div>
-
-
-                        <div class="columns">
-                            <div class="column bignumber">Step<br>3</div>
-                            <div class="column">
-                                <span>Recieve your box of doggie happiness</span>
-                                <p>
-                                    The big day! your dog receives their box in the post. Make sure to take photos and videos and tag us in them! 
-                                </p>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="column is-2">&nbsp;</div>
-                </div>
-            </div>
-        </section> -->
     </div>
 
 
@@ -196,24 +146,25 @@
     @import '~sass/variables';
    
     #how-it-works-view{
+
         .fullheight{
             height:100%;
         }        
+
+        #howItWorksBanner{
+            background-size:cover;
+            background-position:center;
+            background-image:url('/img/howItWorks.jpeg');
+            h2{
+                font-size:3.5vw;
+                text-align:right;
+                color:$text-dark;
+                line-height:1;                
+                text-transform:uppercase;       
+            }
+
+        }  
     }
-
-    #howItWorksBanner{
-        background-size:cover;
-        background-position:center;
-        background-image:url('/img/howItWorks.jpeg');
-        h2{
-            font-size:3.5vw;
-            text-align:right;
-            color:$text-dark;
-            line-height:1;                
-            text-transform:uppercase;       
-        }
-
-    }  
 
 </style>
 

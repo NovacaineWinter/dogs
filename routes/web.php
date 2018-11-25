@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/email', function () {
+    return view('emailTemplates.testEmail');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
