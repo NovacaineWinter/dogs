@@ -49,6 +49,8 @@ Route::get('/api/plans', 'vuePublic@plans');
 
 Route::post('/api/logout', 'customerController@logout');
 
+Route::get('/api/new-user-next-dispatch','vuePublic@subscribeNowForDeliveryOn');
+
 Route::post('/vue/contact/message','contactController@receiveMessage');
 
 Route::get('/api/get-logged-in-user', 'customerController@loggedInDetails')->middleware('auth');
