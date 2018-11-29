@@ -14,7 +14,7 @@
 						<div class="column is-three-quarters-desktop">
 							<div class="has-text-centered misty">
 								<h1 class="maintitle landingtext">Every dog deserves <br>toys and treats</h1>
-								<p class="mainsubtitle">A suprise gift box subscription for your dog</p>	
+								<p class="mainsubtitle">A surprise gift box subscription for your dog</p>	
 								<div class="columns is-mobile">
 									<div class="column is-6"><div class="button widebutton landingtext clearbutton" @click="scrollintoview">Find Out More</div></div>
 									<div class="column is-6">
@@ -56,7 +56,7 @@
 				<div class="tile textbox">
 					<div class="textwrapper">
 						<h1 class="subtitle"><span>What is a Toys and Treats Box?</span></h1>
-						<p class="textblock">Simply pure doggie happiness. It is a surprise gift box subscription to show your dog how much you love them. Our dedicated team of product testing pooches choose from an amazing range of toys,treats and other goodies to create a surprise that your dog is sure to look forward to. Boxes are dispatched every 4 weeks. Non-stop joy for your dog. </p>
+						<p class="textblock">Simply pure doggie happiness. It is a surprise gift box subscription to show your dog how much you love them. Our dedicated team of product testing pooches choose from an amazing range of toys, treats and other goodies to create a surprise that your dog is sure to look forward to. Boxes are dispatched every 4 weeks. Non-stop joy for your dog. </p>
 					</div>
 				</div>
 			</div>	
@@ -69,7 +69,7 @@
 				<div class="tile textbox">
 					<div class="textwrapper">
 						<h1 class="subtitle"><span>Why should I get a Toys and Treats Box?</span></h1>
-						<p class="textblock">We belive every dog should be made to feel special. Our dogs do so much for us, the unconditional love, the playful games, or trying to cheer you up when you feel down. Dogs give us so much of their love, wouldn't it be nice to return just a little of that love? Can you imagine how happy they would be to get an exciting gift box every 4 weeks? A Toys and Treats box is the simplest way of returning a little bit of that love they show you.</p>								
+						<p class="textblock">We believe every dog should be made to feel special. Our dogs do so much for us, the unconditional love, the playful games, or just trying to cheer you up when you feel down. Dogs give us so much of their love, wouldn't it be nice to return just a little of that love? Can you imagine how happy they would be to get an exciting gift box every 4 weeks? A Toys and Treats box is the simplest way of returning a little bit of that love they show you.</p>								
 					</div>
 				</div>
 			</div>	
@@ -95,53 +95,6 @@
 		</div>
 	</section>
 
-
-		<!-- <section class="section slimsection" id="firstrowcolumns">
-			<div class="container">				
-				<div class="columns is-desktop">
-					<div class="column"><img src="/img/dog.jpeg"></div>
-					<div class="column rightcol">
-						<div class="textbox">
-							<div class="textwrapper">
-								<h1 class="subtitle"><span>So how much does it cost?</span></h1>
-								<span class="boldspan">A box costs &pound;14.97 and they are delivered every 4 weeks</span><br>
-								( You can stop whenever you like! )								
-								<br>
-								<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">Subscribe Now</router-link>													
-							</div>
-		
-						</div>
-		
-					</div>
-				</div>
-			</div>
-		</section>
-		
-		<section class="section slimsection">
-			<div class="container">				
-				<div class="columns is-desktop">
-					<div class="column leftcol lastcol">
-						<div class="textbox">
-							
-						</div>
-					</div>
-					<div class="column"><img src="/img/dog2.jpeg"></div>
-				</div>
-			</div>
-		</section>
-		
-		<section class="section slimsection">
-			<div class="container is-desktop">				
-				<div class="columns secondcolumns">
-					<div class="column is-6 image-to-hide"><img src="/img/dog4.jpeg"></div>
-					<div class="column is-6 rightcol lastcol">
-						<div class="textbox">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</section> -->
 
 	<section class="sectionbreak">&nbsp;</section>
 
@@ -169,13 +122,7 @@
             </div>          
         </section>
 
- <!--        <section class="hero is-primary">
-     <div class="hero-body">
-         <div class="container">
-             <h1 class="title has-text-centered">How you can make your dog happy month after month.</h1>
-         </div>
-     </div>
- </section> -->
+
 
         <section class="section howitworkstextsection">
             <div class="container">
@@ -203,7 +150,7 @@
                                     2) We hand pick a box of goodies for you dog                                  
                                 </h1> 
                                 <p>
-                                    Our team will choose a wonderful range of goodies for your dog based on their size.
+                                    Our team will choose from a wonderful range of goodies for your dog based on their size.
                                 </p>                         
                             </div>                           
                         </div>                        
@@ -215,7 +162,7 @@
                             
                             <div class="card-content has-text-centered">
                                 <h1 class="subtitle">
-                                   3) Recieve your box of doggie happiness                               
+                                   3) Receive your box of doggie happiness                               
                                 </h1> 
                                 <p>
                                     The big day! your dog receives their box in the post. Make sure to take photos and tag us in them!  
@@ -233,39 +180,6 @@
         </section>
 
 
-<!-- 
-        
-
-	<section class="sectionbreak">&nbsp;</section>
-	<section class="section unpaddedsection">
-		<div class="container">
-			<div class="columns borderedcontainer">
-				<div class="column">&nbsp;</div>
-				<div class="column is-8">
-					<h1 class="subtitle"><span>How we started...</span></h1>
-					<p>
-						I’ve been around dogs my whole life, right from when I was a child growing up to the present day. It’s only when you spend time away from your dog that you realise how important they are to you. The company, the unconditional love and the games, having a dog is great.
-						<br><br>
-
-						If my dogs are anything like yours, they love their toys and will do anything for a tasty treat. Given how much my dogs do for me, I always try my best to get down the pet store frequently to get them a new toy and a refill on their treats. They are always super excited to get a new toy, so much so that when I gave Monte a new ball he took it round with him for the next three days! He slept next to it, spent most of the day playing with it and he only put it down to go for walkies. It meant so much to him to get a new toy.<br><br>
-
-						As much as I try my best to give them new toys often, some times life is just a bit too busy, and despite my best efforts, sometimes the dogs go for a while without a new toy. It also doesnt help that my local pet store doensn’t have the greatest selection.<br><br>
-
-						This is why I decided to start Toys and Treats, I know most dogs would love to get new toys every month and what dog would say no to tasty treats? Its a super convenient way to show your dog how much you love them. <br><br>
-
-						We source Toys and Treats from all over, we have access to a massive selection of options so your dog will never get bored. Can you imagine how happy they would be?<br><br>
-
-						Hope to be sending your dog a Toys and Treats box soon<br><br>
-						Matt
-						<br><br><br>
-					</p>
-					<img src="/img/portrait.jpeg">
-				</div>			
-				<div class="column">&nbsp;</div>
-			</div>
-		</div>
-	</section>
- -->
 
 
 	<section class="sectionbreak">&nbsp;</section>
@@ -444,13 +358,7 @@
                 elemn.scrollIntoView({ behavior: 'smooth', block: "start" });
             },
         },
-/*
-        data: function() {
-		    return{
-		        url:'http://nbc.wip/img/partners/logos/bmf.jpg',
-		        
-		      }
-	    },*/
+
 
     };
 </script>
@@ -650,7 +558,7 @@
 			margin-top:2vw;
 			width:100%;
 			/*color:$text-light;*/
-			font-size:1.5vw;
+			font-size:1.3vw;
 		}
 		.emojispan{
 			font-size: 1.8vw;

@@ -1,0 +1,102 @@
+
+
+		<!-- <section class="section slimsection" id="firstrowcolumns">
+			<div class="container">				
+				<div class="columns is-desktop">
+					<div class="column"><img src="/img/dog.jpeg"></div>
+					<div class="column rightcol">
+						<div class="textbox">
+							<div class="textwrapper">
+								<h1 class="subtitle"><span>So how much does it cost?</span></h1>
+								<span class="boldspan">A box costs &pound;14.97 and they are delivered every 4 weeks</span><br>
+								( You can stop whenever you like! )								
+								<br>
+								<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">Subscribe Now</router-link>													
+							</div>
+		
+						</div>
+		
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="section slimsection">
+			<div class="container">				
+				<div class="columns is-desktop">
+					<div class="column leftcol lastcol">
+						<div class="textbox">
+							
+						</div>
+					</div>
+					<div class="column"><img src="/img/dog2.jpeg"></div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="section slimsection">
+			<div class="container is-desktop">				
+				<div class="columns secondcolumns">
+					<div class="column is-6 image-to-hide"><img src="/img/dog4.jpeg"></div>
+					<div class="column is-6 rightcol lastcol">
+						<div class="textbox">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> -->
+
+
+
+
+
+
+
+
+
+
+
+		 <!--        <section class="hero is-primary">
+     <div class="hero-body">
+         <div class="container">
+             <h1 class="title has-text-centered">How you can make your dog happy month after month.</h1>
+         </div>
+     </div>
+ </section> -->
+
+
+ 
+<!-- 
+        
+
+	<section class="sectionbreak">&nbsp;</section>
+	<section class="section unpaddedsection">
+		<div class="container">
+			<div class="columns borderedcontainer">
+				<div class="column">&nbsp;</div>
+				<div class="column is-8">
+					<h1 class="subtitle"><span>How we started...</span></h1>
+					<p>
+						I’ve been around dogs my whole life, right from when I was a child growing up to the present day. It’s only when you spend time away from your dog that you realise how important they are to you. The company, the unconditional love and the games, having a dog is great.
+						<br><br>
+
+						If my dogs are anything like yours, they love their toys and will do anything for a tasty treat. Given how much my dogs do for me, I always try my best to get down the pet store frequently to get them a new toy and a refill on their treats. They are always super excited to get a new toy, so much so that when I gave Monte a new ball he took it round with him for the next three days! He slept next to it, spent most of the day playing with it and he only put it down to go for walkies. It meant so much to him to get a new toy.<br><br>
+
+						As much as I try my best to give them new toys often, some times life is just a bit too busy, and despite my best efforts, sometimes the dogs go for a while without a new toy. It also doesnt help that my local pet store doensn’t have the greatest selection.<br><br>
+
+						This is why I decided to start Toys and Treats, I know most dogs would love to get new toys every month and what dog would say no to tasty treats? Its a super convenient way to show your dog how much you love them. <br><br>
+
+						We source Toys and Treats from all over, we have access to a massive selection of options so your dog will never get bored. Can you imagine how happy they would be?<br><br>
+
+						Hope to be sending your dog a Toys and Treats box soon<br><br>
+						Matt
+						<br><br><br>
+					</p>
+					<img src="/img/portrait.jpeg">
+				</div>			
+				<div class="column">&nbsp;</div>
+			</div>
+		</div>
+	</section>
+ -->

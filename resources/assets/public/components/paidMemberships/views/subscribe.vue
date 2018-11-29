@@ -43,7 +43,7 @@
 
                 <div class="columns">
                     <div class="column"></div>
-                    <div class="column is-8">
+                    <div class="column is-8">                       
                         <div class="columns has-border is-selected is-mobile">
                             <div class="column is-2"><img :src="planimage" class="is-horisontal-center" alt="plan image"></div>
                             <div class="column columns">                            
@@ -52,8 +52,9 @@
                                         Toys and Treats Box                                
                                     </h1>
                                     <p>
-                                        A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every four weeks. Get those tails wagging!                                
+                                        A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every four weeks. Get those tails wagging!<br><br>                             
                                     </p>   
+                                    <p class="has-text-centered"> Next box is dispatched on <span v-text="nextDispatch"></span></p>
                                 </div>
                                 <div class="column is-3 has-text-centered">£14.97 / Box Delivered every 4 weeks</div>
                             </div>
@@ -64,10 +65,11 @@
 
 
                 <div v-show="showDogDetails">
-                    <h1 class="title has-text-centered">Sign Up</h1>
-                    <div class="columns">                    
+                    
+                    <div class="columns">
                         <div class="column blankcolumn">&nbsp;</div>
                         <div class="column field">
+                            <h1 class="subtitle has-text-centered" v-if="dogName==''"><br><br>Fill out your dog's name to get started...</h1>
                             <label class="label title has-text-centered">My dog's name is</label>
                             <div class="control">
                                 <input 
@@ -81,7 +83,8 @@
                                     placeholder="Spot....Buster....Rex....">
                                 <span class="errortext" v-show="errors.dogName">Required</span>
                             </div>
-                        </div>                
+                        </div> 
+
                         <div class="column blankcolumn">&nbsp;</div>
                     </div>
 
@@ -411,6 +414,13 @@
     
                 .catch(error => {console.log(error.data)});
             
+
+             axios.get('/api/new-user-next-dispatch')      
+                .then(response => {
+                    this.nextDispatch = response.data; 
+                })
+    
+                .catch(error => {console.log(error.data)});
             
             axios.get('/api/get-stripe-public-key')      
                 .then(response => {
@@ -450,7 +460,11 @@
                 clearTimeout(this.dogNameTimeout);
 
                 this.dogNameTimeout = setTimeout(function(){
-                    this.showSizeSelector = true;
+                    if(this.dogName !=''){
+                        this.showSizeSelector = true;
+                    }else{
+                        this.showSizeSelector = false;
+                    }
                 }.bind(this,'this'),750);
             },
 
@@ -818,6 +832,7 @@
                 showLoading:false,
                 showErrorScreen:false,
                 planimage:'/img/box.png',
+                nextDispatch:'',
                 errors:{
                     firstName:false,
                     lastName:false,
