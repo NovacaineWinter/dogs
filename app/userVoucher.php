@@ -72,13 +72,13 @@ class userVoucher extends Model
 		    CURLOPT_URL => "https://api.pdfshift.io/v2/convert/",
 		    CURLOPT_RETURNTRANSFER => true,
 		    CURLOPT_POST => true,
-		    CURLOPT_POSTFIELDS => json_encode(array("source" => url('/voucher-code?code='.$this->voucher_code), "landscape" => true, "use_print" => false)),
+		    CURLOPT_POSTFIELDS => json_encode(array("source" => url('/voucher-code?code='.$this->voucher_code), "landscape" => false, "use_print" => false)),		   
 		    CURLOPT_HTTPHEADER => array('Content-Type:application/json'),
 		    CURLOPT_USERPWD => env('PDF_API_KEY')
 		));
 
 		$response = curl_exec($curl);	
-
+	
 		Storage::put('public/'.$this->voucher_code.'.pdf', $response);
 		$this->pdf = Storage::url('public/'.$this->voucher_code.'.pdf');
 		$this->save();

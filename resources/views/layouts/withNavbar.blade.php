@@ -7,7 +7,7 @@
         <meta property="siteurl" content="{{{env('SECURE_URL')}}}" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Toys and Treats | Log In</title>
+        <title>Toys and Treats | Gift Voucher</title>
 
         <!-- Styles -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" type="text/css">
