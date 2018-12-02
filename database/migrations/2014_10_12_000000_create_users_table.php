@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('county')->nullable();
             $table->string('postcode');
             $table->string('stripe_id');
+            $table->integer('outstanding_boxes')->default(0);
             $table->integer('account_status')->default(0);
             $table->boolean('subscribed_to_mailchimp')->default(0);
             $table->rememberToken();

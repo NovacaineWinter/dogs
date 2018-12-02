@@ -147,87 +147,131 @@ class stripeController extends Controller
     			break;
 
 
+
+
+            case 'invoice.upcoming':
+                $user = \App\User::where('stripe_id','=',$request->get('data')['object']['customer'])->first();
+                $user->alertUpcomingPayment(); 
+                $user->stripeEvents()->create([
+                    'title'=>'Notification of upcoming payment',
+                    'typeReference'=>'invoice.upcoming',
+                ]);             
+                return 'Invoice upcoming notified';
+                break;
+
+
+            case 'invoice.created':
+                //stripe runs this webhook approx 1hr before attempting to pay the invoice - can create invoice before paying it
+                    //very important we respond in the affirmative to this webhook or stripe will not process the payment
+                $sub = \App\userSubscription::where('stripe_id','=',$request->get('data')['object']['subscription'])->first();
+                $sub->invoices()->create(array(
+                    'stripe_id'=>$$request->get('data')['object']['id'],
+                    'paid'=>false,
+                    'amount_due'=>$request->get('data')['object']['amount_due'],
+                    'pdf_link'=>$request->get('data')['object']['invoice_pdf']
+                ));
+
+                $sub->user()->first()->stripeEvents()->create([
+                    'title'=>'Invoice created',
+                    'typeReference'=>'invoice.created',
+                ]);
+                return 'Invoice created OK';
+                break;
+
+
+
+            case 'invoice.payment_succeeded':
+                $invoice = \App\userInvoices::where('stripe_id','=',$request->get('data')['object']['id'])->first();
+                $invoice->paid = $request->get('data')['object']['paid'];
+                $invoice->amount_due = $request->get('data')['object']['amount_due'];
+                $invoice->pdf_link = $request->get('data')['object']['invoice_pdf'];
+                $invoice->save();
+
+                $invoice->subscription()->first()->user()->first()->stripeEvents()->create([
+                    'title'=>'Invoice paid Successfully',
+                    'typeReference'=>'invoice.payment_succeeded',
+                ]);
+                break;
+
+
+
+            case 'invoice.payment_failed':
+                $invoice = \App\userInvoices::where('stripe_id','=',$request->get('data')['object']['id'])->first();
+                $invoice->paid = $request->get('data')['object']['paid'];
+                $invoice->amount_due = $request->get('data')['object']['amount_due'];
+                $invoice->pdf_link = $request->get('data')['object']['invoice_pdf'];
+                $invoice->save();
+
+                $stripeEvent = $invoice->subscription()->first()->user()->first()->stripeEvents()->create([
+                    'title'=>'Subscription Payment Failed',
+                    'typeReference'=>'invoice.payment_failed',
+                ]);
+
+                $invoice->subscription()->first()->user()->first()->alertPaymentFailed($stripeEvent);
+                break;
+          
+
     		case 'charge.succeeded':
-    			//not currently doing anything with this as we get the "invoice.payment_succeeded" webhook
+    			//not currently doing anything with this for subscriptions as we get the "invoice.payment_succeeded" webhook
+
+                //this is applicable to gift voucher purchases only
+
     			return 'acknowleged charge succeeded';
     			break;
 
 
-    		case 'invoice.upcoming':
-    			$user = \App\User::where('stripe_id','=',$request->get('data')['object']['customer'])->first();
-    			$user->alertUpcomingPayment(); 
-    			$user->stripeEvents()->create([
-    				'title'=>'Notification of upcoming payment',
-    				'typeReference'=>'invoice.upcoming',
-    			]);   			
-    			return 'Invoice upcoming notified';
-    			break;
 
+            case 'charge.dispute.created':
 
-    		case 'invoice.created':
-    			//stripe runs this webhook approx 1hr before attempting to pay the invoice - can create invoice before paying it
-    				//very important we respond in the affirmative to this webhook or stripe will not process the payment
-    			$sub = \App\userSubscription::where('stripe_id','=',$request->get('data')['object']['subscription'])->first();
-    			$sub->invoices()->create(array(
-    				'stripe_id'=>$$request->get('data')['object']['id'],
-    				'paid'=>false,
-    				'amount_due'=>$request->get('data')['object']['amount_due'],
-    				'pdf_link'=>$request->get('data')['object']['invoice_pdf']
-    			));
+                break;
 
-    			$sub->user()->first()->stripeEvents()->create([
-    				'title'=>'Invoice created',
-    				'typeReference'=>'invoice.created',
-    			]);
-    			return 'Invoice created OK';
-    			break;
+            case 'charge.dispute.updated':
 
-
-
-    		case 'invoice.payment_succeeded':
-    			$invoice = \App\userInvoices::where('stripe_id','=',$request->get('data')['object']['id'])->first();
-    			$invoice->paid = $request->get('data')['object']['paid'];
-    			$invoice->amount_due = $request->get('data')['object']['amount_due'];
-    			$invoice->pdf_link = $request->get('data')['object']['invoice_pdf'];
-    			$invoice->save();
-
-    			$invoice->subscription()->first()->user()->first()->stripeEvents()->create([
-    				'title'=>'Invoice paid Successfully',
-    				'typeReference'=>'invoice.payment_succeeded',
-    			]);
-    			break;
-
-
-
-    		case 'invoice.payment_failed':
-    			$invoice = \App\userInvoices::where('stripe_id','=',$request->get('data')['object']['id'])->first();
-    			$invoice->paid = $request->get('data')['object']['paid'];
-    			$invoice->amount_due = $request->get('data')['object']['amount_due'];
-    			$invoice->pdf_link = $request->get('data')['object']['invoice_pdf'];
-    			$invoice->save();
-
-    			$stripeEvent = $invoice->subscription()->first()->user()->first()->stripeEvents()->create([
-    				'title'=>'Subscription Payment Failed',
-    				'typeReference'=>'invoice.payment_failed',
-    			]);
-
-    			$invoice->subscription()->first()->user()->first()->alertPaymentFailed($stripeEvent);
-    			break;
-          
-
-
-
-
-    		case 'charge.dispute.created':
-
-    			break;
-
-    		case 'charge.dispute.updated':
-
-    			break;
-    	}
+                break;
+        }
     }
 
+
+    public function buyGiftVoucher(Request $request){
+
+        $this->validate(request(),[
+            'token'     =>  'required',
+            'voucher'   =>  'required'  
+        ]);
+        
+
+        \Stripe\Stripe::setApiKey(env('STRIPE_PRIVATE'));
+        
+        $voucherType = \App\voucher::find($request->get('voucher'));
+        try {
+
+            $charge = \Stripe\Charge::create([
+                'amount' => $voucherType->price,
+                'currency' => 'gbp',
+                'description' => 'Gift Voucher',
+                'source' => $request->get('token')['id'],
+            ]);
+
+            $voucher                = new \App\userVoucher;
+            $voucher->voucher_id    = $request->get('voucher');
+            $voucher->giver_email   = $request->get('token')['email'];
+            $voucher->price         = $voucherType->price;
+            $voucher->num_of_boxes  = $voucherType->num_of_boxes;
+            $voucher->generateCode();
+            $voucher->generatePDF();
+            $voucher->save();
+            $voucher->sendOutVoucher();
+
+
+            return json_encode(array('status'=>true,'vouchercode'=>$voucher->voucher_code));
+
+        } catch (Exception $e) {
+
+           $this->errorMessage = $e->getMessage();
+           $this->status = json_encode(array('status'=>'error'));
+
+        }
+    }
 
 
     public function createNewSubscription($user,$plan,$dog,$stripeData){
