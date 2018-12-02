@@ -85,7 +85,12 @@
 						<span class="boldspan">A box costs &pound;14.97 and they are delivered every 4 weeks</span><br>
 						( You can stop whenever you like! )								
 						<br>
-						<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">Subscribe Now</router-link>													
+						<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">
+							Subscribe Now
+						</router-link>													
+						<router-link to="/gift" tag="div" class="button is-primary is-outlined is-large">
+							Give Gift Voucher
+						</router-link>													
 					</div>
 				</div>
 			</div>	
@@ -173,8 +178,13 @@
 
 
                 </div>
-
-            	<div class="button is-large is-primary is-centered-button">Subscribe Now</div> 					
+				<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large is-centered-button">
+					Subscribe Now
+				</router-link>													
+				<router-link to="/gift" tag="div" class="button is-primary is-outlined is-large is-centered-button">
+					Give Gift Voucher
+				</router-link>
+            				
 
             </div>
         </section>
