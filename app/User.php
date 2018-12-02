@@ -290,10 +290,10 @@ class User extends Authenticatable
             $mandrill = new \Mandrill(env('MANDRILL_API_KEY'));
 
             $message = array(
-                'html' => '<p>Example HTML content</p>',
+               /* 'html' => '<p>Example HTML content</p>',*/
                 'text' => $text,
                 'subject' => $subject,
-                'from_email' => 'hello@toysandtreats.com',
+                'from_email' => 'hello@toysandtreats.co.uk',
                 'from_name' => 'The Team | Toys and Treats',
                 'to' => array(
                     array(
@@ -302,7 +302,7 @@ class User extends Authenticatable
                         'type' => 'to'
                     )
                 ),
-                'headers' => array('Reply-To' => 'hello@toysandtreats.com'),
+                'headers' => array('Reply-To' => 'hello@toysandtreats.co.uk'),
                 'important' => false,
                 'tracking_domain' => null,
                 'signing_domain' => null,
