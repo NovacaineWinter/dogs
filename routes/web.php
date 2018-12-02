@@ -47,6 +47,8 @@ Route::post('/api/update/dog-details','customerController@updateDogDetails')->mi
 
 Route::get('/api/plans', 'vuePublic@plans');
 
+Route::get('/api/voucher-options', 'vuePublic@vouchers');
+
 Route::post('/api/logout', 'customerController@logout');
 
 Route::get('/api/new-user-next-dispatch','vuePublic@subscribeNowForDeliveryOn');
@@ -54,3 +56,8 @@ Route::get('/api/new-user-next-dispatch','vuePublic@subscribeNowForDeliveryOn');
 Route::post('/vue/contact/message','contactController@receiveMessage');
 
 Route::get('/api/get-logged-in-user', 'customerController@loggedInDetails')->middleware('auth');
+
+
+Route::get('/voucher-code/','vuePublic@voucherCode');
+
+Route::post('/api/buy-giftvoucher','stripeController@buyGiftVoucher');

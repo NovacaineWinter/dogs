@@ -32,6 +32,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+
+
+
     //basic relations - used programatically 
 
     public function notifications(){
@@ -49,6 +53,13 @@ class User extends Authenticatable
     public function paymentMethods(){
         return $this->hasMany('\App\userPaymentSource','user_id');
     }
+
+    public function redeemedVouchers(){
+        return $this->hasMany('\App\userVoucher','redeemer_id');
+    }
+
+
+
 
 
 /* for front end users */
@@ -90,6 +101,10 @@ class User extends Authenticatable
         //return $this->invoices()->exclude(['stripe_id']);
     }
 
+
+
+
+
 /*  
     Account Status stuff ==============================================================
 
@@ -113,6 +128,9 @@ class User extends Authenticatable
 /*
 =========================================================================================
 */
+
+
+
 
     public function updatePaymentSources($sources){
         foreach($sources as $source){
@@ -246,43 +264,7 @@ class User extends Authenticatable
         $this->save();
     }
 
-
-
-   /* public function email_smtp($subject,$text){
-
-     
-        //*   Needs swiftmail package from composer
-       
-
-        $from = array('hello@toysandtreats.com' =>'The Team | Toys and Treats');
-        
-     
-        
-        $to = $this->email;
-        $html = "<em>Mandrill speaks <strong>HTML</strong></em>";
-
-        $transport = new \Swift_SmtpTransport('smtp.mandrillapp.com', 587);
-        $transport->setUsername(env('MANDRILL_USERNAME'));
-        $transport->setPassword(env('MANDRILL_PASSWORD'));
-        $swift = new \Swift_Mailer($transport);
-
-        $message = new \Swift_Message($subject);
-        $message->setFrom($from);
-        $message->setBody($html, 'text/html');
-        $message->setTo($to);
-        $message->addPart($text, 'text/plain');
-
-        if ($recipients = $swift->send($message, $failures))
-        {
-            echo 'Message successfully sent!';
-        } else {
-            echo "There was an error:\n";
-            print_r($failures);
-        }
-    }
-
-*/
-
+  
 
     public function email($subject,$text){
         try {
@@ -317,20 +299,8 @@ class User extends Authenticatable
             $send_at = 'example send_at';*/
             //$result = $mandrill->messages->send($message, $async, $ip_pool, $send_at);
             $result = $mandrill->messages->send($message);
-            print_r($result);
-            /*
-            Array
-            (
-                [0] => Array
-                    (
-                        [email] => recipient.email@example.com
-                        [status] => sent
-                        [reject_reason] => hard-bounce
-                        [_id] => abc123abc123abc123abc123abc123
-                    )
-            
-            )
-            */
+
+           
         } catch(Mandrill_Error $e) {
             // Mandrill errors are thrown as exceptions
             echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();

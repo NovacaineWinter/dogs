@@ -16,10 +16,19 @@
 								<h1 class="maintitle landingtext">Every dog deserves <br>toys and treats</h1>
 								<p class="mainsubtitle">A surprise gift box subscription for your dog</p>	
 								<div class="columns is-mobile">
-									<div class="column is-6"><div class="button widebutton landingtext clearbutton" @click="scrollintoview">Find Out More</div></div>
+
 									<div class="column is-6">
-										<router-link to="sign-up" tag="div" class="button landingtext is-info widebutton">Subscribe</router-link>
+										<div class="button widebutton landingtext clearbutton" @click="scrollintoview">
+											Find Out More
+										</div>
 									</div>
+
+									<div class="column is-6">
+										<router-link to="sign-up" tag="div" class="button landingtext is-info widebutton">
+											Subscribe
+										</router-link>
+									</div>
+
 								</div>						
 							</div>
 						</div>

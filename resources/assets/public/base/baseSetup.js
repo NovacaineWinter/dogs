@@ -13,6 +13,13 @@ navbarItems.push(
 		bold:false,
 		hideSmall:true,
 	},
+	{
+		uri:'/gift',
+		text:'Gift Voucher',
+		position:20,
+		bold:true,
+		hideSmall:false,
+	},
 );
 
 

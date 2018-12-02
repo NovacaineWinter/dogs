@@ -27,4 +27,32 @@ class vuePublic extends Controller
         return date('D jS M Y',$deliveryTimestamp);
  
     }
+
+
+    public function vouchers(){
+        return \App\voucher::where('is_active','=',1)->get();
+    }
+
+
+    public function voucherCode(Request $request){
+
+        if($request->has('code')){
+            $voucher = \App\userVoucher::where('voucher_code','=',$request->get('code'))->first();
+            if($voucher != ''){
+
+                if($voucher->expired){
+                    return view('voucherExpired');
+                }elseif($voucher->is_redeemed){
+                    return view('voucherAlreadyUsed');
+                }else{
+                    return view('voucherCode')->with('voucher',$voucher);
+                }
+            }else{
+                return view('voucherNotFound');
+            }
+        }else{
+            return view('voucherNotFound');
+        }
+
+    }
 }
