@@ -16,11 +16,7 @@
     "laravel-mix": "^3.0.0t",
     "vue": "^2.5.7",
     "vue-router": "^3.0.1",
-    "vue-smooth-scroll": "^1.0.13"/*,
-    "lodash": "^4.17.4",
-    "v-animate-css": "0.0.2",
-    "vue-carousel": "^0.8.1",
-    "popper.js": "^1.12"*/
+    "vue-smooth-scroll": "^1.0.13"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
