@@ -14,18 +14,22 @@ class userVoucher extends Model
 
 		try {
 
-			$text= "Hi there!  \r\n\r\n Thanks for buying a Toys and Treats gift voucher, we think they make great gifts for any dog lover. \r\n\r\n We have attached your voucher in PDF form or you can view your voucher on the link below:  \r\n\r\n".url('voucher-code?code='.$this->voucher_code)." \r\n\r\n We hope they love their gift!  \r\n\r\n The team at Toys and Treats";
+			//$text= "Hi there!  \r\n\r\n Thanks for buying a Toys and Treats gift voucher, we think they make great gifts for any dog lover. \r\n\r\n We have attached your voucher in PDF form or you can view your voucher on the link below:  \r\n\r\n".url("voucher-code?code=".$this->voucher_code)." \r\n\r\n We hope they love their gift!  \r\n\r\n The team at Toys and Treats";
 
-            $mandrill = new \Mandrill(env('MANDRILL_API_KEY'));
+			$text= "Hi there!  \r\n\r\n Thanks for buying a Toys and Treats gift voucher, we think they make great gifts for any dog lover. \r\n\r\n Your voucher code is: ".$this->voucher_code.". You can view your voucher using the link below:  \r\n\r\n \r\n\r\n We hope they love their gift!  \r\n\r\n The team at Toys and Treats";
+
+ 			$mandrill = new \Mandrill(env('MANDRILL_API_KEY'));
 
             $message = array(
+               /* 'html' => '<p>Example HTML content</p>',*/
                 'text' => $text,
                 'subject' => 'Gift Voucher Code | Toys and Treats',
                 'from_email' => 'hello@toysandtreats.co.uk',
                 'from_name' => 'The Team | Toys and Treats',
                 'to' => array(
                     array(
-                        'email' => $this->giver_email,              
+                        'email' => $this->giver_email,
+                        'name' =>'',
                         'type' => 'to'
                     )
                 ),
@@ -35,17 +39,13 @@ class userVoucher extends Model
                 'signing_domain' => null,
                 'return_path_domain' => null,
                 'merge' => true,
-                'merge_language' => 'mailchimp',  
-                'attachments'=> [[
-	                "type"=> "text/plain",
-	                "name"=> "Voucher.pdf",
-	                "content"=>Storage::get('public/'.$this->voucher_code.'.pdf'),
-	            ]]   
+                'merge_language' => 'mailchimp',            
             
+               
             );
 
             $result = $mandrill->messages->send($message);
-            return $result;
+            echo $result;
            
         } catch(Mandrill_Error $e) {
             // Mandrill errors are thrown as exceptions
