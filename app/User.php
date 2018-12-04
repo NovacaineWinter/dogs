@@ -6,7 +6,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use \DrewM\MailChimp\MailChimp;
 use \swiftmailer\swiftmailer;
-//include_once "swift_required.php";
 use App\Traits\Excludable;
 
 class User extends Authenticatable
