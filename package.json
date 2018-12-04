@@ -13,7 +13,7 @@
     "axios": "^0.17",
     "bulma": "^0.7.1",
     "cross-env": "^5.1",
-    "laravel-mix": "^3.0.0t",
+    "laravel-mix": "^3.0.0",
     "vue": "^2.5.7",
     "vue-router": "^3.0.1",
     "vue-smooth-scroll": "^1.0.13"
