@@ -120,6 +120,7 @@ class stripeController extends Controller
     				'typeReference'=>'customer.subscription.created',
     			]);
     			$sub->user()->first()->activate();
+                $sub->save();
     			return 'customer subscription created ok';
     			break;
     			

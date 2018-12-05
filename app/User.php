@@ -133,7 +133,9 @@ class User extends Authenticatable
 
     public function updatePaymentSources($sources){
         foreach($sources as $source){
-            if($this->paymentMethods()->where('stripe_id','=',$source['id'])->count()==0){
+            $card = \App\userPaymentSource::find('stripe_id','=',$source['id'])->get();
+
+            if($card->isEmpty()){
                 $this->paymentMethods()->create(array(
                     'stripe_id' =>$source['id'],
                     'lastFour'  =>$source['last4'],
