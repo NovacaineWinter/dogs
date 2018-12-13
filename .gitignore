@@ -13,7 +13,7 @@ yarn-error.log
 .env
 .env.save
 
-/public/js/app.js
-/public/js/admin.js
-/public/css/app.css
-/public/css/admin.css
+public/js/app.js
+public/js/admin.js
+public/css/app.css
+public/css/admin.css

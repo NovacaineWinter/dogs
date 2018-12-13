@@ -11,7 +11,7 @@
             </div>
         </section>
 
-
+    <div class="button" @click="logmein">Log in test</div>
 
        <!--  <section class="section">
            <div class="container">
@@ -762,22 +762,22 @@
 
                 element1.value=this.email;
                 element1.name="email";
-                element1.type="hidden";
+                element1.type="email";
                 form.appendChild(element1);  
 
                 element2.value=this.password;
                 element2.name="password";
-                element2.type="hidden";
+                element2.type="password";
                 form.appendChild(element2);                
 
-                element3.value=document.head.querySelector("[name=csrf-token]").content;
+                element3.value=this.$root.csrf;
                 element3.name="_token";
                 element3.type="hidden";
                 form.appendChild(element3);  
 
                 element4.value=1;
                 element4.name="remember";
-                element4.type="hidden";
+                element4.type="checkbox";
                 form.appendChild(element4);
 
                 document.body.appendChild(form);
@@ -808,8 +808,8 @@
                 postcode:'',
                 firstName:'',
                 lastName:'',
-                email:'',
-                password:'',
+                email:'matt.v.hartley@gmail.com',
+                password:'qwe',
                 passwordConfirm:'',
                 possibleAddresses:'',
                 plans:{},

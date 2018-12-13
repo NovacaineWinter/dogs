@@ -10,6 +10,7 @@ import router from './router';
 const app = new Vue({
     el: '#app',
     data: {   
+    	csrf:document.head.querySelector('meta[name="csrf-token"]').content,
     },
     router: router,
 
