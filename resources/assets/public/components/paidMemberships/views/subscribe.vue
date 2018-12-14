@@ -11,8 +11,6 @@
             </div>
         </section>
 
-    <div class="button" @click="logmein">Log in test</div>
-
        <!--  <section class="section">
            <div class="container">
                <div class="columns plan-options">
@@ -808,8 +806,8 @@
                 postcode:'',
                 firstName:'',
                 lastName:'',
-                email:'matt.v.hartley@gmail.com',
-                password:'qwe',
+                email:'',
+                password:'',
                 passwordConfirm:'',
                 possibleAddresses:'',
                 plans:{},

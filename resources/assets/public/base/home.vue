@@ -57,10 +57,9 @@
 
 
 
-
 			<div class="tile is-ancestor pill-columns">
-				<div class="tile is-4 imagetile">
-					<img src="/img/dog3.jpeg">
+				<div class="tile is-4 imagetile" style="background-image:url('/img/dog3.jpeg');">
+				<!-- 	<img src="/img/dog3.jpeg" alt="dog picture" class="tablet-and-smaller-image"> -->
 				</div>
 				<div class="tile textbox">
 					<div class="textwrapper">
@@ -72,8 +71,8 @@
 
 
 			<div class="tile is-ancestor pill-columns">
-				<div class="tile is-4 imagetile">
-					<img src="/img/dog2.jpeg">
+				<div class="tile is-4 imagetile" style="background-image:url('/img/dog2.jpeg');">
+					<!-- <img src="/img/dog2.jpeg" alt="dog picture" class="tablet-and-smaller-image"> -->
 				</div>
 				<div class="tile textbox">
 					<div class="textwrapper">
@@ -85,8 +84,8 @@
 
 
 			<div class="tile is-ancestor pill-columns">
-				<div class="tile is-4 imagetile">
-					<img src="/img/dog4.jpeg">
+				<div class="tile is-4 imagetile" style="background-image:url('/img/dog4.jpeg');">
+				<!-- 	<img src="/img/dog4.jpeg" alt="dog picture" class="tablet-and-smaller-image"> -->
 				</div>
 				<div class="tile textbox">
 					<div class="textwrapper">
@@ -413,7 +412,9 @@
 		}		
 	}
 
-
+	.tablet-and-smaller-image{
+		display:none;
+	}
 	.small-view{
 		display:none;
 	}
@@ -658,6 +659,13 @@
       
 
 
+	.imagetile{
+		background-position:center;
+		background-size:cover;
+		border-top-left-radius:30px;
+		border-bottom-left-radius:30px;
+	}
+
 
 	@media only screen and (max-width: $tabletbreak) {
 	
@@ -777,8 +785,14 @@
 						max-width:100%;;
 					}
 				} 
-
 			} 
+
+			.imagetile{
+				height:75vw;
+				border-top-right-radius:30px;
+				border-bottom-left-radius:0px;
+			}
+
 		}
 	}
 
