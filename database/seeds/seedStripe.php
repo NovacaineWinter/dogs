@@ -25,6 +25,7 @@ class seedStripe extends Seeder
         $product =\Stripe\Product::create(array(
 			"name" => $stripeProductA->name,
 			"type" => "service",
+			"statement_descriptor" =>'Box Sub|Toys & Treats'
 		));
 
 		$stripeProductA->stripe_id = $product->id;
@@ -37,12 +38,12 @@ class seedStripe extends Seeder
 		$stripePlanA->product_id =$stripeProductA->id;  //local id, not stripe
 		$stripePlanA->amount =1497;
 		$stripePlanA->currency ="gbp";
-		$stripePlanA->interval ="week";
+		$stripePlanA->interval ="month";
 		$stripePlanA->active =true;
 		$stripePlanA->price_string ='£14.97 / box';
 		$stripePlanA->size ="medium";
 		$stripePlanA->title ='Waggy Tail Box';
-		$stripePlanA->description ='A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every four weeks. Get those tails wagging!';
+		$stripePlanA->description ='A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every month. Get those tails wagging!';
 		$stripePlanA->img ='/img/box.png';
 
 
@@ -52,8 +53,17 @@ class seedStripe extends Seeder
 			"amount" 	=> $stripePlanA->amount,
 			"currency" 	=> $stripePlanA->currency,
 			"interval" 	=> $stripePlanA->interval,
-			"interval_count"=>4
+
 		));
+/*
+		$plan = \Stripe\Plan::create(array(
+			"nickname" 	=> $stripePlanA->nickname,
+			"product" 	=> $stripeProductA->stripe_id,
+			"amount" 	=> $stripePlanA->amount,
+			"currency" 	=> $stripePlanA->currency,
+			"interval" 	=> $stripePlanA->interval,
+			"interval_count"=>4
+		));*/
 
 		$stripePlanA->stripe_id =$plan->id;
 		$stripePlanA->save();

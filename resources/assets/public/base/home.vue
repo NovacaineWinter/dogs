@@ -64,7 +64,7 @@
 				<div class="tile textbox">
 					<div class="textwrapper">
 						<h1 class="subtitle"><span>What is a Toys and Treats Box?</span></h1>
-						<p class="textblock">Simply pure doggie happiness. It is a surprise gift box subscription to show your dog how much you love them. Our dedicated team of product testing pooches choose from an amazing range of toys, treats and other goodies to create a surprise that your dog is sure to look forward to. Boxes are dispatched every 4 weeks. Non-stop joy for your dog. </p>
+						<p class="textblock">Simply pure doggie happiness. It is a surprise gift box subscription to show your dog how much you love them. Our dedicated team of product testing pooches choose from an amazing range of toys, treats and other goodies to create a surprise that your dog is sure to look forward to. Boxes are dispatched every month. Non-stop joy for your dog. </p>
 					</div>
 				</div>
 			</div>	
@@ -77,7 +77,7 @@
 				<div class="tile textbox">
 					<div class="textwrapper">
 						<h1 class="subtitle"><span>Why should I get a Toys and Treats Box?</span></h1>
-						<p class="textblock">We believe every dog should be made to feel special. Our dogs do so much for us, the unconditional love, the playful games, or just trying to cheer you up when you feel down. Dogs give us so much of their love, wouldn't it be nice to return just a little of that love? Can you imagine how happy they would be to get an exciting gift box every 4 weeks? A Toys and Treats box is the simplest way of returning a little bit of that love they show you.</p>								
+						<p class="textblock">We believe every dog should be made to feel special. Our dogs do so much for us, the unconditional love, the playful games, or just trying to cheer you up when you feel down. Dogs give us so much of their love, wouldn't it be nice to return just a little of that love? Can you imagine how happy they would be to get an exciting gift box every month? A Toys and Treats box is the simplest way of returning a little bit of that love they show you.</p>								
 					</div>
 				</div>
 			</div>	
@@ -89,8 +89,8 @@
 				</div>
 				<div class="tile textbox">
 					<div class="textwrapper">
-						<h1 class="subtitle"><span>So how much does it cost?</span></h1>
-						<span class="boldspan">A box costs &pound;14.97 and they are delivered every 4 weeks</span><br>
+						<h1 class="subtitle"><span>So how much is it?</span></h1>
+						<span class="boldspan">Each box is &pound;14.97, delivered every month</span><br>
 						( You can stop whenever you like! )								
 						<br>
 						<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large">
@@ -139,16 +139,17 @@
 
         <section class="section howitworkstextsection">
             <div class="container">
-                <div class="columns">
+                <div class="tile is-ancestor">
 
-                    <div class="column">                       
+                    <div class="tile is-4">                       
                         <div class="card fullheight">                            
                             <div class="card-content has-text-centered">
+                            	<h1 class="titlering"><span>1</span></h1>
                                 <h1 class="subtitle">
-                                    1) Sign Up For An Account                                    
+                                    Sign Up For An Account                                    
                                 </h1> 
                                 <p>
-                                    Choose your plan, tell us about your dog and let us know where you want it delivered. 
+                                    Choose your plan, tell us about your dog and let us know where you want it delivered. <br>Your first box is sent out straight away, after that, boxes are dispatched on or just after the 15th of every month. Payment is collected on the 1st of every month.
                                 </p><br>
                                                            
                             </div>                           
@@ -156,29 +157,32 @@
                     </div>
 
 
-                    <div class="column">
+                    <div class="tile is-4">
                         <div class="card fullheight">             
                             <div class="card-content has-text-centered">
+                            	<h1 class="titlering"><span>2</span></h1>
                                 <h1 class="subtitle">
-                                    2) We hand pick a box of goodies for you dog                                  
+                                    We hand pick a box of goodies for you dog                                  
                                 </h1> 
                                 <p>
-                                    Our team will choose from a wonderful range of goodies for your dog based on their size.
+                                    Our team will choose from a wonderful range of goodies for your dog based on their size.<br>We work really closely with a wide range of suppliers to sniff out the most exciting bits and bobs for your pooch. Our testing team loves trying out new products before they are approved for the boxes.
                                 </p>                         
                             </div>                           
                         </div>                        
                     </div>
 
 
-                    <div class="column">
+                    <div class="tile is-4">
                         <div class="card fullheight">
                             
                             <div class="card-content has-text-centered">
+                            	<h1 class="titlering"><span>3</span></h1>
                                 <h1 class="subtitle">
-                                   3) Receive your box of doggie happiness                               
+                                   Receive your box of doggie happiness                               
                                 </h1> 
                                 <p>
-                                    The big day! your dog receives their box in the post. Make sure to take photos and tag us in them!  
+                                    The big day! your dog receives their box in the post. Make sure to take photos and tag us in them!
+                                    <br>We run a dog of the month competition each month, entries are selected from social media posts we are tagged in, make sure to tag us in your photos! 
                                 </p>                         
                             </div>                           
                         </div>
@@ -188,7 +192,8 @@
                 </div>
 				<router-link to="/sign-up" tag="div" class="button is-primary is-outlined is-large is-centered-button">
 					Subscribe Now
-				</router-link>													
+				</router-link>	
+				<br>												
 				<router-link to="/gift" tag="div" class="button is-primary is-outlined is-large is-centered-button">
 					Give Gift Voucher
 				</router-link>
@@ -388,6 +393,22 @@
 	@import '~sass/variables';
 
 	#homeview{
+	
+		.titlering{
+			margin-bottom:25px;
+			span{
+				border: 3px solid $text-dark;
+				border-radius: 50%;
+				padding: 0px 23px 6px 23px;
+				font-size: 50px;
+
+			}
+		}
+
+
+
+
+
 		.container
 		.tile.pill-columns{
 			border:1px solid $text-dark;

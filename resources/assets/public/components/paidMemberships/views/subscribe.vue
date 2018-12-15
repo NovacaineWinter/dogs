@@ -1,4 +1,4 @@
-		
+        
 <template>
 
     <div id="sign-up-view">
@@ -36,57 +36,65 @@
        </section> -->
 
         <section class="section" id="dogNameAndSize">
-            <div class="container">
-    
+            <div class="container">        
+
 
                 <div class="columns">
-                    <div class="column"></div>
-                    <div class="column is-8">                       
-                        <div class="columns has-border is-selected is-mobile">
-                            <div class="column is-2"><img :src="planimage" class="is-horisontal-center" alt="plan image"></div>
-                            <div class="column columns">                            
-                                <div class="column is-9">
-                                    <h1 class="subtitle">
-                                        Toys and Treats Box                                
-                                    </h1>
-                                    <p>
-                                        A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every four weeks. Get those tails wagging!<br><br>                             
-                                    </p>   
-                                    <p class="has-text-centered"> Next box is dispatched on <span v-text="nextDispatch"></span></p>
+
+                    <div class="column is-4">                                     
+                        <div class="has-border plansummary is-selected is-mobile">
+                            <div><img :src="planimage" class="is-horisontal-center" alt="plan image"></div>
+                                                       
+                                
+                                <h1 class="subtitle has-text-centered" style="font-weight:700;">
+                                    Toys and Treats Box                                
+                                </h1>
+
+                                <p class="has-text-centered">
+                                    A surprise box filled with doggie fun and happiness. Delivered to your pampered pooch every month. Get those tails wagging!<br><br>                             
+                                </p>   
+                                <div class="billinginfo">
+                                    <p class="subtitle has-text-centered">How billing works...</p>
+                                    <ul class="withbulletpoints">
+                                       <li>First Box dispatched straight away, first payment is collected now</li>
+                                       <li>Every other box is shipped on or just after the 15th of every month</li>
+                                       <li>Payment of &pound;14.97 is collected on the 1st of every month</li>
+                                    </ul>                                    
                                 </div>
-                                <div class="column is-3 has-text-centered">£14.97 / Box Delivered every 4 weeks</div>
-                            </div>
+                      
                         </div>                    
-                    </div>
-                    <div class="column"></div>
+                    </div> 
+
+                    <div class="column is-8">
+                        <div style="box-sizing:border-box;padding:0px 80px;">
+
+                            <div class="field">
+                                <h1 class="subtitle has-text-centered" v-if="dogName==''"><br><br>Fill out your dog's name to get started...</h1>
+                                <label class="label title has-text-centered">My dog's name is</label>
+                                <div class="control">
+                                    <input 
+                                        type="text" 
+                                        class="input" 
+                                        :class="{'is-danger':errors.dogName}" 
+                                        @keydown="errors.dogName=false"
+                                        v-model="dogName"  
+                                        @keyup.tab="dogNameTabbed"
+                                        @keyup="dogNameInputKeyup" 
+                                        placeholder="Spot....Buster....Rex....">
+                                    <span class="errortext" v-show="errors.dogName">Required</span>
+                                </div>
+                            </div> 
+
+
+                        </div>
+                        
+                    </div>                  
                 </div>
 
 
-                <div v-show="showDogDetails">
-                    
-                    <div class="columns">
-                        <div class="column blankcolumn">&nbsp;</div>
-                        <div class="column field">
-                            <h1 class="subtitle has-text-centered" v-if="dogName==''"><br><br>Fill out your dog's name to get started...</h1>
-                            <label class="label title has-text-centered">My dog's name is</label>
-                            <div class="control">
-                                <input 
-                                    type="text" 
-                                    class="input" 
-                                    :class="{'is-danger':errors.dogName}" 
-                                    @keydown="errors.dogName=false"
-                                    v-model="dogName"  
-                                    @keyup.tab="dogNameTabbed"
-                                    @keyup="dogNameInputKeyup" 
-                                    placeholder="Spot....Buster....Rex....">
-                                <span class="errortext" v-show="errors.dogName">Required</span>
-                            </div>
-                        </div> 
-
-                        <div class="column blankcolumn">&nbsp;</div>
-                    </div>
-
-
+                <div v-show="showDogDetails" style="position:relative;">                    
+                <div id="dogsize" style="top:-90px;position:absolute;">&nbsp;</div>
+    
                     <div v-show="showSizeSelector">                    
                         <h2 class="title has-text-centered">And they are a..</h2>
 
@@ -458,8 +466,11 @@
                 clearTimeout(this.dogNameTimeout);
 
                 this.dogNameTimeout = setTimeout(function(){
+
                     if(this.dogName !=''){
                         this.showSizeSelector = true;
+                        console.log('goingTo');
+                        document.getElementById("dogsize").scrollIntoView({ behavior: 'smooth', block: "start" });
                     }else{
                         this.showSizeSelector = false;
                     }
@@ -928,7 +939,35 @@
 
     #sign-up-view{   
     
+        .plansummary{
+            img{
+                padding-left:30%;
+                padding-right:30%;
+            }
+            .billinginfo{
+                box-sizing: border-box;
+                padding: 0px 35px;
+                margin-bottom: 35px;
+                ul{
+                    list-style: circle;
+                    li{
+                        font-weight:300;
+                        padding:5px 0px;
+                    }
+                }
+                .subtitle  {
+                    border-top: 1px solid $text-dark;
+                    padding-top: 14px;
+                }
+            }        
+        }
 
+        .infobox{
+            box-sizing:border-box;
+            padding:10px;
+            text-align:center;
+        }
+    
         .button.is-centered{
             margin-left:42%;
         }

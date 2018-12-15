@@ -69,6 +69,8 @@ class stripeController extends Controller
     			return 'warned user';
     			break;
 
+
+
     		case 'customer.source.deleted':    	
     			$source = \App\userPaymentSource::where('stripe_id','=',$request->get('data')['object']['id'])->first();
     			$source->delete();
@@ -249,8 +251,9 @@ class stripeController extends Controller
             $charge = \Stripe\Charge::create([
                 'amount' => $voucherType->price,
                 'currency' => 'gbp',
-                'description' => 'Gift Voucher',
+                'description' => 'Gift Voucher | Toys and Treats',
                 'source' => $request->get('token')['id'],
+                'statement_descriptor' => 'Voucher|Toys & Treats',
             ]);
 
             $voucher                = new \App\userVoucher;
@@ -295,7 +298,17 @@ class stripeController extends Controller
 	    	$user->save();
 
 
+            $charge = \Stripe\Charge::create([
+                'amount' => $plan->amount,
+                'currency' => 'gbp',
+                'description' => 'First Month | Toys and Treats',
+                'customer' => $customer->id,
+                'statement_descriptor' => 'FirstBox|Toys & Treats',
+            ]);
+
+
 	    	//add the newly created customer to a plan to create a subscription
+                //this will not generate any charge until the 1st of the following month
 			$subscription = \Stripe\Subscription::create(array(
 				"customer" => $user->stripe_id,
 				"items" => array(
@@ -303,8 +316,11 @@ class stripeController extends Controller
 					"plan" => $plan->stripe_id,
 					"quantity" => 1,
 					),
-				)
+                ),
+                "trial_end" => $plan->trialEnds(),
 			));
+
+
 
 		   $this->status = json_encode(array('status'=>'subscribed'));
     		
