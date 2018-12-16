@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
     {
     	$this->call(seedStripe::class);
         $this->call(cancellationReasonOptions::class);
-    	$this->call(giftVouchers::class);
+        $this->call(giftVouchers::class);
     }
 }

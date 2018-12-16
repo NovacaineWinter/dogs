@@ -54,5 +54,10 @@ routes.push(
 
 		component: require('./views/giftVoucher.vue')
 	},		
+	{
+		path:'/give-gift',
+
+		component: require('./views/giftLanding.vue')
+	},		
 );
 

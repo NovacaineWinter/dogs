@@ -61,4 +61,19 @@ class userSubscription extends Model
         $weekNumber = date('W');        
         return (($weekNumber%4)+1)%4;
     }
+
+
+    public function emailSuccess(){
+        $admins = \App\adminUser::all();
+        foreach($admins as $admin){
+            $admin->email('Just sold a subscription!','Just sold a subscription to '.$this->email);
+        }
+    }
+
+    public function emailFailure(){
+        $admins = \App\adminUser::all();
+        foreach($admins as $admin){
+            $admin->email('Failed to activate subscription','Just failed subscribing someone '.$this->email.' userSubscription ID: '.$this->id);
+        }
+    }
 }

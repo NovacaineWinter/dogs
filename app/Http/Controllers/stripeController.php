@@ -323,6 +323,7 @@ class stripeController extends Controller
 
 
 		   $this->status = json_encode(array('status'=>'subscribed'));
+
     		
     	} catch (Exception $e) {
 
@@ -340,6 +341,7 @@ class stripeController extends Controller
         $sub->dog_size  = $dog['size'];
         $sub->delivery_slot = $sub->calculateDeliverySlot();
 		$sub->save();
+        $sub->emailSuccess();
         $user->sendWelcomeEmail($sub);
 
     }

@@ -19,6 +19,10 @@ Route::get('/email', function () {
     return view('emailTemplates.testEmail');
 });
 
+Route::get('/give-a-gift-voucher',function () {
+	return redirect('/#/give-gift');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

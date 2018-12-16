@@ -15,6 +15,17 @@ class seedStripe extends Seeder
 
 
 
+    	//Seed admin stuff=========================
+ 		$admin = new \App\adminUser;
+        $admin->email='matt.v.hartley@gmail.com';
+        $admin->save();
+
+        $admin2 = new \App\adminUser;
+        $admin2->email='matt@toysandtreats.co.uk';
+        $admin2->save();
+        //=========================================
+
+
 
 
     	$stripeProductA = new \App\stripeProduct;

@@ -41,7 +41,7 @@
 
                 <div class="columns">
 
-                    <div class="column is-4">                                     
+                    <div class="column is-4 infocolumnmobile" style="margin-top:25px;">                                     
                         <div class="has-border plansummary is-selected is-mobile">
                             <div><img :src="planimage" class="is-horisontal-center" alt="plan image"></div>
                                                        
@@ -66,7 +66,7 @@
                     </div> 
 
                     <div class="column is-8">
-                        <div style="box-sizing:border-box;padding:0px 80px;">
+                        <div class="dognameinputdiv">
 
                             <div class="field">
                                 <h1 class="subtitle has-text-centered" v-if="dogName==''"><br><br>Fill out your dog's name to get started...</h1>
@@ -440,6 +440,15 @@
                             // Get the token ID to your server-side code for use.
                             
                             this.createAccount(token);
+                        }.bind(this,'this'),
+
+                        opened: function() {
+                            this.loadingSubButton = false;
+                        }.bind(this,'this'),
+
+
+                        closed: function() {
+                            this.loadingSubButton = false;
                         }.bind(this,'this')
                     });
                     
@@ -939,6 +948,10 @@
 
     #sign-up-view{   
     
+        .dognameinputdiv{
+            box-sizing:border-box;padding:0px 80px;
+        }
+
         .plansummary{
             img{
                 padding-left:30%;
@@ -1125,10 +1138,20 @@
         #dogNameAndSize{
             padding-top:0px;
         }  
+        #sign-up-view{
+            .dognameinputdiv{
+                padding:0px;
+            }
+        }
 
         .blankcolumn{
             display:none;
-        }     
+        }    
+
+        .infocolumnmobile{
+            max-width:430px;
+            margin:25px auto
+        }
 
     }
 

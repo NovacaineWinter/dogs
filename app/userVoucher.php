@@ -16,7 +16,7 @@ class userVoucher extends Model
 
 			//$text= "Hi there!  \r\n\r\n Thanks for buying a Toys and Treats gift voucher, we think they make great gifts for any dog lover. \r\n\r\n We have attached your voucher in PDF form or you can view your voucher on the link below:  \r\n\r\n".url("voucher-code?code=".$this->voucher_code)." \r\n\r\n We hope they love their gift!  \r\n\r\n The team at Toys and Treats";
 
-			$text= "Hi there!  \r\n\r\n Thanks for buying a Toys and Treats gift voucher, we think they make great gifts for any dog lover. \r\n\r\n Your voucher code is: ".$this->voucher_code.". You can view your voucher using the link below:  \r\n\r\n \r\n\r\n We hope they love their gift!  \r\n\r\n The team at Toys and Treats";
+			$text= "Hi there!  \r\n\r\n Thanks for buying a Toys and Treats gift voucher, we think they make great gifts for any dog lover. \r\n\r\n Your voucher code is: ".$this->voucher_code.". You can view your voucher using the link below:  \r\n\r\n \r\n\r\n ".url("voucher-code?code=".$this->voucher_code)." \r\n\r\n We hope they love their gift!  \r\n\r\n The team at Toys and Treats";
 
  			$mandrill = new \Mandrill(env('MANDRILL_API_KEY'));
 
@@ -45,12 +45,12 @@ class userVoucher extends Model
             );
 
             $result = $mandrill->messages->send($message);
-            echo $result;
+            $this->emailSuccess();
            
         } catch(Mandrill_Error $e) {
             // Mandrill errors are thrown as exceptions
             echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
-            // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+            $this->emailFailure();            
             throw $e;
         }
 
@@ -83,4 +83,20 @@ class userVoucher extends Model
 		$this->pdf = Storage::url('public/'.$this->voucher_code.'.pdf');
 		$this->save();
 	}
+
+
+
+    public function emailSuccess(){
+        $admins = \App\adminUser::all();
+        foreach($admins as $admin){
+            $admin->email('Just sold a voucher!','Just sold a voucher for '.$this->num_of_boxes.' boxes at a price of £'.($this->price/100));
+        }
+    }
+
+    public function emailFailure(){
+        $admins = \App\adminUser::all();
+        foreach($admins as $admin){
+            $admin->email('Failed to email voucher!','Just failed emailing a voucher to '.$this->giver_email.' userVoucher ID: '.$this->id);
+        }
+    }
 }
